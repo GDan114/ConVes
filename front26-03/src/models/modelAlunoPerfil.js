@@ -2,18 +2,18 @@ const { connSequelize } = require('../../config/conexaoBD.js')
 const { padraoTB } = require('../../config/configPadraoTb.js')
 const { DataTypes } = require('sequelize')
 
-const ModelAluno = connSequelize.define( // TABELA: tb_aluno
-    'tb_aluno', {
+const ModelAlunoPerfil = connSequelize.define( // TABELA: tb_alunoPerfil
+    'tb_alunoPerfil', {
         id_aluno: {
             type: DataTypes.INTEGER.UNSIGNED,
             autoIncrement: true,
             primaryKey: true,
             allowNull: false
         },
-        cd_rm_aluno: {
+        rm_aluno: {
             type: DataTypes.CHAR(5),
             allowNull: false
-        }, 
+        },
         nm_aluno: {
             type: DataTypes.STRING(60),
             allowNull: false
@@ -21,19 +21,11 @@ const ModelAluno = connSequelize.define( // TABELA: tb_aluno
         dt_nascimento_aluno: {
             type: DataTypes.DATE,
             allowNull: false
-        },
-        dt_cadastro: {
-            type: DataTypes.DATE,
-            allowNull: false
-        }, 
-        cpf_aluno: {
-            type: DataTypes.CHAR(14),
-            allowNull: false
         }
     },
-        padraoTB('tb_aluno')
+        padraoTB('tb_alunoPerfil')
 )
 
 module.exports = {
-    ModelAluno
+    ModelAlunoPerfil
 }
