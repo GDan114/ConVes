@@ -1,15 +1,13 @@
 const { connSequelize, nomeBD} = require('../config/conexaoBD.js')
-const controller_Aluno = require('./controllers/controllerAluno.js')
+const express = require('express')
 
-connSequelize.sync() // Deixar o BD funcionando
-
-function showQuery(queryTxt) {
-    console.log('\n\n\n====================================================')
-    console.log('Comando que será usado:')
-    console.log('==========================================================')
-    console.log(queryTxt)
-    console.log('==========================================================')
-}
+// function showQuery(queryTxt) {
+//     console.log('\n\n\n====================================================')
+//     console.log('Comando que será usado:')
+//     console.log('==========================================================')
+//     console.log(queryTxt)
+//     console.log('==========================================================')
+// }
 
 // AUTENTICAÇÃO
 
@@ -22,3 +20,16 @@ connSequelize.authenticate().then(() => {
     console.error(`Incapaz de conectar-se ao banco MySQL de nome ${nomeBD}`, erroConn)
 })
 
+const appWeb = express()
+connSequelize.sync() // Deixar o BD funcionando
+appWeb.use(express.json())
+
+appWeb.get('/',(req, resp) => {
+    resp.render('../../src/app.js')
+})
+
+const PORTA = 3001
+
+appWeb.listen(PORTA, () => {
+    console.log(`Servidor rudando na porta: ${PORTA} - "http://localhost:${PORTA}"`)
+})
