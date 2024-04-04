@@ -1,6 +1,7 @@
 const { connSequelize } = require('../../config/conexaoBD.js')
 const { padraoTB } = require('../../config/configPadraoTb.js')
 const { DataTypes } = require('sequelize')
+const { ModelAlunoRegistro } = require('./modelAlunoRegistro.js')
 
 const ModelAlunoPerfil = connSequelize.define( // TABELA: tb_alunoPerfil
     'tb_alunoPerfil', {
@@ -25,6 +26,9 @@ const ModelAlunoPerfil = connSequelize.define( // TABELA: tb_alunoPerfil
     },
         padraoTB('tb_alunoPerfil')
 )
+
+ModelAlunoPerfil.hasOne(ModelAlunoRegistro, { foreignKey: 'fk_aluno' })
+ModelAlunoRegistro.belongsTo(ModelAlunoPerfil, { foreignKey: 'fk_aluno' })
 
 module.exports = {
     ModelAlunoPerfil
