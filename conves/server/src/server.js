@@ -24,9 +24,14 @@ const appWeb = express()
 connSequelize.sync() // Deixar o BD funcionando
 appWeb.use(express.json())
 
+
+
 appWeb.get('/',(req, resp) => {
-    resp.render('../../src/app.js')
+    resp.send('A')
 })
+
+const alunoRoutes = require('./routes/aluno')
+appWeb.use('/', alunoRoutes)
 
 const PORTA = 3001
 

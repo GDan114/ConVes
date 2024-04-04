@@ -10,13 +10,13 @@ async function CriarAluno(req, resp) {
             alunoSenha
         } = req.body // pega info do body 
 
-        const AlunoCriado = ModelAlunoPerfil.create({
+        const AlunoCriado = await ModelAlunoPerfil.create({
             nm_aluno: alunoNome
         }) // cria o perfil
 
         const idCriado = AlunoCriado.id_aluno // pega o id do perfil
 
-        const RegistroAlunoCriado = ModelAlunoRegistro.create({
+        const RegistroAlunoCriado = await ModelAlunoRegistro.create({
             fk_aluno: idCriado,
             ds_emailAluno: alunoEmail,
             id_senhaAluno: alunoSenha
