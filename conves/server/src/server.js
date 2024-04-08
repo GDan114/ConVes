@@ -1,4 +1,5 @@
 const { connSequelize, nomeBD} = require('../config/conexaoBD.js')
+const handlebars = require('handlebars')
 const express = require('express')
 
 // function showQuery(queryTxt) {
@@ -33,7 +34,7 @@ appWeb.get('/',(req, resp) => {
 const alunoRoutes = require('./routes/aluno')
 appWeb.use('/', alunoRoutes)
 
-const PORTA = 3001
+const PORTA = 5000
 
 appWeb.listen(PORTA, () => {
     console.log(`Servidor rudando na porta: ${PORTA} - "http://localhost:${PORTA}"`)
