@@ -27,7 +27,7 @@ appWeb.use(express.json())
 
 
 appWeb.get('/',(req, resp) => {
-    resp.send('A')
+    resp.render('lading_Page')
 })
 
 const alunoRoutes = require('./routes/aluno')

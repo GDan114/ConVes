@@ -22,6 +22,9 @@ async function CriarAluno(req, resp) {
             id_senhaAluno: alunoSenha
         }) // cria o registro
 
+        return {AlunoCriado, RegistroAlunoCriado}
+        
+
     } catch(erro) {
         console.error('Erro na inserção: ', erro)
         return resp.status(400).json({ message: 'Erro na inserção'})
