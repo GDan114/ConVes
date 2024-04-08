@@ -13,7 +13,7 @@ const ModelAlunoPerfil = connSequelize.define( // TABELA: tb_alunoPerfil
         },
         rm_aluno: {
             type: DataTypes.CHAR(5),
-            allowNull: false
+            allowNull: true
         },
         nm_aluno: {
             type: DataTypes.STRING(60),
@@ -21,7 +21,7 @@ const ModelAlunoPerfil = connSequelize.define( // TABELA: tb_alunoPerfil
         },
         dt_nascimento_aluno: {
             type: DataTypes.DATE,
-            allowNull: false
+            allowNull: true
         }
     },
         padraoTB('tb_alunoPerfil')
