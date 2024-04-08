@@ -1,16 +1,19 @@
-const { connSequelize, nomeBD} = require('../config/conexaoBD.js')
+// ROTAS E HBS
+const path = require('path');
 const handlebars = require('handlebars')
 const express = require('express')
+const pagesRouter = require('./routes/pages')
+const appWeb = express()
 
-// function showQuery(queryTxt) {
-//     console.log('\n\n\n====================================================')
-//     console.log('Comando que será usado:')
-//     console.log('==========================================================')
-//     console.log(queryTxt)
-//     console.log('==========================================================')
-// }
+const publicDirectory = path.join(__dirname, 'public'); // constante do caminho da pasta public para ser usada de forma estática
+appWeb.use(express.static(publicDirectory));
 
-// AUTENTICAÇÃO
+appWeb.use(express.json())
+appWeb.set('view engine', 'hbs')
+
+// AUTENTICAÇÃO E START DO BANCO 
+/*
+const { connSequelize, nomeBD} = require('../config/conexaoBD.js')
 
 connSequelize.authenticate().then(() => {
     console.log('\n=======================================================================================')
@@ -21,21 +24,15 @@ connSequelize.authenticate().then(() => {
     console.error(`Incapaz de conectar-se ao banco MySQL de nome ${nomeBD}`, erroConn)
 })
 
-const appWeb = express()
-connSequelize.sync() // Deixar o BD funcionando
-appWeb.use(express.json())
+connSequelize.sync() // Deixar o BD funcionando */
 
-
-
-appWeb.get('/',(req, resp) => {
-    resp.render('lading_Page')
-})
-
-const alunoRoutes = require('./routes/aluno')
-appWeb.use('/', alunoRoutes)
+appWeb.use('/', pagesRouter);
 
 const PORTA = 5000
-
-appWeb.listen(PORTA, () => {
-    console.log(`Servidor rudando na porta: ${PORTA} - "http://localhost:${PORTA}"`)
-})
+try {
+    appWeb.listen(PORTA, async () => {
+        console.log(`Servidor rodando na porta: ${PORTA} - "http://localhost:${PORTA}"`)
+    })
+} catch(erro) {
+    console.log(erro)
+}
