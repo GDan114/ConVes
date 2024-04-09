@@ -4,7 +4,7 @@ const { DataTypes } = require('sequelize')
 
 const ModelAlunoRegistro = connSequelize.define( // TABELA: tb_alunoRegistro
     'tb_alunoRegistro', {
-        id_alunoRegisro: {
+        id_alunoRegistro: {
             type: DataTypes.INTEGER.UNSIGNED,
             primaryKey: true,
             allowNull: false,
