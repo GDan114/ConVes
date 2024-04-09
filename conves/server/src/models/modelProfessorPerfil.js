@@ -13,7 +13,7 @@
          },
         rm_professor: {
             type: DataTypes.CHAR(5),
-            allowNull: false
+            allowNull: true
         },
          nm_professor: {
              type: DataTypes.STRING(40),

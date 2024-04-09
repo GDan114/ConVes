@@ -28,7 +28,7 @@ const ModelProfessorRegistro = connSequelize.define(
         }
     },
 
-    padraoTB('tb_professoRegistro')
+    padraoTB('tb_professorRegistro')
 )
 
 module.exports = {
