@@ -1,6 +1,5 @@
 // ROTAS E HBS
 const path = require('path');
-const handlebars = require('handlebars')
 const express = require('express')
 const pagesRouter = require('./routes/pages')
 const appWeb = express()
@@ -8,11 +7,12 @@ const appWeb = express()
 const publicDirectory = path.join(__dirname, 'public'); // constante do caminho da pasta public para ser usada de forma estática
 appWeb.use(express.static(publicDirectory));
 
-appWeb.use(express.json())
-appWeb.set('view engine', 'hbs')
+appWeb.set('views', path.join(__dirname, 'views'))
 
+appWeb.use(express.json())
+appWeb.set('view engine', 'hbs');
 // AUTENTICAÇÃO E START DO BANCO 
-/*
+
 const { connSequelize, nomeBD} = require('../config/conexaoBD.js')
 
 connSequelize.authenticate().then(() => {
@@ -24,9 +24,13 @@ connSequelize.authenticate().then(() => {
     console.error(`Incapaz de conectar-se ao banco MySQL de nome ${nomeBD}`, erroConn)
 })
 
-connSequelize.sync() // Deixar o BD funcionando */
+connSequelize.sync() // Deixar o BD funcionando 
 
-appWeb.use('/', pagesRouter);
+try {
+    appWeb.use('/', pagesRouter);
+} catch(erro) {
+    console.log(erro)
+}
 
 const PORTA = 5000
 try {
