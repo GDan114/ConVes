@@ -133,3 +133,7 @@ desc tb_professorRegistro;
 desc tb_planos;
 desc tb_postagem;
 desc tb_assunto;
+
+/* ÁREA DE TESTE DO BACK */
+DELETE FROM tb_alunoPerfil WHERE id_aluno = 8;
+DELETE FROM tb_alunoRegistro WHERE fk_aluno = 8;
