@@ -10,6 +10,10 @@ router.get('/auth/registrar', (req, res) => {
     res.render('cadastro', {erro: erro})
 })
 
+router.get('/auth/login', (req, res) => {
+    res.render('loginpage')
+})
+
 router.get('/auth/home', (req, res) => {
     res.render('home')
 })

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> <!--Link do font awesome, para icones-->
-    <link rel="stylesheet" href="css/loginpage.css">
+    <link rel="stylesheet" href="/css/loginpage.css">
     <title>Login page | ConVes</title>
 </head>
 
@@ -20,22 +20,22 @@
                 </div> 
                 <span><b>PROFESSOR</b></span>
                 <input type="text" placeholder="Nome" pattern="^[a-zA-Z ]+$" required>
-                <input type="email" placeholder="Email">
+                <input type="email" placeholder="Email" required>
                 <input type="password" placeholder="Senha" minlength="8" maxlength="12" required>
-                <button>Entrar</button>
+                <button type="submit">Entrar</button>
             </form>
         </div>
         <div class="form-container sign-in">
-            <form>
+            <form> <!-- COLOCAR O ACTION DE LOGAR PELO AMOR DE DEUSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS -->
                 <h1>Login</h1>
                 <div class="social-icons">
                     <a href="#" class="icon"><i class="fa-brands fa-microsoft"></i></a> <!-- COLOCAR HREF COM A API DA MICROSOFT-->
                 </div> 
                 <span><b>ALUNO</b></span>
-                <input type="email" placeholder="Email">
+                <input type="email" placeholder="Email" required>
                 <input type="password" placeholder="Senha" minlength="8" maxlength="12" required>
                 <a href="cadastro.html">Não tem uma conta?</a> <!--COLOCAR HREF DO BOTAO CRIAR CONTA DA LADING PAGE -->
-                <button>Entrar</button>
+                <button type="submit">Entrar</button>
             </form>
         </div>
         <div class="toggle-container">
@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <script src="js/loginpage.js"></script>
+    <script src="/js/loginpage.js"></script>
 </body>
 
 </html>
