@@ -160,6 +160,7 @@ body{
 
 .sidebar .side-menu li.active a{
     color: var(--conves);
+    transition: .3s linear;
 }
 
 .sidebar.close .side-menu li a{
@@ -355,6 +356,7 @@ body{
 
 .content main .header .left .breadcrumb li a.active{
     color: var(--conves);
+    transition: .3s ease-in;
     pointer-events: none;
 }
 
