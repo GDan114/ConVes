@@ -2,17 +2,18 @@ const { ModelProfessorPerfil } = require('../models/modelProfessorPerfil')
 const { ModelProfessorRegistro } = require('../models/modelProfessorRegistro')
 
 async function CriarProfessor (req, res) {
-    console.log('Tá rodando')
+    // console.log('Tá rodando')
     try {
         const {
             profNome,
             profCpf,
             profEmail,
-            profSenha
+            profSenha, 
+            profMatricula
         } = req.body
     
         const ProfessorCriado = await ModelProfessorPerfil.create({
-            rm_professor: "",
+            rm_professor: profMatricula,
             nm_professor: profNome,
             cpf_prof: profCpf,
             fk_plano: 1

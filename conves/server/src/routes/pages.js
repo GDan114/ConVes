@@ -6,6 +6,11 @@ router.get('/', (req, res) => { // Página raiz
 });
 
 router.get('/auth/registrar', (req, res) => {
-    res.render('cadastro')
+    const erro = req.query.erro
+    res.render('cadastro', {erro: erro})
+})
+
+router.get('/auth/home', (req, res) => {
+    res.render('home')
 })
 module.exports = router;
