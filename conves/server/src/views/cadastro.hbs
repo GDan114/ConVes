@@ -13,14 +13,14 @@
 
     <div class="container" id="container">
         <div class="form-container sign-up">
-            <form action="/auth/registrarProfessor" method="POST">
+            <form action="/auth/registrarProfessor" method="POST" id="form-cadastro">
                 <h1>Cadastro</h1>
                 <div class="social-icons">
                     <a href="#" class="icon"><i class="fa-brands fa-microsoft"></i></a> <!-- COLOCAR HREF COM  A API DA MICROSOFT -->
                 </div> 
                 <span><b>PROFESSOR</b></span>
                 <input type="text" placeholder="Nome" pattern="^[a-zA-Z ]+$" name="profNome" required> <!-- VALIDAR OS INPUTS PARA AMANHÃ-->
-                <input type="text" placeholder="Matrícula" name="profMatricula">
+                <input type="text" placeholder="Matrícula" name="profMatricula" id="inputMatricula" required>
                 <input type="" placeholder="Cpf" name="profCpf"> <!-- COLOCAR O TYPE QUE SE ENCAIXA COM CPF, E VALIDAR-->
                 <input type="email" placeholder="Email" name="profEmail">
                 <input type="password" placeholder="Senha" minlength="8" maxlength="12" name="profSenha" required>
@@ -64,6 +64,16 @@
     </div>
 
     <script src="/js/loginpage.js"></script> <!-- COLOCAR NOVO SCRIPT PARA CADASTRO -->
+    <!-- Script para validar os inputs --> 
+    <script> 
+        document.getElementById("form-cadastro").addEventListener("submit", function(event){
+  var x = document.getElementById("inputMatricula").value;
+  if (x.length != 5) {
+    alert("O número da sua matrícula deve conter exatamente 5 caracteres.");
+    event.preventDefault();
+  }
+});
+    </script>
 </body>
 
 </html>

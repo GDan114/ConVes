@@ -5,187 +5,178 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="css/home.css">
-    <title>ConVes | Homepage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <title>Homepage | ConVes</title>
 </head>
-
 <body>
 
-    <div class="container">
-<div class="danilo">
-</div>
-        <aside class="left-section">
-            <div class="logo">
-                <button class="menu-btn" id="menu-close">
-                    <i class='bx bx-log-out-circle'></i>
-                </button>
-                <img src="assets/logo.png">
-                <a href="#">AsmrProg</a>
-            </div>
+    <!-- ESSE FILE DA HOME É O CERTO  -->
 
-            <div class="sidebar">
-                <div class="item" id="active">
-                    <i class='bx bx-home-alt-2'></i>
-                    <a href="home.html">Home</a>
-                </div>
-                <div class="item">
-                    <i class='bx bxs-dashboard' ></i>
-                    <a href="#">Dashboard</a> <!-- COLOCAR OS HREF DAS PAGES, PARA A PROXIMA BANCA -->
-                </div>
-                <div class="item">
-                    <i class='bx bx-info-circle' ></i>
-                    <a href="#">Sobre</a> <!-- COLOCAR OS HREF TAMBEM -->
-                </div>
-                <div class="item">
-                    <i class='bx bx-message-square-dots'></i> <!-- COLOCAR ICONE DE CONFIG DO BOX ICONS -->
-                    <a href="#">Configurações</a>
-                </div>
-            </div>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="#" class="logo"> 
+            <img src="Imagens/barco-ConVes-preto.png" alt="logo ConVes" width="60px" id="conves">
+            <div class="logo-name"><span>Con</span>Ves</div>
+        </a>
+        <ul class="side-menu">
+            <!-- Inicio do Menu-->
+            <li class="active"><a href="#"><i class='bx bx-home' ></i>Home</a></li> <!-- COLOCAR OS HREF DAS PAGES -->
+            <li><a href="#"><i class='bx bxs-dashboard'></i>Postagens</a></li>
+            <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> <!--COLOCAR O LINK DO FONT AWESOME-->
+            <li><a href="#"><i class='bx bx-info-circle'></i>Sobre</a></li>
+            <li><a href="#"><i class='bx bx-user'></i>Perfil</a></li>
+            <li><a href="#"><i class="bx bx-slider-alt"></i>Configurações</a></li>
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <a href="#" class="logout">
+                    <i class='bx bx-log-out'></i>
+                    Sair
+                </a>
+            </li>
+        </ul>
+        <!-- Fim do Menu-->
+    </div>
+    <!-- Fim da Sidebar -->
 
-            <div class="pic">
-                <img src="assets/pro.png">
-            </div>
-
-            <div class="upgrade">
-                <h5>Upgrade Your Plan</h5>
-                <div class="link">
-                    <a href="#">Go to <b>PRO</b></a>
-                    <i class='bx bxs-chevron-right'></i>
+    <!-- Main -->
+    <div class="content">
+        <!-- Navbar -->
+        <nav>
+            <i class='bx bx-menu'></i>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Pesquisar..."> <!-- Barra de pesquisa-->
+                    <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
                 </div>
-            </div>
+            </form>
+            <input type="checkbox" id="theme-toggle" hidden> <!-- Botão de mudar o tema-->
+            <label for="theme-toggle" class="theme-toggle"></label>
+            <!-- <a href="#" class="notif"> COLOCAR HREF DA PAGE DE NOTIFICAÇÕES (É uma boa criar uma página pra isso, mas depois)
+                <i class='bx bx-bell'></i>
+                <span class="count">12</span>
+            </a> -->
+            <a href="#" class="profile"> <!-- href da page de usuario -->
+                <img src="Imagens/pug.jpg">
+            </a>
+        </nav>
 
-        </aside>
+        <!-- Fim da Navbar -->
 
         <main>
-            <header>
-                <button class="menu-btn" id="menu-open">
-                    <i class='bx bx-menu'></i>
-                </button>
-                <h5>Hello <b>REZA</b>, welcome back!</h5>
-            </header>
-
-            <div class="separator">
-                <div class="info">
-                    <h3>My Courses</h3>
-                    <a href="#">View All</a>
-                </div>
-                <div class="search">
-                    <i class='bx bx-search'></i>
-                    <input type="text" placeholder="Search...">
+            <div class="header">
+                <div class="left">
+                    <h1>Seja bem-vindo!</h1>
+                    <ul class="breadcrumb">
+                        <li><a href="#">
+                                Postagens mais
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="active">Populares</a><!-- COLOCAR HREF DA PAGE DE POSTAGENS/DASHBOARD-->
+                        </li> 
+                    </ul>
                 </div>
             </div>
 
-            <div class="analytics">
-                <div class="item">
-                    <div class="progress">
-                        <div class="info">
-                            <h5>Locations</h5>
-                            <p>35 Lessons</p>
-                        </div>
-                        <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0"
-                            aria-valuemax="100"></div>
-                    </div>
-                    <i class='bx bx-map-pin'></i>
-                </div>
-                <div class="item">
-                    <div class="progress">
-                        <div class="info">
-                            <h5>People</h5>
-                            <p>30 Lessons</p>
-                        </div>
-                        <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0"
-                            aria-valuemax="100"></div>
-                    </div>
-                    <i class='bx bx-user-voice'></i>
-                </div>
-                <div class="item">
-                    <div class="progress">
-                        <div class="info">
-                            <h5>Airport</h5>
-                            <p>45 Lessons</p>
-                        </div>
-                        <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0"
-                            aria-valuemax="100"></div>
-                    </div>
-                    <i class='bx bxs-plane-land'></i>
-                </div>
-                <div class="item">
-                    <div class="progress">
-                        <div class="info">
-                            <h5>Places</h5>
-                            <p>20 Lessons</p>
-                        </div>
-                        <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0"
-                            aria-valuemax="100"></div>
-                    </div>
-                    <i class='bx bxs-castle'></i>
-                </div>
-            </div>
+            
+            <!-- Postagens -->
+            <ul class="insights">
+                <li>
+                    <i class='bx bx-slideshow'></i>
+                    <span class="info">
+                        <h3>
+                            Post 1
+                        </h3>
+                        <p>Danilo</p>
+                    </span>
+                </li>
+                <li><i class='bx bx-slideshow'></i>
+                    <span class="info">
+                        <h3>
+                            Post 2
+                        </h3>
+                        <p>José</p>
+                    </span>
+                </li>
+                <li><i class='bx bx-slideshow'></i>
+                    <span class="info">
+                        <h3>
+                            Post 3
+                        </h3>
+                        <p>Miguel</p>
+                    </span>
+                </li>
+                <li><i class='bx bx-slideshow'></i>
+                    <span class="info">
+                        <h3>
+                            Post 4
+                        </h3>
+                        <p>Letycia</p>
+                    </span>
+                </li>
+            </ul>
+            <!-- Fim das postagens -->
 
-            <div class="separator">
-                <div class="info">
-                    <h3>Planning</h3>
-                    <a href="#">View All</a>
-                </div>
-                <input type="date" value="2023-10-15">
-            </div>
 
-            <div class="planning">
-                <div class="item">
-                    <div class="left">
-                        <div class="icon">
-                            <i class='bx bx-book-alt'></i>
-                        </div>
-                        <div class="details">
-                            <h5>Reading - Topic 1</h5>
-                            <p>8:00 - 10:00</p>
-                        </div>
-                    </div>
-                    <i class='bx bx-dots-vertical-rounded'></i>
-                </div>
-                <div class="item">
-                    <div class="left">
-                        <div class="icon">
-                            <i class='bx bx-edit-alt'></i>
-                        </div>
-                        <div class="details">
-                            <h5>Writing - Topic 2</h5>
-                            <p>13:00 - 14:00</p>
-                        </div>
-                    </div>
-                    <i class='bx bx-dots-vertical-rounded'></i>
-                </div>
-                <div class="item">
-                    <div class="left">
-                        <div class="icon">
-                            <i class='bx bx-headphone'></i>
-                        </div>
-                        <div class="details">
-                            <h5>Listening - Topic 1</h5>
-                            <p>15:00 - 16:00</p>
-                        </div>
-                    </div>
-                    <i class='bx bx-dots-vertical-rounded'></i>
-                </div>
-                <div class="item">
-                    <div class="left">
-                        <div class="icon">
-                            <i class='bx bx-volume-low'></i>
-                        </div>
-                        <div class="details">
-                            <h5>Listening - Topic 2</h5>
-                            <p>19:00 - 20:00</p>
-                        </div>
-                    </div>
-                    <i class='bx bx-dots-vertical-rounded'></i>
-                </div>
-            </div>
+<!-- outro header, agora para os professores -->
+<div class="header">
+    <div class="left">
+        <h1>Professores</h1>
+        <ul class="breadcrumb">
+            <li><a href="#">
+                    Com melhores
+                </a>
+            </li>
+            <li>
+                <a href="#" class="active">Avaliações</a><!-- href page dos professores-->
+            </li> 
+        </ul>
+    </div>
+</div>
+<!-- Professores -->
+
+            <ul class="insights-prof">
+                <li>
+                    <i class='bx bx-user'></i>
+                    <span class="info">
+                        <h3>
+                            Prof 1
+                        </h3>
+                        <p>Danilo</p>
+                    </span>
+                </li>
+                <li><i class='bx bx-user'></i>
+                    <span class="info">
+                        <h3>
+                            Prof 2
+                        </h3>
+                        <p>José</p>
+                    </span>
+                </li>
+                <li><i class='bx bx-user'></i>
+                    <span class="info">
+                        <h3>
+                            Prof 3
+                        </h3>
+                        <p>Miguel</p>
+                    </span>
+                </li>
+                <li><i class='bx bx-user'></i>
+                    <span class="info">
+                        <h3>
+                            Prof 4
+                        </h3>
+                        <p>Letycia</p>
+                    </span>
+                </li>
+            </ul>
+            <!-- Fim de Professores -->
         </main>
-
-        
     </div>
 
-    <script src="js/home.js"></script>
+    <script src="../js/home.js"></script>
 </body>
 
 </html>
