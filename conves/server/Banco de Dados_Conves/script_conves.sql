@@ -16,7 +16,7 @@ create table if not exists tb_alunoRegistro(
 id_alunoRegistro int not null auto_increment,
 fk_aluno int not null,
 ds_emailAluno varchar(50) not null,
-id_senhaAluno varchar(16) not null,
+id_senhaAluno varchar(255) not null, /* DESSE TAMANHO PQ É CRIPTOGRAFADA */
 
 constraint pk_alunoRegistro primary key (id_alunoRegistro),
 constraint fk_aluno foreign key(fk_aluno) references tb_alunoPerfil(id_aluno)
@@ -44,7 +44,7 @@ constraint fk_plano foreign key (fk_plano) references tb_plano(id_plano)
 create table if not exists tb_professorRegistro(
 id_professorRegistro int not null auto_increment,
 fk_professor int not null,
-id_senhaProfessor varchar(16) not null,
+id_senhaProfessor varchar(255) not null, /* DESSE TAMANHO PQ É CRIPTOGRAFADA */
 ds_emailProfessor varchar(50) not null,
 
 constraint pk_professorRegistro primary key (id_professorRegistro),
@@ -104,7 +104,7 @@ insert into tb_professorRegistro(fk_professor, ds_emailProfessor, id_senhaProfes
            (3, 'charles@gmail.com', 'matematica'),
            (4, 'michel@gmail.com', 'biologia');
                   
-insert into tb_materia(fk_curso, nm_materia)
+/*insert into tb_materia(fk_curso, nm_materia)
 			values('1', 'Português'),
 				  ('1', 'Matemática'),
 				  ('1', 'História'),
@@ -113,7 +113,7 @@ insert into tb_materia(fk_curso, nm_materia)
 				  ('2', 'Ciências da Natureza e suas tecnologias'),
 				  ('2', 'Ciências Humanas e Sociais Aplicadas'),
 				  ('1', 'Redação'),
-				  ('2', 'Redação');
+				  ('2', 'Redação'); */
 
 /*SELECT*/
 
@@ -130,7 +130,7 @@ desc tb_alunoPerfil;
 desc tb_alunoRegistro;
 desc tb_professorPerfil;
 desc tb_professorRegistro;
-desc tb_planos;
+desc tb_plano;
 desc tb_postagem;
 desc tb_assunto;
 
