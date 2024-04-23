@@ -18,11 +18,10 @@ async function CriarAluno(req, resp) {
         })
 
         if(AlunoProposto) {
-            return resp.redirect('/auth/registrar?erro=Erro no registro, email já registrado no sistema!')
+            return resp.redirect('/registrar?erro=Erro no registro, email já registrado no sistema!')
         } else {
             const AlunoCriado = await ModelAlunoPerfil.create({
                 nm_aluno: alunoNome,
-                rm_aluno: null,
                 dt_nascimento_aluno: alunoData
             }) // cria o perfil
     
@@ -36,16 +35,16 @@ async function CriarAluno(req, resp) {
                 id_senhaAluno: hashedPassword
             }) // cria o registro
             if (!RegistroAlunoCriado) {
-                resp.redirect('/auth/registrar?erro=Erro no registro, verifique se todos os campos estão preenchidos corretamente.')
+                resp.redirect('/registrar?erro=Erro no registro, verifique se todos os campos estão preenchidos corretamente.')
             } else {
-                resp.redirect('/auth/home')
+                resp.redirect('/home')
             }
             return {AlunoCriado, RegistroAlunoCriado}
         }
 
     } catch(erro) {
         console.error('Erro na inserção: ', erro)
-        return resp.redirect('/auth/registrar?erro=Erro no registro')
+        return resp.redirect('/registrar?erro=Erro no registro')
         //return resp.status(400).json({ message: 'Erro na inserção'})
     }
 }

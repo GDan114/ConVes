@@ -6,7 +6,6 @@ use bd_Conves;
 
 create table if not exists tb_alunoPerfil(
 id_aluno int not null auto_increment,
-rm_aluno char (5) not null,
 nm_aluno varchar (60) not null,
 dt_nascimento_aluno date not null,
 constraint pk_aluno primary key (id_aluno)
@@ -48,7 +47,7 @@ id_senhaProfessor varchar(255) not null, /* DESSE TAMANHO PQ É CRIPTOGRAFADA */
 ds_emailProfessor varchar(50) not null,
 
 constraint pk_professorRegistro primary key (id_professorRegistro),
-constraint fk_professor foreign key (fk_professor) references tb_professorPerfil(id_professor)
+constraint fk_professorPerfil foreign key (fk_professor) references tb_professorPerfil(id_professor)
 );
 
 create table if not exists tb_assunto(
@@ -74,12 +73,12 @@ constraint fk_assunto foreign key (fk_assunto) references tb_assunto (id_assunto
 
 /*INSERT*/
 
-insert tb_alunoPerfil (rm_aluno, nm_aluno, dt_nascimento_aluno)
-	values ('07925', 'Miguel Carvalho dos Santos', '2005-05-16'),
-		   ('08595', 'Danilo Dias Lobianco Soares', '2007-04-05'),
-		   ('08629', 'José Ricardo Uzal dos Anjos Felix', '2007-02-22'),
-		   ('08601', 'Matheus Eduardo Nascimento Santos', '2006-11-30'),
-           ('08579', 'Letycia Antunes Coelho de Almeida dos Santos', '2006-12-08');
+insert tb_alunoPerfil (nm_aluno, dt_nascimento_aluno)
+	values ('Miguel Carvalho dos Santos', '2005-05-16'),
+		   ('Danilo Dias Lobianco Soares', '2007-04-05'),
+		   ('José Ricardo Uzal dos Anjos Felix', '2007-02-22'),
+		   ('Matheus Eduardo Nascimento Santos', '2006-11-30'),
+           ('Letycia Antunes Coelho de Almeida dos Santos', '2006-12-08');
 		
 insert tb_alunoRegistro(fk_aluno, ds_emailAluno, id_senhaAluno)
 	values (1, 'miguel@gmail.com', 'pacoca'),
@@ -135,5 +134,7 @@ desc tb_postagem;
 desc tb_assunto;
 
 /* ÁREA DE TESTE DO BACK */
-DELETE FROM tb_alunoPerfil WHERE id_aluno = 8;
-DELETE FROM tb_alunoRegistro WHERE fk_aluno = 8;
+DELETE FROM tb_alunoPerfil WHERE id_aluno = 6;
+DELETE FROM tb_alunoRegistro WHERE fk_aluno = 6;
+
+SELECT `id_professorRegistro`, `fk_professor`, `id_senhaProfessor`, `ds_emailProfessor`, `fk_professor ` FROM `tb_professorRegistro` AS `tb_professorRegistro` WHERE `tb_professorRegistro`.`ds_emailProfessor` = 'charles@gmail.com' LIMIT 1

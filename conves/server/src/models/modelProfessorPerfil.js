@@ -36,7 +36,7 @@
  )
 
  ModelProfessorPerfil.hasOne(ModelProfessorRegistro, { foreignKey: 'fk_professor'})
- ModelProfessorRegistro.belongsTo(ModelProfessorPerfil, { foreignKey: 'fk_professor '})
+ ModelProfessorRegistro.belongsTo(ModelProfessorPerfil, { foreignKey: 'fk_professor'})
  
  module.exports = {
      ModelProfessorPerfil

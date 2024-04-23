@@ -11,10 +11,6 @@ const ModelAlunoPerfil = connSequelize.define( // TABELA: tb_alunoPerfil
             primaryKey: true,
             allowNull: false
         },
-        rm_aluno: {
-            type: DataTypes.CHAR(5),
-            allowNull: true
-        },
         nm_aluno: {
             type: DataTypes.STRING(60),
             allowNull: false

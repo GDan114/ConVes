@@ -14,7 +14,7 @@ const ModelProfessorRegistro = connSequelize.define(
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model:'tb_profesorPerfil',
+                model: 'tb_professorPerfil',
                 key: 'id_professor'
             }
         },
