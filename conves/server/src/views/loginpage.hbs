@@ -13,27 +13,26 @@
 
     <div class="container" id="container">
         <div class="form-container sign-up">
-            <form>
+            <form action="/auth/logarProfessor" method="POST">
                 <h1>Login</h1>
                 <div class="social-icons">
                     <a href="#" class="icon"><i class="fa-brands fa-microsoft"></i></a> <!-- COLOCAR HREF COM  A API DA MICROSOFT -->
                 </div> 
                 <span><b>PROFESSOR</b></span>
-                <input type="text" placeholder="Nome" pattern="^[a-zA-Z ]+$" required>
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Senha" minlength="8" maxlength="12" required>
+                <input type="email" placeholder="Email" name="profEmail" required>
+                <input type="password" placeholder="Senha" minlength="8" maxlength="12" name="profSenha" required>
                 <button type="submit">Entrar</button>
             </form>
         </div>
         <div class="form-container sign-in">
-            <form> <!-- COLOCAR O ACTION DE LOGAR PELO AMOR DE DEUSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS -->
+            <form action="/auth/logarAluno" method="POST"> <!-- COLOCAR O ACTION DE LOGAR PELO AMOR DE DEUSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS -->
                 <h1>Login</h1>
                 <div class="social-icons">
                     <a href="#" class="icon"><i class="fa-brands fa-microsoft"></i></a> <!-- COLOCAR HREF COM A API DA MICROSOFT-->
                 </div> 
                 <span><b>ALUNO</b></span>
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Senha" minlength="8" maxlength="12" required>
+                <input type="email" placeholder="Email" name="alunoEmail" required>
+                <input type="password" placeholder="Senha" minlength="8" maxlength="12" name="alunoSenha" required>
                 <a href="cadastro.html">Não tem uma conta?</a> <!--COLOCAR HREF DO BOTAO CRIAR CONTA DA LADING PAGE -->
                 <button type="submit">Entrar</button>
             </form>

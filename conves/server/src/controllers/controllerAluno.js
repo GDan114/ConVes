@@ -37,7 +37,7 @@ async function CriarAluno(req, resp) {
             if (!RegistroAlunoCriado) {
                 resp.redirect('/registrar?erro=Erro no registro, verifique se todos os campos estão preenchidos corretamente.')
             } else {
-                resp.redirect('/home')
+                resp.redirect('/login')
             }
             return {AlunoCriado, RegistroAlunoCriado}
         }
@@ -49,6 +49,67 @@ async function CriarAluno(req, resp) {
     }
 }
 
+async function LogarAluno(req, resp) {
+    const {
+        alunoEmail,
+        alunoSenha
+    } = req.body
+
+    try {
+        const dadosAlunoAuth = await ModelAlunoPerfil.findOne({
+            include: {
+                model: ModelAlunoRegistro,
+                required: true,
+                where: {
+                    ds_emailAluno: alunoEmail
+                }
+            }
+        })
+
+        if (!dadosAlunoAuth) {
+            return resp.status(404).json({
+                message: 'Usuário com esse email não encontrado'
+            })
+        }
+
+        console.log(dadosAlunoAuth)
+        
+        const hashSenha = dadosAlunoAuth.tb_alunoRegistro[0].id_senhaAluno
+
+        const comparandoSenhas = await bcrypt.compare(
+            alunoSenha, hashSenha
+        )
+
+        if(!comparandoSenhas) {
+            return resp.status(401).json({ message: 'Senha inválida!' })
+        }
+
+        const hora = 3600000 // milissegundos que equivale a uma hora
+        const dtQuandoIraExpirar = new Date(Date.now() + hora)
+
+        resp.cookie(
+            'cookie_usuario',
+                dadosAlunoAuth.id_aluno, {
+                    httpOnly: true,
+                    expires: dtQuandoIraExpirar
+                }
+        )
+
+        resp.status(200).json({
+            message: `Login do usuário ${dadosAlunoAuth.nm_aluno} bem sucedido!`
+        })
+
+        return resp.redirect('/home')
+    } catch(erro) {
+        console.error(erro)
+        console.log(req.body)
+        return resp.status(500).json({
+            message: 'Erro no servidor ao logar'
+        })
+    }
+}
+
 module.exports = {
-    CriarAluno
+    CriarAluno,
+    LogarAluno
 }

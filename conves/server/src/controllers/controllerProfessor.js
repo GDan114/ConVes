@@ -43,7 +43,7 @@ async function CriarProfessor (req, res) {
             if (!RegistroProfessorCriado) {
                 res.redirect('/registrar?erro=Erro no registro, verifique se todos os campos estão preenchidos corretamente.')
             } else {
-                res.redirect('/home')
+                res.redirect('/login')
             }
 
             return {ProfessorCriado, RegistroProfessorCriado}
@@ -54,6 +54,8 @@ async function CriarProfessor (req, res) {
         return res.status(400).json({ message: 'Erro na inserção'})
     }
 }
+
+
 
 module.exports = {
     CriarProfessor
