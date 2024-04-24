@@ -55,8 +55,66 @@ async function CriarProfessor (req, res) {
     }
 }
 
+async function LogarProfessor (req, resp) {
+    const {
+        profEmail,
+        profSenha
+    } = req.body
+
+    try {
+        const dadosProfAuth = await ModelProfessorPerfil.findOne({
+            include: {
+                model: ModelProfessorRegistro,
+                required: true,
+                where: {
+                    ds_emailProfessor: profEmail
+                }
+            }
+        })
+
+        if (!dadosProfAuth) {
+            return resp.status(404).json({
+                message: 'Usuário com esse email não encontrado'
+            })
+        }
+
+        console.log(dadosProfAuth)
+
+        const hashSenha = dadosProfAuth.tb_professorRegistro.id_senhaProfessor
+
+        const comparandoSenhas = await bcrypt.compare(
+            profSenha, hashSenha
+        )
+
+        if(!comparandoSenhas) {
+            return resp.status(401).json({ message: 'Senha inválida!' })
+        }
+
+        const hora = 3600000 // milissegundos que equivale a uma hora
+        const dtQuandoIraExpirar = new Date(Date.now() + hora)
+
+        resp.cookie(
+            'cookie_usuario',
+                dadosProfAuth.id_professor, {
+                    httpOnly: true,
+                    expires: dtQuandoIraExpirar
+                }
+        )
+
+        return resp.redirect('/home')
+
+    } catch (erro) {
+        console.error(erro)
+        console.log(req.body)
+        return resp.status(500).json({
+            message: 'Erro no servidor ao logar'
+        })
+    }
+}
+
 
 
 module.exports = {
-    CriarProfessor
+    CriarProfessor,
+    LogarProfessor
 }
