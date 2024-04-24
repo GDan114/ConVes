@@ -74,7 +74,7 @@ async function LogarAluno(req, resp) {
 
         console.log(dadosAlunoAuth)
         
-        const hashSenha = dadosAlunoAuth.tb_alunoRegistro[0].id_senhaAluno
+        const hashSenha = dadosAlunoAuth.tb_alunoRegistro.id_senhaAluno
 
         const comparandoSenhas = await bcrypt.compare(
             alunoSenha, hashSenha
@@ -95,9 +95,9 @@ async function LogarAluno(req, resp) {
                 }
         )
 
-        resp.status(200).json({
+        /*resp.status(200).json({
             message: `Login do usuário ${dadosAlunoAuth.nm_aluno} bem sucedido!`
-        })
+        }) */
 
         return resp.redirect('/home')
     } catch(erro) {
