@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href=""> <!-- criar o css para essa pagina, pode aproveitar bastante coisa da home-->
-    <title>Postagens | ConVes</title>
+    <link rel="stylesheet" href=""> <!-- criar css dessa page depois-->
+    <title>Adicionar postagem | ConVes</title>
 </head>
 <body>
-
     <!-- Sidebar -->
     <div class="sidebar">
         <a href="#" class="logo">  
@@ -23,7 +19,7 @@
             <li class="active"><a href="#"><i class='bx bxs-dashboard'></i>Postagens</a></li> <!-- a class active é da pagina ativada, nesse caso a page de postagens-->
             <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> <!-- colocar os href das proximas pages quando estiverem feitas-->
             <li><a href="#"><i class='bx bx-info-circle'></i>Sobre</a></li>
-            <li><a href="#"><i class='bx bx-user'></i>Perfil</a></li>
+            <li><a href="#"><i class='bx bx-user'></i>Perfil</a></li> <!-- proxima page a ser feita --> 
             <li><a href="#"><i class="bx bx-slider-alt"></i>Configurações</a></li>
         </ul>
         <ul class="side-menu">
@@ -57,29 +53,14 @@
 
         <!-- Fim da Navbar -->
 
-        <main> <!-- criar o corpo dessa page --> 
-            <!-- criar um carrossel com as postagens--> 
-            <div class="carrossel"> 
-                <div class="slider">
-                    <!-- divs puxadas da home, parte das postagens -->
-                    <div class="postagens">
-                        <li>
-                        <i class='bx bx-slideshow'></i>
-                            <span class="info">
-                                <h3>
-                                    Post 1
-                                </h3>
-                                <p>Danilo</p> <!--  ADICIONAR MAIS CONTEÚDO NO CARROSSEL, COLOCAR AS POSTAGENS QUE SERÃO ENVIADAS PELA PAGE ADICIONAR POSTAGENS-->
-                            </span>
-                        </li>
-                    </div>
-                </div>
-            </div>
+        <main>
+            <form action="">
+                <input type="text" placeholder="Título da postagem..." required>
+                <img src="" alt=""> <!-- aprender metodo para usuario baixar uma imagem -->
+                <button type="submit" class="btn-capa" id="btn-capa" name="btn-capa">Inserir capa</button>
+                <input type="text" placeholder="Insira seu conteúdo aqui..." required>
+                <button type="submit" class="btn-enviar" id="btn-enviar" name="btn-enviar">Enviar</button>
+            </form>
         </main>
-
-    </div>
-
-    <script src=""></script> <!-- criar um script para essa page, e fazer script para o carrossel --> 
 </body>
-
 </html>
