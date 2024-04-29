@@ -1,3 +1,4 @@
+const { ModelPostagem } = require('../models/modelPostagem')
 const { ModelProfessorPerfil } = require('../models/modelProfessorPerfil')
 const { ModelProfessorRegistro } = require('../models/modelProfessorRegistro')
 const bcrypt = require('bcrypt')
@@ -54,7 +55,7 @@ async function CriarProfessor (req, res) {
         return res.status(400).json({ message: 'Erro na inserção'})
     }
 }
-
+ 
 async function LogarProfessor (req, resp) {
     const {
         profEmail,
@@ -108,6 +109,32 @@ async function LogarProfessor (req, resp) {
         console.log(req.body)
         return resp.status(500).json({
             message: 'Erro no servidor ao logar'
+        })
+    }
+}
+
+async function CriarPostagem (req, resp) {
+    const {
+        postTitulo,
+        postImg,
+        postText
+    } = req.body
+
+    const idProf = req.cookies.cookie_usuario
+
+    try {
+        const Post = await ModelPostagem.create({
+            nm_tituloPostagem: postTitulo,
+            fk_professorAutor: idProf,
+            ds_conteudoPost: postText,
+            img_capaPost: postImg
+        })
+        return Post
+    } catch(erro) {
+        console.error(erro)
+        console.log(req.body)
+        return resp.status(500).json({
+            message: 'Erro no servidor ao criar a postagem'
         })
     }
 }

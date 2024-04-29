@@ -1,5 +1,6 @@
 const controller_Aluno = require('../controllers/controllerAluno')
 const controller_Professor = require('../controllers/controllerProfessor')
+const controller_Auth = require('../controllers/controllerAuth')
 
 const express = require('express')
 const router = express.Router()
@@ -9,5 +10,7 @@ router.post('/registrarProfessor', controller_Professor.CriarProfessor) // /auth
 
 router.post('/logarAluno', controller_Aluno.LogarAluno) // /auth/logarAluno
 router.post('/logarProfessor', controller_Professor.LogarProfessor) // /auth/logarProfessor
+
+router.get('/logout', controller_Auth.Logout) // /auth/logout
 
 module.exports = router
