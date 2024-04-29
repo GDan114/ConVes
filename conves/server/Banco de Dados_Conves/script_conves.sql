@@ -50,24 +50,25 @@ constraint pk_professorRegistro primary key (id_professorRegistro),
 constraint fk_professorPerfil foreign key (fk_professor) references tb_professorPerfil(id_professor)
 );
 
-create table if not exists tb_assunto(
+/*create table if not exists tb_assunto(
 id_assunto int not null auto_increment,
 nm_assunto varchar (40) not null,
 
 constraint pk_assunto primary key (id_assunto)
-);
+);*/
 
 
 create table if not exists tb_postagem(
 id_postagem int not null auto_increment,
 nm_tituloPostagem varchar (30) NOT NULL,
-fk_professor int not null,
-fk_assunto int not null,
--- PERGUNTAR COMO É FEITA A ARMAZENAGEM DO CONTEÚDO DA POSTAGEM --
+fk_professorAutor int NOT NULL,
+-- fk_assunto int not null, --
+ds_conteudoPost text NOT NULL,
+img_capaPost mediumblob NOT NULL,
 
-constraint pk_curso primary key (id_postagem),
-constraint fk_professorPerfil foreign key (fk_professor) references tb_professorPerfil (id_professor),
-constraint fk_assunto foreign key (fk_assunto) references tb_assunto (id_assunto)
+constraint pk_postagem primary key (id_postagem),
+constraint fk_professorAutor foreign key (fk_professorAutor) references tb_professorPerfil (id_professor)
+-- constraint fk_assunto foreign key (fk_assunto) references tb_assunto (id_assunto) --
 );
 
 
@@ -122,7 +123,7 @@ select * from tb_professorPerfil;
 select * from tb_professorRegistro;
 select * from tb_plano;
 Select * from tb_postagem;
-select * from tb_assunto;
+-- select * from tb_assunto; --
 
 
 desc tb_alunoPerfil;
@@ -131,10 +132,10 @@ desc tb_professorPerfil;
 desc tb_professorRegistro;
 desc tb_plano;
 desc tb_postagem;
-desc tb_assunto;
+-- desc tb_assunto; --
 
 /* ÁREA DE TESTE DO BACK */
-DELETE FROM tb_alunoPerfil WHERE id_aluno = 7;
+/*DELETE FROM tb_alunoPerfil WHERE id_aluno = 7;
 DELETE FROM tb_alunoRegistro WHERE fk_aluno = 7;
 
 DELETE FROM tb_professorPerfil WHERE id_professor = 6;
