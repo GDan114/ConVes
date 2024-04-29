@@ -62,15 +62,38 @@ body{
     transition: .15s ease-in;
 }
 
-button:hover{
-    background-color: #a82d2d;
-    transition: .15s ease-in;
-}
-
 .container button.hidden{
     background-color: transparent;
     border-color: #fff;
 }
+
+.container .botao{
+    background-color: #ff4646;
+    color: #fff;
+    font-size: 12px;
+    padding: 10px 45px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: .15s ease-in;
+    box-shadow: 0 5px 0 #a82d2d;
+}
+
+.botao:active{
+    box-shadow: none;
+    transform: translateY(5px);
+    transition: all .2s ease;
+}
+
+.container .botao .hidden{
+    background-color: transparent;
+    border-color: #fff;
+}
+
 
 .container form{
     background-color: #fff;
