@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> <!--Link do font awesome, para icones-->
-    <link rel="stylesheet" href="../public/css/cadastro.css">
+    <link rel="stylesheet" href="/css/cadastro.css">
     <title>Crie sua conta | ConVes</title>
 </head>
 
@@ -37,9 +37,9 @@
         <div class="form-container sign-in">
             <form action="/auth/registrarAluno" method="POST"> 
                 <h1>Cadastro</h1>
-                <div class="social-icons">
-                    <a href="#" class="icon"><i class="fa-brands fa-microsoft"></i></a> <!-- COLOCAR HREF COM A API DA MICROSOFT-->
-                </div> 
+                {{!-- <div class="social-icons">
+                     <a href="#" class="icon"><i class="fa-brands fa-microsoft"></i></a> 
+                </div>  --}}
                 <span><b>ALUNO</b></span>
                 <input type="text" placeholder="Nome" pattern="^[a-zA-Z ]+$" name="alunoNome" required>
                 <input type="date" placeholder="Data de nascimento" name="alunoData" required>
@@ -79,6 +79,7 @@
   }
 });
     </script>
+    <img src="/Imagens/ConVes-preto.png" alt="Logo ConVes" class="logo">
 </body>
 
 </html>

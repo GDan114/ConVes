@@ -12,7 +12,8 @@ body{
 }
 
 .logo img{
-	margin-top: 30px;
+	margin-top: -90px;
+	margin-left: -180px;
 }
 
 .menulogo, .btn_cadasLogin{
@@ -34,7 +35,7 @@ body{
 }
 
 .cadastro{
-	background: linear-gradient(to bottom, #ff4646, #a82d2d);
+	background: #ff4646;
 	color: white;
 	border-radius: 10px;
 	border: none;
@@ -43,17 +44,17 @@ body{
 	font-weight: bold;
 	font-size: 35px;
 	margin-right: 30px;
-	box-shadow: 20px 20px 50px -3px rgba(0, 0, 0, 0.555);
-	transition: .3s ease-in;
+	box-shadow: 0 5px 0 #a82d2d;
+	transition: .2s ease-in;
 }
 
 .cadastro:hover{
-	transform: scale(105%);
-	border: 2px solid white;
+	transform: scale(95%);
+	box-shadow: none;
 }
 
 .login{
-	background: linear-gradient(to bottom, #fff, #c9c9c9);
+	background: #eee;
 	color: black;
 	border-radius: 10px;
 	border: none;
@@ -61,14 +62,16 @@ body{
 	height: 62px;
 	font-weight: bold;
 	font-size: 35px;
-	box-shadow: 20px 20px 50px -3px rgba(0, 0, 0, 0.555);
+	/* box-shadow: 20px 20px 50px -3px rgba(0, 0, 0, 0.555); */
+	box-shadow: 0 5px 0 #999;
 	transition: .2s ease-in;
 }
 
 .login:hover{
-	transform: scale(105%);
-	border: 2px solid white;
+	transform: scale(95%);
+	box-shadow: none;
 }
+
 
 #corpo{
 	width: 100%;
@@ -92,20 +95,20 @@ body{
 .sobre{
 	width: 281px;
 	height: 81px;
-	/* background: #FF4646; */
-	background: linear-gradient(to bottom, #ff4646, #a82d2d);
+	background: #FF4646; 
 	color: white;
 	font-weight: bold;
 	font-size: 38px;
 	border-radius: 10px;
 	border: none;
 	margin-right: 100px;
-	box-shadow: 20px 20px 50px -3px rgba(0, 0, 0, 0.555);
-	transition: .3s ease-in;
+	box-shadow: 0 5px 0 #a82d2d;
+	transition: .2s ease-in;
 }
 
 .sobre:hover{
-	transform: scale(105%);
+	transform: scale(95%);
+	box-shadow: none;
 }
 
 /* MODAL A PARTIR DAQUI */
@@ -142,10 +145,15 @@ body{
 }
 
 .close {
+	height: 40px;
+	width: 40px;
 	color: #aaa;
 	float: right;
 	font-size: 28px;
 	font-weight: bold;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .close:hover,
@@ -153,4 +161,12 @@ body{
 	color: #FF4646;
 	text-decoration: none;
 	cursor: pointer;
+	background-color: #1212127a;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* transition: all .3s ease; */
+	
 }
+

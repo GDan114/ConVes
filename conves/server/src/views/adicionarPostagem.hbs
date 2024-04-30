@@ -57,8 +57,8 @@
             <!-- formulario para enviar a postagem, uso exclusivo do professor --> 
             <form action=""> <!-- colocar a action dele --> 
                 <input type="text" placeholder="Título da postagem..." required>
-                <img src="" alt=""> <!-- aprender metodo para usuario baixar uma imagem -->
-                <button type="submit" class="btn-capa" id="btn-capa" name="btn-capa">Inserir capa</button>
+                <input type="file" name="postImg" id="post-imagem" required> <!-- type file faz com que o usuario escolha o arquivo  -->
+                <button type="submit" class="btn-capa" id="btn-capa" name="btn-capa">Inserir capa</button> <!-- botao para o usuario inserir a capa que ele escolheu -->
                 <input type="text" placeholder="Insira seu conteúdo aqui..." required>
                 <button type="submit" class="btn-enviar" id="btn-enviar" name="btn-enviar">Enviar</button>
             </form>
