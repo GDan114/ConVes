@@ -5,12 +5,14 @@ const controller_Auth = require('../controllers/controllerAuth')
 const express = require('express')
 const router = express.Router()
 
-router.post('/registrarAluno', controller_Aluno.CriarAluno) // /auth/registrarAluno
+router.post('/registrarAluno', controller_Aluno.CriarAluno) //  /auth/registrarAluno
 router.post('/registrarProfessor', controller_Professor.CriarProfessor) // /auth/registrarProfessor
 
-router.post('/logarAluno', controller_Aluno.LogarAluno) // /auth/logarAluno
-router.post('/logarProfessor', controller_Professor.LogarProfessor) // /auth/logarProfessor
+router.post('/logarAluno', controller_Aluno.LogarAluno) //  /auth/logarAluno
+router.post('/logarProfessor', controller_Professor.LogarProfessor) //  /auth/logarProfessor
 
-router.get('/logout', controller_Auth.Logout) // /auth/logout
+router.post('/criarPostagem', controller_Professor.CriarPostagem) //  /auth/criarPostagem
+
+router.get('/logout', controller_Auth.Logout) //  /auth/logout
 
 module.exports = router

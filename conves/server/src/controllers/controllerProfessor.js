@@ -143,5 +143,6 @@ async function CriarPostagem (req, resp) {
 
 module.exports = {
     CriarProfessor,
-    LogarProfessor
+    LogarProfessor,
+    CriarPostagem
 }
