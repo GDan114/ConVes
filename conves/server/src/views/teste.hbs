@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/auth/criarPostagem" method="POST">
+        <label for="postTitulo">Titulo da postagem: </label>
+        <input type="text" name="postTitulo" required>
+
+        <br><br>
+
+        <label for="postImg">Imagem da postagem: </label>
+        <input type="file" name="postImg" required>
+
+        <br><br>
+
+        <label for="postText">Conteúdo da postagem: </label>
+        <input type="text" name="postText" required>
+
+        <br><br>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

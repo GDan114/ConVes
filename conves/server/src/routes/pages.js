@@ -17,4 +17,8 @@ router.get('/login', (req, res) => {
 router.get('/home', (req, res) => {
     res.render('home')
 })
+
+router.get('/home/prof/criarPost', (req, res) => {
+    res.render('teste')
+})
 module.exports = router;
