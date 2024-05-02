@@ -8,6 +8,9 @@ const cookieParser = require('cookie-parser')
 
 const appWeb = express()
 
+appWeb.use(express.json({ limit: '100mb' }));
+appWeb.use(bodyParser.urlencoded({ limit: '100mb', extended: true }));
+
 const publicDirectory = path.join(__dirname, 'public'); // constante do caminho da pasta public para ser usada de forma estática
 appWeb.use(express.static(publicDirectory));
 
@@ -17,8 +20,7 @@ appWeb.use(express.urlencoded({ extended: false }));
 
 appWeb.use(cookieParser())
 
-appWeb.use(express.json())
-appWeb.use(bodyParser.urlencoded({ limit: '100mb', extended: true }));
+
 
 appWeb.set('view engine', 'hbs');
 // AUTENTICAÇÃO E START DO BANCO 
