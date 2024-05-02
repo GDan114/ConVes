@@ -64,7 +64,7 @@ nm_tituloPostagem varchar (30) NOT NULL,
 fk_professorAutor int NOT NULL,
 -- fk_assunto int not null, --
 ds_conteudoPost text NOT NULL,
-img_capaPost mediumblob NOT NULL,
+img_capaPost longtext NOT NULL,
 
 constraint pk_postagem primary key (id_postagem),
 constraint fk_professorAutor foreign key (fk_professorAutor) references tb_professorPerfil (id_professor)
@@ -124,7 +124,6 @@ select * from tb_professorRegistro;
 select * from tb_plano;
 Select * from tb_postagem;
 -- select * from tb_assunto; --
-
 
 desc tb_alunoPerfil;
 desc tb_alunoRegistro;
