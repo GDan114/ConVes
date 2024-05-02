@@ -14,7 +14,7 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <a href="#" class="logo">  
-            <img src="Imagens/barco-ConVes-preto.png" alt="logo ConVes" width="60px" id="conves">
+            <img src="/Imagens/barco-ConVes-preto.png" alt="logo ConVes" width="60px" id="conves">
             <div class="logo-name"><span>Con</span>Ves</div>
         </a>
         <ul class="side-menu">
@@ -28,8 +28,10 @@
         </ul>
         <ul class="side-menu">
             <li>
-                <a href="/" class="logout"> 
-                <i class='bx bx-log-out'></i>Sair</a> <!-- btn sair da conta -->
+                <form action="/auth/logout" method="GET">
+                    <button type="submit" class="logout"> <!-- botao de logout-->
+                <i class='bx bx-log-out'></i>Sair</button>
+                </form> <!-- btn sair da conta -->
                 <!-- no caso, não é um botao -->
             </li>
         </ul>
@@ -51,7 +53,7 @@
             <input type="checkbox" id="theme-toggle" hidden> <!-- Botão de mudar o tema-->
             <label for="theme-toggle" class="theme-toggle"></label>
             <a href="#" class="profile"> <!-- href da page de usuario -->
-                <img src="Imagens/pug.jpg"> <!-- aprender o metodo para puxar a imagem do usuario, por enquanto usamos essa mesmo para representar -->
+                <img src="/Imagens/pug-fofo.jpg"> <!-- aprender o metodo para puxar a imagem do usuario, por enquanto usamos essa mesmo para representar -->
             </a>
         </nav>
 
@@ -59,7 +61,9 @@
 
         <main> <!-- criar o corpo dessa page --> 
             <!-- escolher um carrossel para colocar as postagens, aprender a maneira de como puxar a postagem do professor--> 
-            
+            <button type="submit" class="adicionarPostagem" id="adicionarPostagem" name="adicionarPostagem">
+                <i class="fa-solid fa-plus"></i> <!-- simbolo de + que vai ficar dentro do botao de adicionar postagem -->
+            </button>
         </main>
 
     </div>

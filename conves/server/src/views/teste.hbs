@@ -6,15 +6,15 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/auth/criarPostagem" method="POST">
+    {{!-- <form action="/auth/criarPostagem" method="POST">
         <label for="postTitulo">Titulo da postagem: </label>
         <input type="text" name="postTitulo" required>
 
         <br><br>
 
         <label for="postImg">Imagem da postagem: </label>
-        <input type="file" name="postImg" required>
-
+        <input id="sg" type="file" accept="image/*" name="postImg" required>
+<label for="sg"></label>
         <br><br>
 
         <label for="postText">Conteúdo da postagem: </label>
@@ -22,6 +22,64 @@
 
         <br><br>
         <button type="submit">Enviar</button>
-    </form>
+    </form> --}}
+
+    <form id="postForm" action="/auth/criarPostagem" method="POST">
+    <label for="postTitulo">Titulo da postagem: </label>
+    <input type="text" name="postTitulo" id="postTitulo" required>
+    <br><br>
+    <input id="sg" type="file" accept="image/*" name="postImg" required onchange="previewImage(event)">
+    <label for="sg">Selecionar imagem</label>
+    <br><br>
+    <img id="preview" src="" alt="Preview da imagem" style="max-width: 300px; max-height: 300px;">
+    <br><br>
+    <label for="postText">Conteúdo da postagem: </label>
+    <input type="text" name="postText" id="postText" required>
+    <br><br>
+    <button type="button" onclick="submitForm()">Enviar</button>
+</form>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    function previewImage(event) {
+        const input = event.target;
+        const preview = document.getElementById('preview');
+
+        const file = input.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function() {
+            preview.src = reader.result;
+        }
+
+        reader.readAsDataURL(file);
+    }
+
+    async function submitForm() {
+        const postTitulo = document.getElementById('postTitulo').value;
+        const postText = document.getElementById('postText').value;
+
+        const input = document.getElementById('sg');
+        const file = input.files[0];
+
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = async function() {
+            const imageData = reader.result;
+            const postData = {
+                postTitulo: postTitulo,
+                postText: postText,
+                postImg: imageData
+            };
+            try {
+                const response = await axios.post('/auth/criarPostagem', postData);
+                console.log(response.data); // Imprime a resposta do servidor no console
+            } catch (error) {
+                console.error(error);
+            }
+        };
+    }
+</script>
+
 </body>
 </html>

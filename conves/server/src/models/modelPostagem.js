@@ -27,7 +27,7 @@ const ModelPostagem = connSequelize.define(
             allowNull: false
         },
         img_capaPost: {
-            type: DataTypes.BLOB('medium'),
+            type: DataTypes.TEXT('long'),
             allowNull: false
         }
     },

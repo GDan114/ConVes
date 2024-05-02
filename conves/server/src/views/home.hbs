@@ -9,27 +9,35 @@
     <link rel="stylesheet" href="/css/home.css"> <!-- arrumei o link, o ctrl click não levava pra lugar nenhum -->
     <title>Homepage | ConVes</title>
 </head>
+
 <body>
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <a href="#" class="logo">  
-            <img src="Imagens/barco-ConVes-preto.png" alt="logo ConVes" width="60px" id="conves"> <!-- retirar o fundo da imagem, deixar apenas o barquinho -->
+        <a href="#" class="logo">
+            <img src="Imagens/barco-ConVes-preto.png" alt="logo ConVes" width="60px" id="conves">
+            <!-- retirar o fundo da imagem, deixar apenas o barquinho -->
             <div class="logo-name"><span>Con</span>Ves</div>
         </a>
         <ul class="side-menu">
             <!-- Inicio do Menu-->
-            <li class="active"><a href="#"><i class='bx bx-home' ></i>Home</a></li> <!-- criar as proximas pages e colocar os href aqui-->
-            <li><a href="#"><i class='bx bxs-dashboard'></i>Postagens</a></li> <!-- a class active é da pagina ativada, nesse caso a home-->
-            <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> <!--COLOCAR O LINK DO FONT AWESOME-->
+            <li class="active"><a href="#"><i class='bx bx-home'></i>Home</a></li>
+            <!-- criar as proximas pages e colocar os href aqui-->
+            <li><a href="#"><i class='bx bxs-dashboard'></i>Postagens</a></li>
+            <!-- a class active é da pagina ativada, nesse caso a home-->
+            <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i>
+                    <p class="professores">Professores</p>
+                </a></li> <!--COLOCAR O LINK DO FONT AWESOME-->
             <li><a href="#"><i class='bx bx-info-circle'></i>Sobre</a></li>
             <li><a href="#"><i class='bx bx-user'></i>Perfil</a></li>
             <li><a href="#"><i class="bx bx-slider-alt"></i>Configurações</a></li>
         </ul>
         <ul class="side-menu">
             <li>
-                <a href="/" class="logout"> <!-- botao de logout-->
-                <i class='bx bx-log-out'></i>Sair</a>
+                <form action="/auth/logout" method="GET">
+                    <button type="submit" class="logout"> <!-- botao de logout-->
+                        <i class='bx bx-log-out'></i>Sair</button>
+                </form>
             </li>
         </ul>
         <!-- Fim do Menu-->
@@ -54,7 +62,8 @@
                 <span class="count">12</span>
             </a> -->
             <a href="#" class="profile"> <!-- href da page de usuario -->
-                <img src="/Imagens/pug-fofo.jpg"> <!-- aprender o metodo para puxar a imagem do usuario, por enquanto usamos essa mesmo para representar -->
+                <img src="/Imagens/pug-fofo.jpg">
+                <!-- aprender o metodo para puxar a imagem do usuario, por enquanto usamos essa mesmo para representar -->
             </a>
         </nav>
 
@@ -71,16 +80,32 @@
                         </li>
                         <li>
                             <a href="#" class="active">Populares</a><!-- href page postagens-->
-                        </li> 
+                        </li>
                     </ul>
                 </div>
             </div>
 
-            
+
             <!-- Postagens -->
+
+
+
             <ul class="insights">
+                {{#each postagens}}
                 <li>
-                    <i class='bx bx-slideshow'></i> <!-- cada post leva a um local diferente, form do professor com as atividades e videoaulas-->
+                    <div class="postagem">
+                        <!-- Conteúdo da postagem -->
+                        <h2>{{nm_tituloPostagem}}</h2>
+                        <p>{{ds_conteudoPost}}</p>
+                        <img src="{{img_capaPost}}" alt="Imagem da postagem"></img>
+                        <!-- Aqui você pode adicionar mais campos da postagem, como imagem, data, etc. -->
+                    </div>
+                </li>
+                {{/each}}
+
+                <li>
+                    <i class='bx bx-slideshow'></i>
+                    <!-- cada post leva a um local diferente, form do professor com as atividades e videoaulas-->
                     <span class="info">
                         <h3>
                             Post 1
@@ -88,7 +113,8 @@
                         <p>Danilo</p>
                     </span>
                 </li>
-                <li><i class='bx bx-slideshow'></i> <!-- cada post leva pra um form de professor, colocar depois os href e as rotas -->
+                <li><i class='bx bx-slideshow'></i>
+                    <!-- cada post leva pra um form de professor, colocar depois os href e as rotas -->
                     <span class="info">
                         <h3>
                             Post 2 <!-- fazer com que quando usuario clique no post, vá para o form do professor -->
@@ -116,22 +142,22 @@
             <!-- Fim das postagens -->
 
 
-<!-- outro header, agora para os professores -->
-<div class="header">
-    <div class="left">
-        <h1>Professores</h1>
-        <ul class="breadcrumb">
-            <li><a href="#">
-                    Com melhores
-                </a>
-            </li>
-            <li>
-                <a href="#" class="active">Avaliações</a><!-- href page dos professores-->
-            </li> 
-        </ul>
-    </div>
-</div>
-<!-- Professores -->
+            <!-- outro header, agora para os professores -->
+            <div class="header">
+                <div class="left">
+                    <h1>Professores</h1>
+                    <ul class="breadcrumb">
+                        <li><a href="#">
+                                Com melhores
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="active">Avaliações</a><!-- href page dos professores-->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Professores -->
 
             <ul class="insights-prof">
                 <li>
@@ -173,7 +199,9 @@
 
     </div>
 
-    <script src="/js/home.js"></script> <!-- Arrumar a rota do script, para o home.js-->
+    <script src="/js/home.js"></script>
+    
+    <!-- Arrumar a rota do script, para o home.js-->
 </body>
 
 </html>

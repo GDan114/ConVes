@@ -120,8 +120,11 @@ async function CriarPostagem (req, resp) {
         postText
     } = req.body
 
+    console.log(postImg)
+
     const idProf = req.cookies.cookie_usuario
 
+    
     try {
         const Post = await ModelPostagem.create({
             nm_tituloPostagem: postTitulo,
