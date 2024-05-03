@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
+const controller_Auth = require('../controllers/controllerAuth')
 
 router.get('/', (req, res) => { // Página raiz
     res.render('lading_Page')
@@ -15,7 +16,7 @@ router.get('/login', (req, res) => {
     res.render('loginpage')
 })
 
-router.get('/home', async (req, res) => {
+router.get('/home', controller_Auth.AuthEstaLogado, async (req, res) => {
     try {
         const response = await axios.get('http://localhost:5000/auth/puxarPostagem');
         const postagens = response.data;
@@ -26,7 +27,7 @@ router.get('/home', async (req, res) => {
     }
 });
 
-router.get('/home/postagens', (req, res) => {
+router.get('/home/postagens', controller_Auth.AuthEstaLogado, (req, res) => {
     res.render('postagens')
 })
 
@@ -34,7 +35,7 @@ router.get('/home/postagens', (req, res) => {
     res.render('homeProfessor')
 })*/
 
-router.get('/home/postagens/criar', (req, res) => {
+router.get('/home/postagens/criar', controller_Auth.AuthEstaLogado, (req, res) => {
     res.render('teste')
 })
 module.exports = router;

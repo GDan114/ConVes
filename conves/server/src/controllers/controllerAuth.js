@@ -16,8 +16,22 @@ async function PuxarPostagem(req, resp) {
     }
 }
 
+async function AuthEstaLogado(req, resp, next) {
+    try{
+         if (req.cookies.cookie_usuario) {
+            next();
+         } else {
+            resp.redirect('/login');
+         }
+    } catch (error) {
+        console.error(error);
+        return resp.status(500).json({ message: 'Erro interno.' })
+    }
+}
+
 
 module.exports= {
     Logout,
-    PuxarPostagem
+    PuxarPostagem,
+    AuthEstaLogado
 }
