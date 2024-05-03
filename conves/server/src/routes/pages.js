@@ -37,6 +37,6 @@ router.get('/home/postagens', controller_Auth.AuthEstaLogado, (req, res) => {
 })*/
 
 router.get('/home/postagens/criar', controller_Auth.AuthEstaLogado, (req, res) => {
-    res.render('teste')
+    res.render('adicionarPostagem')
 })
 module.exports = router;

@@ -124,7 +124,6 @@ select * from tb_professorRegistro;
 select * from tb_plano;
 Select * from tb_postagem;
 -- select * from tb_assunto; --
-
 desc tb_alunoPerfil;
 desc tb_alunoRegistro;
 desc tb_professorPerfil;
@@ -140,4 +139,5 @@ DELETE FROM tb_alunoRegistro WHERE fk_aluno = 7;
 DELETE FROM tb_professorPerfil WHERE id_professor = 6;
 DELETE FROM tb_professorRegistro WHERE fk_professor = 6;
 
+TRUNCATE tb_postagem;
 SELECT `id_professorRegistro`, `fk_professor`, `id_senhaProfessor`, `ds_emailProfessor`, `fk_professor` FROM `tb_professorRegistro` AS `tb_professorRegistro` WHERE `tb_professorRegistro`.`ds_emailProfessor` = 'charles@gmail.com' LIMIT 1;
