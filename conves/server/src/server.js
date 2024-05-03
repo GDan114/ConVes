@@ -3,8 +3,9 @@ const path = require('path');
 const express = require('express')
 const pagesRouter = require('./routes/pages')
 const authRouter = require('./routes/auth')
-const bodyParser = require('body-parser');  
+const bodyParser = require('body-parser')  
 const cookieParser = require('cookie-parser')
+const hbs = require('hbs')
 
 const appWeb = express()
 
@@ -37,6 +38,15 @@ connSequelize.authenticate().then(() => {
 })
 
 connSequelize.sync() // Deixar o BD funcionando 
+
+// Helper que checa se é professor
+hbs.registerHelper('isProfessor', function(tipoUsuario, options) {
+    if (tipoUsuario === 'Prof') {
+        return options.fn(this);
+    }
+    // Se tipoUsuario não for igual a 'Prof', retorna vazio
+    return '';
+})
 
 appWeb.use('/', pagesRouter);
 appWeb.use('/auth', authRouter)

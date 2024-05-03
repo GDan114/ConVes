@@ -18,17 +18,18 @@ router.get('/login', (req, res) => {
 
 router.get('/home', controller_Auth.AuthEstaLogado, async (req, res) => {
     try {
-        const response = await axios.get('http://localhost:5000/auth/puxarPostagem');
-        const postagens = response.data;
-        res.render('home', { postagens }); // Renderiza sua página HBS com os dados das postagens como contexto
+        const response = await axios.get('http://localhost:5000/auth/puxarPostagem')
+        const postagens = response.data
+        res.render('home', { postagens }) // Renderiza sua página HBS com os dados das postagens como contexto
     } catch (error) {
-        console.error(error);
-        res.status(500).send('Erro ao buscar postagens');
+        console.error(error)
+        res.status(500).send('Erro ao buscar postagens')
     }
 });
 
 router.get('/home/postagens', controller_Auth.AuthEstaLogado, (req, res) => {
-    res.render('postagens')
+    const tipoUsuario = req.cookies.cookie_tipoUsuario;
+    res.render('postagens', { tipoUsuario })
 })
 
 /*router.get('/home/prof', (req, res) => {

@@ -61,9 +61,11 @@
 
         <main> <!-- criar o corpo dessa page --> 
             <!-- escolher um carrossel para colocar as postagens, aprender a maneira de como puxar a postagem do professor--> 
+            {{#isProfessor tipoUsuario}}
             <button type="submit" class="adicionarPostagem" id="adicionarPostagem" name="adicionarPostagem">
                 <i class="fa-solid fa-plus"></i> <!-- simbolo de + que vai ficar dentro do botao de adicionar postagem -->
             </button>
+            {{/isProfessor}}
         </main>
 
     </div>
