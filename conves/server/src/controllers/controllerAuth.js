@@ -2,6 +2,7 @@ const { ModelPostagem } = require("../models/modelPostagem")
 
 async function Logout(req, resp) {
     resp.clearCookie('cookie_usuario')
+    resp.clearCookie('cookie_tipoUsuario')
     return resp.redirect('/')
 }
 
