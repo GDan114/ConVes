@@ -5,7 +5,7 @@ const pagesRouter = require('./routes/pages')
 const authRouter = require('./routes/auth')
 const bodyParser = require('body-parser')  
 const cookieParser = require('cookie-parser')
-const handlebarsHelpers = require('../config/helpersHbs.js')
+const handlebarsHelpers = require('../config/helpersHbs.js') // Helpers
 
 const appWeb = express()
 
@@ -20,8 +20,6 @@ appWeb.set('views', path.join(__dirname, 'views'));
 appWeb.use(express.urlencoded({ extended: false }));
 
 appWeb.use(cookieParser())
-
-
 
 appWeb.set('view engine', 'hbs');
 // AUTENTICAÇÃO E START DO BANCO 
