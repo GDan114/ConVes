@@ -95,9 +95,11 @@ async function LogarAluno(req, resp) {
                 }
         )
 
-        /*resp.status(200).json({
-            message: `Login do usuário ${dadosAlunoAuth.nm_aluno} bem sucedido!`
-        }) */
+        resp.cookie(
+            'cookie_tipoUsuario', 'Aluno', {
+                httpOnly: true,
+                expires: dtQuandoIraExpirar
+        })
 
         return resp.redirect('/home')
     } catch(erro) {

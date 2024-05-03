@@ -102,6 +102,12 @@ async function LogarProfessor (req, resp) {
                 }
         )
 
+        resp.cookie(
+            'cookie_tipoUsuario', 'Prof', {
+                httpOnly: true,
+                expires: dtQuandoIraExpirar
+        })
+
         return resp.redirect('/home')
 
     } catch (erro) {
