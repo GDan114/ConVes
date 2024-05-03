@@ -32,10 +32,6 @@ router.get('/home/postagens', controller_Auth.AuthEstaLogado, (req, res) => {
     res.render('postagens', { tipoUsuario })
 })
 
-/*router.get('/home/prof', (req, res) => {
-    res.render('homeProfessor')
-})*/
-
 router.get('/home/postagens/criar', controller_Auth.AuthEstaLogado, (req, res) => {
     res.render('adicionarPostagem')
 })
