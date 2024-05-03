@@ -17,6 +17,13 @@ body{
     height: 100vh;
 }
 
+body .logo{
+    height: 100px;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+
 .container{
     background-color: #fff;
     border-radius: 30px;
