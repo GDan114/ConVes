@@ -25,8 +25,8 @@
                 </div> 
                 <span><b>PROFESSOR</b></span>
                 <input type="text" placeholder="Nome" pattern="^[a-zA-Z ]+$" name="profNome" required> <!-- VALIDAR OS INPUTS PARA AMANHÃ-->
-                <input type="text" placeholder="Matrícula" name="profMatricula" id="inputMatricula" required>
-                <input type="" placeholder="Cpf" name="profCpf" required> <!-- COLOCAR O TYPE QUE SE ENCAIXA COM CPF, E VALIDAR-->
+                <input type="text" placeholder="Matrícula" minlength="5" maxlength="5" name="profMatricula" id="inputMatricula" required>
+                <input type="" placeholder="Cpf" name="profCpf"  maxlength="11" required> <!-- COLOCAR O TYPE QUE SE ENCAIXA COM CPF, E VALIDAR-->
                 <input type="email" placeholder="Email" name="profEmail" required>
                 <input type="password" placeholder="Senha" minlength="8" maxlength="12" name="profSenha" required>
                 <!-- <input type="password" placeholder="Confirmar senha"> COLOCAR NA PRÓXIMA BANCA -->

@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href=""> <!-- criar css dessa page depois-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/adicionarPostagem.css"> <!-- criar css dessa page depois-->
     <title>Adicionar postagem | ConVes</title>
 </head>
 <body>
@@ -15,18 +17,19 @@
         </a>
         <ul class="side-menu">
             <!-- Inicio do Menu-->
-            <li><a href="./home.hbs"><i class='bx bx-home' ></i>Home</a></li>
-            <li class="active"><a href="#"><i class='bx bxs-dashboard'></i>Postagens</a></li> <!-- a class active é da pagina ativada, nesse caso a page de postagens-->
-            <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> <!-- colocar os href das proximas pages quando estiverem feitas-->
+            <li><a href="/home"><i class='bx bx-home' ></i>Home</a></li>
+            <li class="active"><a href="/home/postagens"><i class='bx bxs-dashboard'></i>Postagens</a></li> <!-- a class active é da pagina ativada, nesse caso a page de postagens-->
+            <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> 
             <li><a href="#"><i class='bx bx-info-circle'></i>Sobre</a></li> 
-            <li><a href="#"><i class='bx bx-user'></i>Perfil</a></li> <!-- proxima page a ser feita --> 
+            <li><a href="#"><i class='bx bx-user'></i>Perfil</a></li> <!-- colocar os href depois --> 
             <li><a href="#"><i class="bx bx-slider-alt"></i>Configurações</a></li> 
         </ul>
         <ul class="side-menu">
             <li>
-                <a href="/" class="logout"> 
-                <i class='bx bx-log-out'></i>Sair</a> <!-- btn sair da conta -->
-                <!-- no caso, não é um botao -->
+                <form action="/auth/logout" method="GET">
+                    <button type="submit" class="logout"> <!-- botao de logout-->
+                        <i class='bx bx-log-out'></i>Sair</button>
+                </form>
             </li>
         </ul>
         <!-- Fim do Menu-->
@@ -54,29 +57,35 @@
         <!-- Fim da Navbar -->
 
         <main>
+
+            <div class="header">
+                <div class="left">
+                    <h1>Adicionar Postagens.</h1>
+                </div>
+            </div>
             <!-- formulario para enviar a postagem, uso exclusivo do professor --> 
-            {{!-- <form action=""> <!-- colocar a action dele --> 
-                <input type="text" placeholder="Título da postagem..." required>
-                <input type="file" name="postImg" id="post-imagem" required> <!-- type file faz com que o usuario escolha o arquivo  -->
-                <button type="submit" class="btn-capa" id="btn-capa" name="btn-capa">Inserir capa</button> <!-- botao para o usuario inserir a capa que ele escolheu -->
-                <input type="text" placeholder="Insira seu conteúdo aqui..." required>
-                <button type="submit" class="btn-enviar" id="btn-enviar" name="btn-enviar">Enviar</button>
-            </form> --}}
-            <form id="postForm" action="/auth/criarPostagem" method="POST">
-                <label for="postTitulo">Titulo da postagem: </label>
-                <input type="text" name="postTitulo" id="postTitulo" required>
+            
+            <form class="postForm" id="postForm" action="/auth/criarPostagem" method="POST">
+                {{!-- <label for="postTitulo">Titulo da postagem: </label> --}}
+                <input type="text" name="postTitulo" id="postTitulo" placeholder="Titulo da postagem..." required>
                 <br><br>
-                <input id="sg" type="file" accept="image/*" name="postImg" required onchange="previewImage(event)">
-                <label for="sg">Selecionar imagem</label>
+                <input class="input" id="sg" type="file" accept="image/*" name="postImg" required onchange="previewImage(event)">
+                {{!-- <label for="sg">Selecionar imagem</label> --}}
                 <br><br>
-                <img id="preview" src="" alt="Preview da imagem" style="max-width: 300px; max-height: 300px;">
+                <img id="preview" src="" alt="Preview da imagem" style="max-width: 300px; max-height: 600px;">
                 <br><br>
-                <label for="postText">Conteúdo da postagem: </label>
-                <input type="text" name="postText" id="postText" required>
+                {{!-- <label for="postText">Conteúdo da postagem: </label> --}}
+                {{!-- <input type="text" name="postText" id="postText" required> --}}
+                <textarea rows="2"  placeholder="Insira o conteúdo aqui..." name="postText" id="postText"></textarea>
                 <br><br>
                 <button type="button" onclick="submitForm()">Enviar</button>
             </form>
-
+    <script>
+        function autoResize(textarea) {
+  textarea.style.height = 'auto'; // Redefine a altura para automática
+  textarea.style.height = textarea.scrollHeight + 'px'; // Define a altura conforme o conteúdo
+}
+    </script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script>
             function previewImage(event) {
@@ -120,5 +129,6 @@
         </script>
 
         </main>
+    </div>
 </body>
 </html>

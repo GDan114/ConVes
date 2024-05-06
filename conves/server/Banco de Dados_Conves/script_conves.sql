@@ -123,6 +123,7 @@ select * from tb_professorPerfil;
 select * from tb_professorRegistro;
 select * from tb_plano;
 Select * from tb_postagem;
+
 -- select * from tb_assunto; --
 desc tb_alunoPerfil;
 desc tb_alunoRegistro;

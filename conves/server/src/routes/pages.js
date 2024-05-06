@@ -20,6 +20,7 @@ router.get('/home', controller_Auth.AuthEstaLogado, async (req, res) => {
     try {
         const response = await axios.get('http://localhost:5000/auth/puxarPostagem')
         const postagens = response.data
+
         res.render('home', { postagens }) // Renderiza sua página HBS com os dados das postagens como contexto
     } catch (error) {
         console.error(error)

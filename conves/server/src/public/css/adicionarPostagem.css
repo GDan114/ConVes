@@ -17,41 +17,41 @@
     --second: #a82d2d;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
 
-.bx{
+.bx {
     font-size: 1.7rem;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-li{
+li {
     list-style: none;
 }
 
-html{
+html {
     overflow-x: hidden;
 }
 
-body.dark{
+body.dark {
     --light: #181a1e;
     --grey: #25252c;
     --dark: #fbfbfb
 }
 
-body{
+body {
     background: var(--grey);
     overflow-x: hidden;
 }
 
-.sidebar{
+.sidebar {
     position: fixed;
     top: 0;
     left: 0;
@@ -177,17 +177,6 @@ body{
 
 .sidebar .side-menu li a.logout{
     color: var(--danger);
-}
-
-.logout {
-    margin-left: 5px;
-    background-color: transparent;
-    border: none;
-    color: var(--danger);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
 }
 
 .content{
@@ -331,23 +320,16 @@ body{
 
 .content main{
     width: 100%;
-    padding: 36px 24px;
-    max-height: calc(100vh - 56px);
+    padding: 76px 24px;
 }
 
-.content main .header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    grid-gap: 16px;
-    flex-wrap: wrap;
-}
 
 .content main .header .left h1{
     font-size: 36px;
     font-weight: 600;
     margin-bottom: 10px;
     color: var(--dark);
+    margin-bottom: 20px;
 }
 
 .content main .header .left .breadcrumb{
@@ -703,6 +685,71 @@ body{
 
 }
 
-.imagemPost{
-    width: 80px;
+/* teste do textarea */
+
+/* mexendo nos inputs */
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.postForm{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.postForm input{
+    width: 80%;
+    height: 30px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    color: var(--dark-grey);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+.postForm .input{
+    width: auto;
+    background-color: white;
+    color: black;
+}
+
+.postForm button{
+    width: 200px;
+    height: auto;
+    padding: 5px 0 5px 0;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    background-color: #ff4646;
+    box-shadow: 0 5px 0 #a82d2d;
+    transition: all .2s ease;
+}
+
+.postForm button:active{
+    transform: translateY(5px);
+    transition: all .2s ease;
+    box-shadow: none;
+}
+
+textarea {
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    width: 80%; /* Define a largura para ocupar todo o espaço disponível */
+     /* Define uma altura inicial */
+    height: 280px;
+    resize: none; /* Permite que o usuário redimensione verticalmente apenas */
+    padding-right: 5vh;
 }

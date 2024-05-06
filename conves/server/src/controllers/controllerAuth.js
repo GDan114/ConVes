@@ -1,4 +1,6 @@
 const { ModelPostagem } = require("../models/modelPostagem")
+const { ModelProfessorPerfil } = require('../models/modelProfessorPerfil')
+const { connSequelize } = require('../../config/conexaoBD')
 
 async function Logout(req, resp) {
     resp.clearCookie('cookie_usuario')
@@ -8,7 +10,14 @@ async function Logout(req, resp) {
 
 async function PuxarPostagem(req, resp) {
     try {
-        const AllPostagens = await ModelPostagem.findAll({raw: true});
+        //const AllPostagens = await ModelPostagem.findAll({raw: true});
+        const AllPostagens = await ModelPostagem.findAll({
+            include: {
+                model: ModelProfessorPerfil,
+                required: true
+            },
+            raw: true
+        })
         console.log(AllPostagens);
         return resp.status(200).json(AllPostagens);
     } catch (error) {

@@ -179,17 +179,6 @@ body{
     color: var(--danger);
 }
 
-.logout {
-    margin-left: 5px;
-    background-color: transparent;
-    border: none;
-    color: var(--danger);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-}
-
 .content{
     position: relative;
     width: calc(100% - 230px);
@@ -701,8 +690,4 @@ body{
         min-width: 340px;
     }
 
-}
-
-.imagemPost{
-    width: 80px;
 }

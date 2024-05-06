@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href=""> <!-- css dessa page vai ser bem aproveitado da home, puxando as coisas do header, menu-->
+    <link rel="stylesheet" href="/css/postagens.css"> <!-- css dessa page vai ser bem aproveitado da home, puxando as coisas do header, menu-->
     <title>Postagens | ConVes</title>
 </head>
 <body>
@@ -19,7 +19,7 @@
         </a>
         <ul class="side-menu">
             <!-- Inicio do Menu-->
-            <li><a href="./home.hbs"><i class='bx bx-home' ></i>Home</a></li>
+            <li><a href="/home"><i class='bx bx-home' ></i>Home</a></li>
             <li class="active"><a href="#"><i class='bx bxs-dashboard'></i>Postagens</a></li> <!-- a class active é da pagina ativada, nesse caso a page de postagens-->
             <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> <!-- colocar os href das proximas pages quando estiverem feitas-->
             <li><a href="#"><i class='bx bx-info-circle'></i>Sobre</a></li>
@@ -60,11 +60,12 @@
         <!-- Fim da Navbar -->
 
         <main> <!-- criar o corpo dessa page --> 
+
             <!-- escolher um carrossel para colocar as postagens, aprender a maneira de como puxar a postagem do professor--> 
             {{#isProfessor tipoUsuario}}
-            <button type="submit" class="adicionarPostagem" id="adicionarPostagem" name="adicionarPostagem">
+             <a href="/home/postagens/criar"><button type="submit" class="adicionarPostagem" id="adicionarPostagem" name="adicionarPostagem">
                 <i class="fa-solid fa-plus"></i> <!-- simbolo de + que vai ficar dentro do botao de adicionar postagem -->
-            </button>
+            </button></a> 
             {{/isProfessor}}
         </main>
 

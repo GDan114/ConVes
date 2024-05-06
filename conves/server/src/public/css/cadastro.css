@@ -86,7 +86,7 @@ body .logo{
     text-transform: uppercase;
     margin-top: 10px;
     cursor: pointer;
-    transition: .15s ease-in;
+    transition: all .2s ease;
     box-shadow: 0 5px 0 #a82d2d;
 }
 
