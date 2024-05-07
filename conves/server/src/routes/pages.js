@@ -13,7 +13,8 @@ router.get('/registrar', (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-    res.render('loginpage')
+    const erro = req.query.erro
+    res.render('loginpage', {erro: erro})
 })
 
 router.get('/home', controller_Auth.AuthEstaLogado, async (req, res) => {
@@ -28,12 +29,23 @@ router.get('/home', controller_Auth.AuthEstaLogado, async (req, res) => {
     }
 });
 
-router.get('/home/postagens', controller_Auth.AuthEstaLogado, (req, res) => {
-    const tipoUsuario = req.cookies.cookie_tipoUsuario;
-    res.render('postagens', { tipoUsuario })
+router.get('/home/postagens', controller_Auth.AuthEstaLogado, async (req, res) => {
+    try {
+        const tipoUsuario = req.cookies.cookie_tipoUsuario
+
+    const response = await axios.get('http://localhost:5000/auth/puxarPostagem')
+    const postagens = response.data
+
+    res.render('postagens', { tipoUsuario, postagens })
+    } catch(error) {
+        console.error(error)
+        res.status(500).send('Erro ao buscar postagens')
+    }
+    
 })
 
 router.get('/home/postagens/criar', controller_Auth.AuthEstaLogado, (req, res) => {
-    res.render('adicionarPostagem')
+    const msg = req.query.msg
+    res.render('adicionarPostagem', {msg: msg})
 })
 module.exports = router;

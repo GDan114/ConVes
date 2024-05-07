@@ -9,10 +9,15 @@
     <title>Adicionar postagem | ConVes</title>
 </head>
 <body>
+    {{#if msg}}
+        <script>
+            window.alert("{{msg}}");
+        </script>
+    {{/if}}
     <!-- Sidebar -->
     <div class="sidebar">
         <a href="#" class="logo">  
-            <img src="/Imagens/barco-ConVes-preto.png" alt="logo ConVes" width="60px" id="conves">
+            <img src="/Imagens/barco-ConVes-preto.png" class="logo-conves" alt="logo ConVes" width="60px" id="conves">
             <div class="logo-name"><span>Con</span>Ves</div>
         </a>
         <ul class="side-menu">
@@ -50,7 +55,7 @@
             <input type="checkbox" id="theme-toggle" hidden> <!-- Botão de mudar o tema-->
             <label for="theme-toggle" class="theme-toggle"></label>
             <a href="#" class="profile"> <!-- href da page de usuario -->
-                <img src="Imagens/pug.jpg"> <!-- aprender o metodo para puxar a imagem do usuario, por enquanto usamos essa mesmo para representar -->
+                <img src="/Imagens/pug-fofo.jpg"> <!-- aprender o metodo para puxar a imagem do usuario, por enquanto usamos essa mesmo para representar -->
             </a>
         </nav>
 
@@ -127,6 +132,7 @@
                 };
             }
         </script>
+        <script src="/js/home.js"></script>
 
         </main>
     </div>

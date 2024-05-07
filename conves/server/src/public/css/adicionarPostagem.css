@@ -17,6 +17,11 @@
     --second: #a82d2d;
 }
 
+.logo-conves {
+    width: 45px;
+    margin: 10px;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -177,6 +182,18 @@ body {
 
 .sidebar .side-menu li a.logout{
     color: var(--danger);
+}
+
+.logout {
+    margin-left: 5px;
+    font-size: large;
+    background-color: transparent;
+    border: none;
+    color: var(--danger);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 17px;
 }
 
 .content{

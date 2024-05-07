@@ -81,7 +81,7 @@ async function LogarAluno(req, resp) {
         )
 
         if(!comparandoSenhas) {
-            return resp.status(401).json({ message: 'Senha inválida!' })
+            return resp.redirect('/login?erro=Senha ou email Inválido.')
         }
 
         const hora = 3600000 // milissegundos que equivale a uma hora

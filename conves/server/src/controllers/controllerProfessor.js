@@ -88,7 +88,7 @@ async function LogarProfessor (req, resp) {
         )
 
         if(!comparandoSenhas) {
-            return resp.status(401).json({ message: 'Senha inválida!' })
+            return resp.redirect('/login?erro=Senha ou email Inválido.')
         }
 
         const hora = 3600000 // milissegundos que equivale a uma hora
@@ -138,7 +138,10 @@ async function CriarPostagem (req, resp) {
             ds_conteudoPost: postText,
             img_capaPost: postImg
         })
+        //return resp.redirect('/home/postagens/criar?msg=Postagem criada com sucesso.')
         return Post
+
+
     } catch(erro) {
         console.error(erro)
         console.log(req.body)

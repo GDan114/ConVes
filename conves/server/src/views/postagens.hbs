@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/home.css"> <!-- arrumei o link, o ctrl click não levava pra lugar nenhum -->
     <link rel="stylesheet" href="/css/postagens.css"> <!-- css dessa page vai ser bem aproveitado da home, puxando as coisas do header, menu-->
     <title>Postagens | ConVes</title>
 </head>
@@ -14,7 +15,7 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <a href="#" class="logo">  
-            <img src="/Imagens/barco-ConVes-preto.png" alt="logo ConVes" width="60px" id="conves">
+            <img src="/Imagens/barco-ConVes-preto.png" class="logo-conves" alt="logo ConVes" width="60px" id="conves">
             <div class="logo-name"><span>Con</span>Ves</div>
         </a>
         <ul class="side-menu">
@@ -60,6 +61,24 @@
         <!-- Fim da Navbar -->
 
         <main> <!-- criar o corpo dessa page --> 
+        <div class="header">
+                <div class="left">
+                    <h1>Postagens</h1>
+                </div>
+            </div>
+        <ul class="insights">
+            {{#each postagens}}
+                <li>
+                    <img src="{{img_capaPost}}" class="imagemPost" alt="Imagem da postagem"></img>
+                    <span class="info">
+                        <h3>
+                            {{nm_tituloPostagem}}
+                        </h3>
+                        <p>{{tb_professorPerfil.nm_professor}}</p>
+                    </span>
+                </li>
+                {{/each}}
+        </ul>
 
             <!-- escolher um carrossel para colocar as postagens, aprender a maneira de como puxar a postagem do professor--> 
             {{#isProfessor tipoUsuario}}
@@ -71,7 +90,7 @@
 
     </div>
  
-    <script src=""></script> <!-- script dessa pagina serve para as funcionalidades da postagem, incluindo o script da funcionalidade do carrossel sla--> 
+    <script src="/js/home.js"></script><!-- script dessa pagina serve para as funcionalidades da postagem, incluindo o script da funcionalidade do carrossel sla--> 
 </body>
 
 </html>

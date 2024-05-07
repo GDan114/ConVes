@@ -95,6 +95,11 @@ body{
     font-size: 2.2rem;
 }
 
+.logo-conves {
+    width: 45px;
+    margin: 10px;
+}
+
 .sidebar .side-menu{
     width: 100%;
     margin-top: 48px;
@@ -181,13 +186,14 @@ body{
 
 .logout {
     margin-left: 5px;
+    font-size: large;
     background-color: transparent;
     border: none;
     color: var(--danger);
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 10px;
+    gap: 17px;
 }
 
 .content{
@@ -704,5 +710,7 @@ body{
 }
 
 .imagemPost{
-    width: 80px;
+    width: 90px;
+    height: 90px;
+    border-radius: 5px;
 }

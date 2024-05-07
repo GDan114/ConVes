@@ -11,11 +11,16 @@
 </head>
 
 <body>
+    {{#if erro}}
+        <script>
+            window.alert("{{erro}}");
+        </script>
+    {{/if}}
 
     <!-- Sidebar -->
     <div class="sidebar">
         <a href="#" class="logo">
-            <img src="Imagens/barco-ConVes-preto.png" alt="logo ConVes" width="60px" id="conves">
+            <img src="Imagens/barco-ConVes-preto.png" class="logo-conves" alt="logo ConVes" width="60px" id="conves">
             <!-- retirar o fundo da imagem, deixar apenas o barquinho -->
             <div class="logo-name"><span>Con</span>Ves</div>
         </a>

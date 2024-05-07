@@ -10,6 +10,11 @@
 </head>
 
 <body>
+    {{#if erro}}
+        <script>
+            window.alert("{{erro}}");
+        </script>
+    {{/if}}
 
     <div class="container" id="container">
         <div class="form-container sign-up">
