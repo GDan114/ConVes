@@ -22,6 +22,10 @@
     margin: 10px;
 }
 
+.posts{
+    width: 293px;
+}
+
 *{
     margin: 0;
     padding: 0;

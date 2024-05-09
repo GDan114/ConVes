@@ -63,7 +63,7 @@ body{
 	font-weight: bold;
 	font-size: 35px;
 	/* box-shadow: 20px 20px 50px -3px rgba(0, 0, 0, 0.555); */
-	box-shadow: 0 5px 0 #999;
+	box-shadow: 0 5px 0 #c9d6ff;
 	transition: .2s ease-in;
 }
 

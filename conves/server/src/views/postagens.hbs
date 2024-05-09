@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/home.css"> <!-- arrumei o link, o ctrl click não levava pra lugar nenhum -->
     <link rel="stylesheet" href="/css/postagens.css"> <!-- css dessa page vai ser bem aproveitado da home, puxando as coisas do header, menu-->
     <title>Postagens | ConVes</title>
+    
 </head>
 <body>
 
@@ -66,9 +67,10 @@
                     <h1>Postagens</h1>
                 </div>
             </div>
+    <div class="carousel">
         <ul class="insights">
             {{#each postagens}}
-                <li>
+                <li class="posts">
                     <img src="{{img_capaPost}}" class="imagemPost" alt="Imagem da postagem"></img>
                     <span class="info">
                         <h3>
@@ -77,8 +79,10 @@
                         <p>{{tb_professorPerfil.nm_professor}}</p>
                     </span>
                 </li>
+                
                 {{/each}}
         </ul>
+    </div>
 
             <!-- escolher um carrossel para colocar as postagens, aprender a maneira de como puxar a postagem do professor--> 
             {{#isProfessor tipoUsuario}}
