@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" type="image/x-icon" href="/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/home.css"> <!-- arrumei o link, o ctrl click não levava pra lugar nenhum -->
+    <link rel="shortcut icon" href="/logo.png"> <!-- fodase a imagem tambem, fiquei uns 20 minutos e nao consegui colocar, FODASE  -->
+    <title>Perfil | ConVes</title>
+</head>
+
+<body>
+    {{#if erro}}
+        <script>
+            window.alert("{{erro}}");
+        </script>
+    {{/if}}
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="#" class="logo">
+            <img src="Imagens/barco-ConVes-preto.png" class="logo-conves" alt="logo ConVes" width="60px" id="conves">
+            <!-- retirar o fundo da imagem, deixar apenas o barquinho -->
+            <div class="logo-name"><span>Con</span>Ves</div>
+        </a>
+        <ul class="side-menu">
+            <!-- Inicio do Menu-->
+            <li class="active"><a href="#"><i class='bx bx-home'></i>Home</a></li>
+            <!-- criar as proximas pages e colocar os href aqui-->
+            <li><a href="/home/postagens"><i class='bx bxs-dashboard'></i>Postagens</a></li>
+            <!-- a class active é da pagina ativada, nesse caso a home-->
+            <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> <!--COLOCAR O LINK DO FONT AWESOME-->
+            <li><a href="#"><i class='bx bx-info-circle'></i>Sobre</a></li>
+            <li><a href="#"><i class='bx bx-user'></i>Perfil</a></li>
+            <li><a href="#"><i class="bx bx-slider-alt"></i>Configurações</a></li>
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <form action="/auth/logout" method="GET">
+                    <button type="submit" class="logout"> <!-- botao de logout-->
+                        <i class='bx bx-log-out'></i>Sair</button>
+                </form>
+            </li>
+        </ul>
+        <!-- Fim do Menu-->
+    </div>
+    <!-- Fim da Sidebar -->
+
+    <!-- Main -->
+    <div class="content">
+        <!-- Navbar -->
+        <nav>
+            <i class='bx bx-menu'></i>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Pesquisar..."> <!-- Barra de pesquisa-->
+                    <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+                </div>
+            </form>
+            <input type="checkbox" id="theme-toggle" hidden> <!-- Botão de mudar o tema-->
+            <label for="theme-toggle" class="theme-toggle"></label>
+            <!-- <a href="#" class="notif"> COLOCAR HREF DA PAGE DE NOTIFICAÇÕES (É uma boa criar uma página pra isso, mas depois)
+                <i class='bx bx-bell'></i>
+                <span class="count">12</span>
+            </a> -->
+            <a href="#" class="profile"> <!-- href da page de usuario -->
+                <img src="/Imagens/pug-fofo.jpg">
+                <!-- aprender o metodo para puxar a imagem do usuario, por enquanto usamos essa mesmo para representar -->
+            </a>
+        </nav>
+
+        <!-- Fim da Navbar -->
+</body>
+        
