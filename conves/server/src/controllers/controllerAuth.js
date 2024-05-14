@@ -8,23 +8,73 @@ async function Logout(req, resp) {
     return resp.redirect('/')
 }
 
-async function PuxarPostagem(req, resp) {
+async function PuxarPostagem(req, resp) { // Puxa todas as postagens
     try {
         //const AllPostagens = await ModelPostagem.findAll({raw: true});
         const AllPostagens = await ModelPostagem.findAll({
             include: {
                 model: ModelProfessorPerfil,
                 required: true
-            },
-            raw: true
+            }
         })
         console.log(AllPostagens);
-        return resp.status(200).json(AllPostagens);
+        return resp.status(200).json(AllPostagens)
     } catch (error) {
         console.error(error);
         return resp.status(500).json({ message: 'Erro ao buscar postagens' });
     }
 }
+
+// async function PuxarPostagemUnica(req, resp) { // Puxa uma única postagem pelo id dela
+//     try {
+//         const idPost = req.params.id
+
+//         if (!idPost) {
+//             return res.status(400).json({ message: 'ID da postagem não fornecido' });
+//         }
+
+//         const Postagem = await ModelPostagem.findOne({
+//             where:{ id_postagem: idPost },
+//             include: {
+//                 model: ModelProfessorPerfil,
+//                 required: true
+//             }
+//         })
+//         console.log(Postagem)
+//         return resp.status(200).json(Postagem)
+//     } catch (error) {
+//         console.error(error)
+//         return resp.status(500).json({ message: 'Erro ao buscar postagens' })
+//     }
+// }
+async function PuxarPostagemUnica(req, res) { // Puxa uma única postagem pelo id dela
+    try {
+        const idPost = req.params.id;
+
+        if (!idPost) {
+            return res.status(400).json({ message: 'ID da postagem não fornecido' });
+        }
+
+        const Postagem = await ModelPostagem.findOne({
+            where: { id_postagem: idPost },
+            include: {
+                model: ModelProfessorPerfil,
+                required: true
+            }
+        });
+
+        if (!Postagem) {
+            return res.status(404).json({ message: 'Postagem não encontrada' });
+        }
+
+        console.log(Postagem);
+        return res.status(200).json(Postagem);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: 'Erro ao buscar postagens' });
+    }
+}
+
 
 async function AuthEstaLogado(req, resp, next) {
     try{
@@ -43,5 +93,6 @@ async function AuthEstaLogado(req, resp, next) {
 module.exports= {
     Logout,
     PuxarPostagem,
-    AuthEstaLogado
+    AuthEstaLogado,
+    PuxarPostagemUnica
 }

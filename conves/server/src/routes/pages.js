@@ -33,10 +33,10 @@ router.get('/home/postagens', controller_Auth.AuthEstaLogado, async (req, res) =
     try {
         const tipoUsuario = req.cookies.cookie_tipoUsuario
 
-    const response = await axios.get('http://localhost:5000/auth/puxarPostagem')
-    const postagens = response.data
+        const response = await axios.get('http://localhost:5000/auth/puxarPostagem')
+        const postagens = response.data
 
-    res.render('postagens', { tipoUsuario, postagens })
+        res.render('postagens', { tipoUsuario, postagens })
     } catch(error) {
         console.error(error)
         res.status(500).send('Erro ao buscar postagens')
@@ -48,4 +48,18 @@ router.get('/home/postagens/criar', controller_Auth.AuthEstaLogado, (req, res) =
     const msg = req.query.msg
     res.render('adicionarPostagem', {msg: msg})
 })
+
+router.get('/home/postagens/:id', controller_Auth.AuthEstaLogado, async (req, res) => {
+    try {
+        const idPost = req.params.id;
+        const response = await axios.get(`http://localhost:5000/auth/puxarPostagemUnica/${idPost}`);
+        const postagem = response.data;
+
+        res.render('teste', { postagem });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Erro ao buscar a postagem');
+    }
+})
+
 module.exports = router;

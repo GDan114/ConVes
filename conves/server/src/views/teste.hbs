@@ -1,67 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" type="image/x-icon" href="/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/home.css"> <!-- arrumei o link, o ctrl click não levava pra lugar nenhum -->
+    <link rel="shortcut icon" href="/logo.png"> <!-- fodase a imagem tambem, fiquei uns 20 minutos e nao consegui colocar, FODASE  -->
+    <title>Homepage | ConVes</title>
 </head>
+
 <body>
-    <form id="postForm" action="/auth/criarPostagem" method="POST">
-    <label for="postTitulo">Titulo da postagem: </label>
-    <input type="text" name="postTitulo" id="postTitulo" required>
-    <br><br>
-    <input id="sg" type="file" accept="image/*" name="postImg" required onchange="previewImage(event)">
-    <label for="sg">Selecionar imagem</label>
-    <br><br>
-    <img id="preview" src="" alt="Preview da imagem" style="max-width: 300px; max-height: 300px;">
-    <br><br>
-    <label for="postText">Conteúdo da postagem: </label>
-    <input type="text" name="postText" id="postText" required>
-    <br><br>
-    <button type="button" onclick="submitForm()">Enviar</button>
-</form>
+    {{#if erro}}
+        <script>
+            window.alert("{{erro}}");
+        </script>
+    {{/if}}
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script>
-    function previewImage(event) {
-        const input = event.target;
-        const preview = document.getElementById('preview');
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="#" class="logo">
+            <img src="/Imagens/barco-ConVes-preto.png" class="logo-conves" alt="logo ConVes" width="60px" id="conves">
+            <!-- retirar o fundo da imagem, deixar apenas o barquinho -->
+            <div class="logo-name"><span>Con</span>Ves</div>
+        </a>
+        <ul class="side-menu">
+            <!-- Inicio do Menu-->
+            <li class="active"><a href="#"><i class='bx bx-home'></i>Home</a></li>
+            <!-- criar as proximas pages e colocar os href aqui-->
+            <li><a href="/home/postagens"><i class='bx bxs-dashboard'></i>Postagens</a></li>
+            <!-- a class active é da pagina ativada, nesse caso a home-->
+            <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i>
+                    <p class="professores">Professores</p>
+                </a></li> <!--COLOCAR O LINK DO FONT AWESOME-->
+            <li><a href="#"><i class='bx bx-info-circle'></i>Sobre</a></li>
+            <li><a href="#"><i class='bx bx-user'></i>Perfil</a></li>
+            <li><a href="#"><i class="bx bx-slider-alt"></i>Configurações</a></li>
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <form action="/auth/logout" method="GET">
+                    <button type="submit" class="logout"> <!-- botao de logout-->
+                        <i class='bx bx-log-out'></i>Sair</button>
+                </form>
+            </li>
+        </ul>
+        <!-- Fim do Menu-->
+    </div>
+    <!-- Fim da Sidebar -->
 
-        const file = input.files[0];
-        const reader = new FileReader();
+    <!-- Main -->
+    <div class="content">
+        <!-- Navbar -->
+        <nav>
+            <i class='bx bx-menu'></i>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Pesquisar..."> <!-- Barra de pesquisa-->
+                    <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+                </div>
+            </form>
+            <input type="checkbox" id="theme-toggle" hidden> <!-- Botão de mudar o tema-->
+            <label for="theme-toggle" class="theme-toggle"></label>
+            <!-- <a href="#" class="notif"> COLOCAR HREF DA PAGE DE NOTIFICAÇÕES (É uma boa criar uma página pra isso, mas depois)
+                <i class='bx bx-bell'></i>
+                <span class="count">12</span>
+            </a> -->
+            <a href="#" class="profile"> <!-- href da page de usuario -->
+                <img src="/Imagens/pug-fofo.jpg">
+                <!-- aprender o metodo para puxar a imagem do usuario, por enquanto usamos essa mesmo para representar -->
+            </a>
+        </nav>
 
-        reader.onload = function() {
-            preview.src = reader.result;
-        }
+        <!-- Fim da Navbar -->
 
-        reader.readAsDataURL(file);
-    }
+        <main>
+            {{!-- MATHEUS, o box do post deve estar dentro desse if, essas coisas dentro de chaves são os conteúdos literalmente, tu coloca eles onde tu quiser que apareçam, o img ali deve estar com o src da forma que tá ali, tá tudo pronto aqui, titulo, professor, imagem e conteúdo, divirta-se --}}
+            {{#if postagem}}
+            <ul class="insights">
+                <li class="post-home">
+                    <img src="{{postagem.img_capaPost}}" class="imagemPost" alt="Imagem da postagem"></img>
+                    <span class="info">
+                        <h3>{{postagem.nm_tituloPostagem}}</h3>
+                        <p>{{postagem.tb_professorPerfil.nm_professor}}</p>
+                        <p>{{postagem.ds_conteudoPost}}</p>
+                    </span>
+                </li>
+            {{/if}}
+            </ul>
+        </main>
 
-    async function submitForm() {
-        const postTitulo = document.getElementById('postTitulo').value;
-        const postText = document.getElementById('postText').value;
+    </div>
 
-        const input = document.getElementById('sg');
-        const file = input.files[0];
-
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = async function() {
-            const imageData = reader.result;
-            const postData = {
-                postTitulo: postTitulo,
-                postText: postText,
-                postImg: imageData
-            };
-            try {
-                const response = await axios.post('/auth/criarPostagem', postData);
-                console.log(response.data); // Imprime a resposta do servidor no console
-            } catch (error) {
-                console.error(error);
-            }
-        };
-    }
-</script>
-
+    <script src="/js/home.js"></script>
+    
+    <!-- Arrumar a rota do script, para o home.js-->
 </body>
+
 </html>

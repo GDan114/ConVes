@@ -99,22 +99,18 @@
 
             <ul class="insights">
                 {{#each postagens}}
-                <li class="post-home">
-                    {{!-- <div class="postagem">
-                        <!-- Conteúdo da postagem -->
-                        <h2>{{nm_tituloPostagem}}</h2>
-                        <p>{{ds_conteudoPost}}</p>
-                        <img src="{{img_capaPost}}" alt="Imagem da postagem"></img>
-                        <!-- Aqui você pode adicionar mais campos da postagem, como imagem, data, etc. -->
-                    </div> --}}
-                    <img src="{{img_capaPost}}" class="imagemPost" alt="Imagem da postagem"></img>
-                    <span class="info">
-                        <h3>
-                            {{nm_tituloPostagem}}
-                        </h3>
-                        <p>{{tb_professorPerfil.nm_professor}}</p>
-                    </span>
-                </li>
+                <a href="/home/postagens/{{id_postagem}}"> 
+                    <li class="post-home">
+                        <img src="{{img_capaPost}}" class="imagemPost" alt="Imagem da postagem"></img>
+                        <span class="info">
+                            <h3>
+                                {{nm_tituloPostagem}}
+                            </h3>
+                            <p>{{tb_professorPerfil.nm_professor}}</p>
+                        </span>
+                    </li>
+                </a>
+                
                 {{/each}}
 
                 {{!-- <li>
