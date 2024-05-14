@@ -133,12 +133,11 @@ desc tb_plano;
 desc tb_postagem;
 -- desc tb_assunto; --
 
-/* ÁREA DE TESTE DO BACK */
-/*DELETE FROM tb_alunoPerfil WHERE id_aluno = 7;
+/* ÁREA DE TESTE DO BACK 
+DELETE FROM tb_alunoPerfil WHERE id_aluno = 7;
 DELETE FROM tb_alunoRegistro WHERE fk_aluno = 7;
 
 DELETE FROM tb_professorPerfil WHERE id_professor = 6;
 DELETE FROM tb_professorRegistro WHERE fk_professor = 6;
 
 TRUNCATE tb_postagem;
-SELECT `id_professorRegistro`, `fk_professor`, `id_senhaProfessor`, `ds_emailProfessor`, `fk_professor` FROM `tb_professorRegistro` AS `tb_professorRegistro` WHERE `tb_professorRegistro`.`ds_emailProfessor` = 'charles@gmail.com' LIMIT 1;
