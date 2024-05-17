@@ -7,8 +7,9 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" type="image/x-icon" href="/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="/css/home.css"> <!-- arrumei o link, o ctrl click não levava pra lugar nenhum -->
+    <link rel="stylesheet" href="../public/css/home.css"> <!-- arrumei o link, o ctrl click não levava pra lugar nenhum -->
     <link rel="shortcut icon" href="/logo.png"> <!-- fodase a imagem tambem, fiquei uns 20 minutos e nao consegui colocar, FODASE  -->
+    <link rel="stylesheet" href="../public/css/perfil.css">
     <title>Perfil | ConVes</title>
 </head>
 
@@ -22,7 +23,7 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <a href="#" class="logo">
-            <img src="Imagens/barco-ConVes-preto.png" class="logo-conves" alt="logo ConVes" width="60px" id="conves">
+            <img src="../public/Imagens/barco-ConVes-preto.png" class="logo-conves" alt="logo ConVes" width="60px" id="conves">
             <!-- retirar o fundo da imagem, deixar apenas o barquinho -->
             <div class="logo-name"><span>Con</span>Ves</div>
         </a>
@@ -66,12 +67,48 @@
                 <i class='bx bx-bell'></i>
                 <span class="count">12</span>
             </a> -->
-            <a href="#" class="profile"> <!-- href da page de usuario -->
-                <img src="/Imagens/pug-fofo.jpg">
-                <!-- aprender o metodo para puxar a imagem do usuario, por enquanto usamos essa mesmo para representar -->
+            <a href="#" class="profile"> <!-- rota da page de perfil -->
+                <img src="../public/Imagens/pug-fofo.jpg">
+                <!-- colocar imagem de perfil conforme a aula do ivan --> 
             </a>
         </nav>
 
         <!-- Fim da Navbar -->
+
+        <main class="perfil">
+            <!-- Imagem do usuario e informações ao redor -->
+            <div class="bloco">
+                <div class="esquerda">
+                    <div class="cima-baixo-esquerda">
+                        <h3>Nome</h3>
+                    </div>
+                    <div class="centro-esquerda">
+                        <h3>idade</h3>
+                    </div>
+                    <div class="cima-baixo-esquerda">
+                        <h3>escolaridade</h3>
+                    </div>
+                </div>
+                <div class="centro">
+                    <div class="imagem">
+                        <img src="../public/Imagens/pug-fofo.jpg" alt="">
+                    </div> <!-- aqui vai a imagem do usuario, (aula do ivan) -->
+                </div>
+                <div class="direita">
+                    <div class="cima-baixo-direita">
+                        <h3>prof ou aluno</h3>
+                    </div>
+                    <div class="centro-direita">
+                        <h3>quanto tempo dentro do sistema</h3>
+                    </div>
+                    <div class="cima-baixo-direita">
+                        <h3>quantas postagens marcou com visto</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="bio"></div>
+
+        </main>
+    </div>
 </body>
         
