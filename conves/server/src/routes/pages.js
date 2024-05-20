@@ -23,11 +23,17 @@ router.get('/home', controller_Auth.AuthEstaLogado, async (req, res) => {
         const postagens = response.data
 
         const tipoUsuario = req.cookies.cookie_tipoUsuario
-        const idPerfil = req.cookies.cookie_tipoUsuario
+        const idPerfil = req.cookies.cookie_usuario
 
-        const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilAluno/${req.cookies.cookie_usuario}`)
-        const perfil = responsePerfil.data
-        
+        let perfil = null
+        if (tipoUsuario == 'Aluno') {
+            const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilAluno/${idPerfil}`)
+            perfil = responsePerfil.data
+        } else {
+            const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilProfessor/${idPerfil}`)
+            perfil = responsePerfil.data
+        }
+
         res.render('home', { postagens, perfil }) // Renderiza sua página HBS com os dados das postagens como contexto
     } catch (error) {
         console.error(error)
@@ -52,7 +58,18 @@ router.get('/home/postagens', controller_Auth.AuthEstaLogado, async (req, res) =
         const response = await axios.get('http://localhost:5000/auth/puxarPostagem')
         const postagens = response.data
 
-        res.render('postagens', { tipoUsuario, postagens })
+        const idPerfil = req.cookies.cookie_usuario
+
+        let perfil = null
+        if (tipoUsuario == 'Aluno') {
+            const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilAluno/${idPerfil}`)
+            perfil = responsePerfil.data
+        } else {
+            const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilProfessor/${idPerfil}`)
+            perfil = responsePerfil.data
+        }
+
+        res.render('postagens', { tipoUsuario, postagens, perfil })
     } catch(error) {
         console.error(error)
         res.status(500).send('Erro ao buscar postagens')
@@ -60,18 +77,40 @@ router.get('/home/postagens', controller_Auth.AuthEstaLogado, async (req, res) =
     
 })
 
-router.get('/home/postagens/criar', controller_Auth.AuthEstaLogado, (req, res) => {
-    const msg = req.query.msg
-    res.render('adicionarPostagem', {msg: msg})
+router.get('/home/postagens/criar', controller_Auth.AuthEstaLogado, async (req, res) => {
+        const tipoUsuario = req.cookies.cookie_tipoUsuario
+        const idPerfil = req.cookies.cookie_usuario
+
+        let perfil = null
+        if (tipoUsuario == 'Aluno') {
+            const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilAluno/${idPerfil}`)
+            perfil = responsePerfil.data
+        } else {
+            const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilProfessor/${idPerfil}`)
+            perfil = responsePerfil.data
+        }
+    res.render('adicionarPostagem', {perfil})
 })
 
 router.get('/home/postagens/:id', controller_Auth.AuthEstaLogado, async (req, res) => {
     try {
-        const idPost = req.params.id;
-        const response = await axios.get(`http://localhost:5000/auth/puxarPostagemUnica/${idPost}`);
-        const postagem = response.data;
+        const idPost = req.params.id
+        const response = await axios.get(`http://localhost:5000/auth/puxarPostagemUnica/${idPost}`)
+        const postagem = response.data
 
-        res.render('teste', { postagem });
+        const tipoUsuario = req.cookies.cookie_tipoUsuario
+        const idPerfil = req.cookies.cookie_usuario
+
+        let perfil = null
+        if (tipoUsuario == 'Aluno') {
+            const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilAluno/${idPerfil}`)
+            perfil = responsePerfil.data
+        } else {
+            const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilProfessor/${idPerfil}`)
+            perfil = responsePerfil.data
+        }
+
+        res.render('teste', { postagem, perfil });
     } catch (error) {
         console.error(error);
         res.status(500).send('Erro ao buscar a postagem');

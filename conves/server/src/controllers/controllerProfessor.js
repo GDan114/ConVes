@@ -28,7 +28,8 @@ async function CriarProfessor (req, res) {
                 rm_professor: profMatricula,
                 nm_professor: profNome,
                 cpf_prof: profCpf,
-                fk_plano: 1
+                fk_plano: 1,
+                img_fotoPerfil: '/Imagens/perfil.png'
             })
         
             const idCriado = ProfessorCriado.id_professor
@@ -150,10 +151,30 @@ async function CriarPostagem (req, resp) {
     }
 }
 
-
+async function PuxarPerfilProfessor(req, resp) {
+    try {
+        console.log(`
+        ===================================================================
+                    ${req.params.idProf}
+        ===================================================================
+        `)
+        idProf = req.params.idProf
+        const Prof = await ModelProfessorPerfil.findOne({
+            where: {
+                id_professor: idProf
+            }
+        })
+        console.log(Prof)
+        return resp.status(200).json(Prof)
+    } catch (error) {
+        console.error(error)
+        return resp.status(500).json({ message: 'Erro ao buscar perfil' })
+    }
+}
 
 module.exports = {
     CriarProfessor,
     LogarProfessor,
-    CriarPostagem
+    CriarPostagem,
+    PuxarPerfilProfessor
 }

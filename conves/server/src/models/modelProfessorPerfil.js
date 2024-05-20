@@ -31,7 +31,11 @@
                 model: 'tb_plano',
                 key: 'id_plano'
             }
-         }
+         },
+         img_fotoPerfil: {
+            type: DataTypes.TEXT('long'),
+            allowNull: false
+        }
      },
          padraoTB('tb_professorPerfil')
  )

@@ -8,6 +8,7 @@ create table if not exists tb_alunoPerfil(
 id_aluno int not null auto_increment,
 nm_aluno varchar (60) not null,
 dt_nascimento_aluno date not null,
+img_fotoPerfil longtext NOT NULL,
 constraint pk_aluno primary key (id_aluno)
 );
 
@@ -35,6 +36,7 @@ rm_professor char (5) not null,
 nm_professor varchar (40) not null, 
 cpf_prof char (14) NOT NULL,
 fk_plano int not null,
+img_fotoPerfil longtext NOT NULL,
 
 constraint pk_prof primary key (id_professor),
 constraint fk_plano foreign key (fk_plano) references tb_plano(id_plano)
@@ -74,12 +76,12 @@ constraint fk_professorAutor foreign key (fk_professorAutor) references tb_profe
 
 /*INSERT*/
 
-insert tb_alunoPerfil (nm_aluno, dt_nascimento_aluno)
-	values ('Miguel Carvalho dos Santos', '2005-05-16'),
-		   ('Danilo Dias Lobianco Soares', '2007-04-05'),
-		   ('José Ricardo Uzal dos Anjos Felix', '2007-02-22'),
-		   ('Matheus Eduardo Nascimento Santos', '2006-11-30'),
-           ('Letycia Antunes Coelho de Almeida dos Santos', '2006-12-08');
+insert tb_alunoPerfil (nm_aluno, dt_nascimento_aluno, img_fotoPerfil)
+	values ('Miguel Carvalho dos Santos', '2005-05-16', '/Imagens/perfil.png'),
+		   ('Danilo Dias Lobianco Soares', '2007-04-05', '/Imagens/perfil.png'),
+		   ('José Ricardo Uzal dos Anjos Felix', '2007-02-22', '/Imagens/perfil.png'),
+		   ('Matheus Eduardo Nascimento Santos', '2006-11-30', '/Imagens/perfil.png'),
+           ('Letycia Antunes Coelho de Almeida dos Santos', '2006-12-08', '/Imagens/perfil.png');
 		
 insert tb_alunoRegistro(fk_aluno, ds_emailAluno, id_senhaAluno)
 	values (1, 'miguel@gmail.com', 'pacoca'),
@@ -92,11 +94,11 @@ insert into tb_plano(nm_plano, vl_plano)
 	values ('Gratuito', 0),
 		   ('Premium', 30);
            
-insert into tb_professorPerfil(nm_professor, rm_professor, cpf_prof, fk_plano)
-			values ('Denise', '07443', '47457908845', 2),
-				   ('Valdirene', '05129', '47457939877', 1),
-				   ('Charles', '05333', '47404739809', 2),
-				   ('Michel', '37390', '47457990342', 1);
+insert into tb_professorPerfil(nm_professor, rm_professor, cpf_prof, fk_plano, img_fotoPerfil)
+			values ('Denise', '07443', '47457908845', 2, '/Imagens/perfil.png'),
+				   ('Valdirene', '05129', '47457939877', 1, '/Imagens/perfil.png'),
+				   ('Charles', '05333', '47404739809', 2, '/Imagens/perfil.png'),
+				   ('Michel', '37390', '47457990342', 1, '/Imagens/perfil.png');
                    
 insert into tb_professorRegistro(fk_professor, ds_emailProfessor, id_senhaProfessor)
 	values (1, 'denise@gmail.com', 'portugues'),
