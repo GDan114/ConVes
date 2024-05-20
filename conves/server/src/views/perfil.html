@@ -7,9 +7,9 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" type="image/x-icon" href="/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="../public/css/home.css"> <!-- arrumei o link, o ctrl click não levava pra lugar nenhum -->
+    <link rel="stylesheet" href="../public/css/perfil.css"> <!-- arrumei o link, o ctrl click não levava pra lugar nenhum -->
     <link rel="shortcut icon" href="/logo.png"> <!-- fodase a imagem tambem, fiquei uns 20 minutos e nao consegui colocar, FODASE  -->
-    <link rel="stylesheet" href="../public/css/perfil.css">
+    <link rel="stylesheet" href="../public/css/home.css">
     <title>Perfil | ConVes</title>
 </head>
 
@@ -24,18 +24,16 @@
     <div class="sidebar">
         <a href="#" class="logo">
             <img src="../public/Imagens/barco-ConVes-preto.png" class="logo-conves" alt="logo ConVes" width="60px" id="conves">
-            <!-- retirar o fundo da imagem, deixar apenas o barquinho -->
             <div class="logo-name"><span>Con</span>Ves</div>
         </a>
         <ul class="side-menu">
             <!-- Inicio do Menu-->
-            <li class="active"><a href="#"><i class='bx bx-home'></i>Home</a></li>
-            <!-- criar as proximas pages e colocar os href aqui-->
+            <li><a href="#"><i class='bx bx-home'></i>Home</a></li>
             <li><a href="/home/postagens"><i class='bx bxs-dashboard'></i>Postagens</a></li>
-            <!-- a class active é da pagina ativada, nesse caso a home-->
+            <!-- a class active é da pagina ativada, nesse caso a page de perfil -->
             <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> <!--COLOCAR O LINK DO FONT AWESOME-->
             <li><a href="#"><i class='bx bx-info-circle'></i>Sobre</a></li>
-            <li><a href="#"><i class='bx bx-user'></i>Perfil</a></li>
+            <li class="active"><a href="#"><i class='bx bx-user'></i>Perfil</a></li>
             <li><a href="#"><i class="bx bx-slider-alt"></i>Configurações</a></li>
         </ul>
         <ul class="side-menu">
@@ -52,7 +50,8 @@
 
     <!-- Main -->
     <div class="content">
-        <!-- Navbar -->
+
+        <!-- NAVBAR  -->
         <nav>
             <i class='bx bx-menu'></i>
             <form action="#">
@@ -63,13 +62,9 @@
             </form>
             <input type="checkbox" id="theme-toggle" hidden> <!-- Botão de mudar o tema-->
             <label for="theme-toggle" class="theme-toggle"></label>
-            <!-- <a href="#" class="notif"> COLOCAR HREF DA PAGE DE NOTIFICAÇÕES (É uma boa criar uma página pra isso, mas depois)
-                <i class='bx bx-bell'></i>
-                <span class="count">12</span>
-            </a> -->
-            <a href="#" class="profile"> <!-- rota da page de perfil -->
+            <a href="#" class="profile"> <!-- rota da page de perfil, danilo vai fazer a rota depois -->
                 <img src="../public/Imagens/pug-fofo.jpg">
-                <!-- colocar imagem de perfil conforme a aula do ivan --> 
+                <!-- puxar a imagem do perfil do usuário --> 
             </a>
         </nav>
 
@@ -91,7 +86,7 @@
                 </div>
                 <div class="centro">
                     <div class="imagem">
-                        <img src="../public/Imagens/pug-fofo.jpg" alt="">
+                        <img src="/Imagens/pug-fofo.jpg" alt="">
                     </div> <!-- aqui vai a imagem do usuario, (aula do ivan) -->
                 </div>
                 <div class="direita">
@@ -99,14 +94,17 @@
                         <h3>prof ou aluno</h3>
                     </div>
                     <div class="centro-direita">
-                        <h3>quanto tempo dentro do sistema</h3>
+                        <h3>quanto tempo dentro do sistema</h3> <!-- danilo mandou esquecer -->
                     </div>
                     <div class="cima-baixo-direita">
                         <h3>quantas postagens marcou com visto</h3>
                     </div>
                 </div>
             </div>
-            <div class="bio"></div>
+            <div class="bio">
+                <!-- CAIXA DE TEXTO ONDE VOCÊ COLOCA SUA BIO  -->
+                
+            </div>
 
         </main>
     </div>

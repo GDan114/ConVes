@@ -80,7 +80,6 @@ body{
     align-items: center;
     color: var(--conves);
     z-index: 500;
-    padding-bottom: 20px;
     box-sizing: content-box;
 }
 
@@ -713,8 +712,4 @@ body{
     width: 90px;
     height: 70px;
     border-radius: 5px;
-}
-
-.post-home{
-    width: 350px;
 }
