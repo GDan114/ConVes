@@ -22,7 +22,8 @@ async function CriarAluno(req, resp) {
         } else {
             const AlunoCriado = await ModelAlunoPerfil.create({
                 nm_aluno: alunoNome,
-                dt_nascimento_aluno: alunoData
+                dt_nascimento_aluno: alunoData,
+                img_fotoPerfilAluno: '/Imagens/perfil.png'
             }) // cria o perfil
     
             const idCriado = AlunoCriado.id_aluno // pega o id do perfil

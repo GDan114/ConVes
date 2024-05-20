@@ -18,6 +18,10 @@ const ModelAlunoPerfil = connSequelize.define( // TABELA: tb_alunoPerfil
         dt_nascimento_aluno: {
             type: DataTypes.DATE,
             allowNull: true
+        },
+        img_fotoPerfilAluno: {
+            type: DataTypes.TEXT('long'),
+            allowNull: false
         }
     },
         padraoTB('tb_alunoPerfil')
