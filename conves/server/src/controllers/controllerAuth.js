@@ -1,5 +1,7 @@
 const { ModelPostagem } = require("../models/modelPostagem")
 const { ModelProfessorPerfil } = require('../models/modelProfessorPerfil')
+const { ModelAlunoPerfil } = require('../models/modelAlunoPerfil')
+
 const { connSequelize } = require('../../config/conexaoBD')
 
 async function Logout(req, resp) {
@@ -25,28 +27,6 @@ async function PuxarPostagem(req, resp) { // Puxa todas as postagens
     }
 }
 
-// async function PuxarPostagemUnica(req, resp) { // Puxa uma única postagem pelo id dela
-//     try {
-//         const idPost = req.params.id
-
-//         if (!idPost) {
-//             return res.status(400).json({ message: 'ID da postagem não fornecido' });
-//         }
-
-//         const Postagem = await ModelPostagem.findOne({
-//             where:{ id_postagem: idPost },
-//             include: {
-//                 model: ModelProfessorPerfil,
-//                 required: true
-//             }
-//         })
-//         console.log(Postagem)
-//         return resp.status(200).json(Postagem)
-//     } catch (error) {
-//         console.error(error)
-//         return resp.status(500).json({ message: 'Erro ao buscar postagens' })
-//     }
-// }
 async function PuxarPostagemUnica(req, res) { // Puxa uma única postagem pelo id dela
     try {
         const idPost = req.params.id;
@@ -61,7 +41,7 @@ async function PuxarPostagemUnica(req, res) { // Puxa uma única postagem pelo i
                 model: ModelProfessorPerfil,
                 required: true
             }
-        });
+        })
 
         if (!Postagem) {
             return res.status(404).json({ message: 'Postagem não encontrada' });
@@ -74,7 +54,6 @@ async function PuxarPostagemUnica(req, res) { // Puxa uma única postagem pelo i
         return res.status(500).json({ message: 'Erro ao buscar postagens' });
     }
 }
-
 
 async function AuthEstaLogado(req, resp, next) {
     try{

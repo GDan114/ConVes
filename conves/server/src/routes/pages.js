@@ -22,7 +22,13 @@ router.get('/home', controller_Auth.AuthEstaLogado, async (req, res) => {
         const response = await axios.get('http://localhost:5000/auth/puxarPostagem')
         const postagens = response.data
 
-        res.render('home', { postagens }) // Renderiza sua página HBS com os dados das postagens como contexto
+        const tipoUsuario = req.cookies.cookie_tipoUsuario
+        const idPerfil = req.cookies.cookie_tipoUsuario
+
+        const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilAluno/${req.cookies.cookie_usuario}`)
+        const perfil = responsePerfil.data
+        
+        res.render('home', { postagens, perfil }) // Renderiza sua página HBS com os dados das postagens como contexto
     } catch (error) {
         console.error(error)
         res.status(500).send('Erro ao buscar postagens')

@@ -11,6 +11,8 @@ router.post('/registrarProfessor', controller_Professor.CriarProfessor) // /auth
 router.post('/logarAluno', controller_Aluno.LogarAluno) //  /auth/logarAluno
 router.post('/logarProfessor', controller_Professor.LogarProfessor) //  /auth/logarProfessor
 
+router.get('/puxarPerfilAluno/:idAluno', controller_Aluno.PuxarPerfilAluno) //   /auth/puxarPerfilAluno
+
 router.post('/criarPostagem', controller_Professor.CriarPostagem)//  /auth/criarPostagem 
 router.get('/puxarPostagem', controller_Auth.PuxarPostagem)//  /auth/puxarPostagem
 router.get('/puxarPostagemUnica/:id', controller_Auth.PuxarPostagemUnica) //   /auth/puxarPostagemUnica

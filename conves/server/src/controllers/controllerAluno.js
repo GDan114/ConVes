@@ -22,7 +22,8 @@ async function CriarAluno(req, resp) {
         } else {
             const AlunoCriado = await ModelAlunoPerfil.create({
                 nm_aluno: alunoNome,
-                dt_nascimento_aluno: alunoData
+                dt_nascimento_aluno: alunoData,
+                img_fotoPerfil: '/Imagens/perfil.png'
             }) // cria o perfil
     
             const idCriado = AlunoCriado.id_aluno // pega o id do perfil
@@ -111,7 +112,25 @@ async function LogarAluno(req, resp) {
     }
 }
 
+async function PuxarPerfilAluno(req, resp) {
+    try {
+        idAluno = req.params.idAluno
+        const Aluno = await ModelAlunoPerfil.findOne({
+            where: {
+                id_aluno: idAluno
+            }
+        })
+        console.log(Aluno)
+        return resp.status(200).json(Aluno)
+    } catch (error) {
+        console.error(error)
+        return resp.status(500).json({ message: 'Erro ao buscar perfil' })
+    }
+}
+
+
 module.exports = {
     CriarAluno,
-    LogarAluno
+    LogarAluno,
+    PuxarPerfilAluno
 }
