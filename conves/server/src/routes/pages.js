@@ -27,7 +27,17 @@ router.get('/home', controller_Auth.AuthEstaLogado, async (req, res) => {
         console.error(error)
         res.status(500).send('Erro ao buscar postagens')
     }
-});
+})
+
+router.get('/home/perfil', controller_Auth.AuthEstaLogado, async (req, res) => {
+    try {
+
+        res.render('perfil')
+    } catch (error) {
+        console.error(error)
+        res.status(500).send('Erro ao buscar perfil')
+    }
+})
 
 router.get('/home/postagens', controller_Auth.AuthEstaLogado, async (req, res) => {
     try {
