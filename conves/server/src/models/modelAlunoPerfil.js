@@ -19,7 +19,7 @@ const ModelAlunoPerfil = connSequelize.define( // TABELA: tb_alunoPerfil
             type: DataTypes.DATE,
             allowNull: true
         },
-        img_fotoPerfilAluno: {
+        img_fotoPerfil: {
             type: DataTypes.TEXT('long'),
             allowNull: false
         }

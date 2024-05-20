@@ -141,7 +141,6 @@ async function CriarPostagem (req, resp) {
         //return resp.redirect('/home/postagens/criar?msg=Postagem criada com sucesso.')
         return Post
 
-
     } catch(erro) {
         console.error(erro)
         console.log(req.body)
