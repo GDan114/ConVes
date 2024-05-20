@@ -20,9 +20,9 @@
         <div class="form-container sign-up">
             <form action="/auth/registrarProfessor" method="POST" id="form-cadastro">
                 <h1>Cadastro</h1>
-                <div class="social-icons">
+                {{!-- <div class="social-icons">
                     <a href="#" class="icon"><i class="fa-brands fa-microsoft"></i></a> <!-- COLOCAR HREF COM  A API DA MICROSOFT -->
-                </div> 
+                </div>  --}}
                 <span><b>PROFESSOR</b></span>
                 <input type="text" placeholder="Nome" pattern="^[a-zA-Z ]+$" name="profNome" required> <!-- VALIDAR OS INPUTS PARA AMANHÃ-->
                 <input type="text" placeholder="Matrícula" minlength="5" maxlength="5" name="profMatricula" id="inputMatricula" required>
