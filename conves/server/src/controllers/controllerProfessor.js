@@ -172,9 +172,31 @@ async function PuxarPerfilProfessor(req, resp) {
     }
 }
 
+async function PuxarNumPosts(req, resp) {
+    try {
+        idProf = req.params.idProf
+
+        const { count, rows } = await ModelPostagem.findAndCountAll({
+            include: {
+                model: ModelProfessorPerfil,
+                required: true,
+                where: {
+                    id_professor: idProf
+                }
+            }
+        })
+
+        return resp.status(200).json(count)
+    } catch (error) {
+        console.error(error)
+        return resp.status(500).json({ message: 'Erro na busca' })
+    }
+}
+
 module.exports = {
     CriarProfessor,
     LogarProfessor,
     CriarPostagem,
-    PuxarPerfilProfessor
+    PuxarPerfilProfessor,
+    PuxarNumPosts
 }
