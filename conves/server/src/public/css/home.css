@@ -391,9 +391,11 @@ body{
 
 .content main .insights{
     display: grid;
+    width: 100%;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     grid-gap: 24px;
     margin-top: 36px;
+    
 }
 
 .content main .insights li{
@@ -404,6 +406,11 @@ body{
     align-items: center;
     grid-gap: 24px;
     cursor: pointer;
+    width: 100%;
+}
+
+.content main .insights a{
+    width: 380px;
 }
 
 .content main .insights li .bx{

@@ -24,17 +24,16 @@
             <li><a href="/home"><i class='bx bx-home' ></i>Home</a></li>
             <li class="active"><a href="#"><i class='bx bxs-dashboard'></i>Postagens</a></li> <!-- a class active é da pagina ativada, nesse caso a page de postagens-->
             <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> <!-- colocar os href das proximas pages quando estiverem feitas-->
-            <li><a href="#"><i class='bx bx-info-circle'></i>Sobre</a></li>
+            <li><a href="#"><i class='bx bx-info-circle'></i>Sobre</a></li> <!-- próximas páginas a serem feitas serão a de professor e sobre a ConVes -->
             <li><a href="/home/perfil"><i class='bx bx-user'></i>Perfil</a></li>
-            <li><a href="#"><i class="bx bx-slider-alt"></i>Configurações</a></li>
+            <li><a href="#"><i class="bx bx-slider-alt"></i>Configurações</a></li> <!-- procurar referencias e configurações para fazer parte da page de config  -->
         </ul>
         <ul class="side-menu">
             <li>
                 <form action="/auth/logout" method="GET">
                     <button type="submit" class="logout"> <!-- botao de logout-->
                 <i class='bx bx-log-out'></i>Sair</button>
-                </form> <!-- btn sair da conta -->
-                <!-- no caso, não é um botao -->
+                </form> 
             </li>
         </ul>
         <!-- Fim do Menu-->
@@ -54,14 +53,14 @@
             </form>
             <input type="checkbox" id="theme-toggle" hidden> <!-- Botão de mudar o tema-->
             <label for="theme-toggle" class="theme-toggle"></label>
-            <a href="#" class="profile"> <!-- href da page de usuario -->
-                <img src="{{perfil.img_fotoPerfil}}">
+            <a href="/home/perfil" class="profile"> 
+                <img src="{{perfil.img_fotoPerfil}}"> <!-- IMAGEM DO USUARIO --> 
             </a>
         </nav>
 
         <!-- Fim da Navbar -->
 
-        <main> <!-- criar o corpo dessa page --> 
+        <main> 
         <div class="header">
                 <div class="left">
                     <h1>Postagens</h1>
@@ -84,7 +83,7 @@
         </ul>
     </div>
 
-            <!-- escolher um carrossel para colocar as postagens, aprender a maneira de como puxar a postagem do professor--> 
+            <!-- criar uma espécie de filtro para as postagens --> 
             {{#isProfessor tipoUsuario}}
              <a href="/home/postagens/criar"><button type="submit" class="adicionarPostagem" id="adicionarPostagem" name="adicionarPostagem">
                 <i class="fa-solid fa-plus"></i> <!-- simbolo de + que vai ficar dentro do botao de adicionar postagem -->
@@ -94,7 +93,7 @@
 
     </div>
  
-    <script src="/js/home.js"></script><!-- script dessa pagina serve para as funcionalidades da postagem, incluindo o script da funcionalidade do carrossel sla--> 
+    <script src="/js/home.js"></script>
 </body>
 
 </html>

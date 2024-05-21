@@ -411,7 +411,12 @@ body{
     align-items: center;
     grid-gap: 24px;
     cursor: pointer;
+    width: 380px;
 }
+
+.content main .insights a{
+    width: 380px;
+} 
 
 .content main .insights li .bx{
     width: 80px;

@@ -24,12 +24,11 @@
                     <a href="#" class="icon"><i class="fa-brands fa-microsoft"></i></a> <!-- COLOCAR HREF COM  A API DA MICROSOFT -->
                 </div>  --}}
                 <span><b>PROFESSOR</b></span>
-                <input type="text" placeholder="Nome" pattern="^[a-zA-Z ]+$" name="profNome" required> <!-- VALIDAR OS INPUTS PARA AMANHÃ-->
+                <input type="text" placeholder="Nome" pattern="^[a-zA-Z ]+$" name="profNome" required> 
                 <input type="text" placeholder="Matrícula" minlength="5" maxlength="5" name="profMatricula" id="inputMatricula" required>
-                <input type="" placeholder="Cpf" name="profCpf"  maxlength="11" required> <!-- COLOCAR O TYPE QUE SE ENCAIXA COM CPF, E VALIDAR-->
+                <input type="text" id="cpf" placeholder="Cpf" name="profCpf"  maxlength="11"  required> 
                 <input type="email" placeholder="Email" name="profEmail" required>
                 <input type="password" placeholder="Senha" minlength="8" maxlength="12" name="profSenha" required>
-                <!-- <input type="password" placeholder="Confirmar senha"> COLOCAR NA PRÓXIMA BANCA -->
                 <button type="submit" class="botao">Criar conta</button>
                 <!--TENTAR COLOCAR UM BOTÃO DE VOLTAR-->
             </form>
@@ -78,6 +77,9 @@
     event.preventDefault();
   }
 });
+    </script>
+    <script> // fazer a validação do input do cpf nesse script
+        
     </script>
     <img src="/Imagens/ConVes-preto.png" alt="Logo ConVes" class="logo">
 </body>
