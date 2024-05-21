@@ -7,9 +7,9 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" type="image/x-icon" href="/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="../public/css/perfil.css"> <!-- arrumei o link, o ctrl click não levava pra lugar nenhum -->
-    <link rel="shortcut icon" href="/logo.png"> <!-- fodase a imagem tambem, fiquei uns 20 minutos e nao consegui colocar, FODASE  -->
-    <link rel="stylesheet" href="../public/css/home.css">
+    <link rel="stylesheet" href="/css/perfil.css"> <!-- arrumei o link, o ctrl click não levava pra lugar nenhum -->
+    <link rel="shortcut icon" href="/Imagens/logo.png"> <!-- fodase a imagem tambem, fiquei uns 20 minutos e nao consegui colocar, FODASE  -->
+    <link rel="stylesheet" href="/css/home.css">
     <title>Perfil | ConVes</title>
 </head>
 
@@ -23,7 +23,7 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <a href="#" class="logo">
-            <img src="../public/Imagens/barco-ConVes-preto.png" class="logo-conves" alt="logo ConVes" width="60px" id="conves">
+            <img src="/Imagens/barco-ConVes-preto.png" class="logo-conves" alt="logo ConVes" width="60px" id="conves">
             <div class="logo-name"><span>Con</span>Ves</div>
         </a>
         <ul class="side-menu">
@@ -63,7 +63,7 @@
             <input type="checkbox" id="theme-toggle" hidden> <!-- Botão de mudar o tema-->
             <label for="theme-toggle" class="theme-toggle"></label>
             <a href="#" class="profile"> <!-- rota da page de perfil, danilo vai fazer a rota depois -->
-                <img src="../public/Imagens/pug-fofo.jpg">
+                <img src="/Imagens/pug-fofo.jpg">
                 <!-- puxar a imagem do perfil do usuário --> 
             </a>
         </nav>
@@ -72,16 +72,17 @@
 
         <main class="perfil">
             <!-- Imagem do usuario e informações ao redor -->
+            {{#isProfessor tipoUsuario}}
             <div class="bloco">
                 <div class="esquerda">
                     <div class="cima-baixo-esquerda">
-                        <h3>Nome</h3>
+                        <h3>{{perfil.nm_professor}}</h3>
                     </div>
                     <div class="centro-esquerda">
-                        <h3>idade</h3>
+                        <h3>{{perfil.rm_professor}}</h3>
                     </div>
                     <div class="cima-baixo-esquerda">
-                        <h3>escolaridade</h3>
+                        <h3>{{perfil.cpf_prof}}</h3>
                     </div>
                 </div>
                 <div class="centro">
@@ -91,16 +92,17 @@
                 </div>
                 <div class="direita">
                     <div class="cima-baixo-direita">
-                        <h3>prof ou aluno</h3>
+                        <h3>Professor</h3>
                     </div>
                     <div class="centro-direita">
-                        <h3>quanto tempo dentro do sistema</h3> <!-- danilo mandou esquecer -->
+                        <h3>Postagens realizadas: {{numPosts}}</h3> <!-- danilo mandou esquecer -->
                     </div>
                     <div class="cima-baixo-direita">
                         <h3>quantas postagens marcou com visto</h3>
                     </div>
                 </div>
             </div>
+            {{/isProfessor}}
             <div class="bio">
                 <!-- CAIXA DE TEXTO ONDE VOCÊ COLOCA SUA BIO  -->
                 
