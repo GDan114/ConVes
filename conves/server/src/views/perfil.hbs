@@ -28,12 +28,12 @@
         </a>
         <ul class="side-menu">
             <!-- Inicio do Menu-->
-            <li><a href="#"><i class='bx bx-home'></i>Home</a></li>
+            <li><a href="/home"><i class='bx bx-home'></i>Home</a></li>
             <li><a href="/home/postagens"><i class='bx bxs-dashboard'></i>Postagens</a></li>
             <!-- a class active é da pagina ativada, nesse caso a page de perfil -->
             <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> <!--COLOCAR O LINK DO FONT AWESOME-->
             <li><a href="#"><i class='bx bx-info-circle'></i>Sobre</a></li>
-            <li class="active"><a href="#"><i class='bx bx-user'></i>Perfil</a></li>
+            <li class="active"><a href="/home/perfil"><i class='bx bx-user'></i>Perfil</a></li>
             <li><a href="#"><i class="bx bx-slider-alt"></i>Configurações</a></li>
         </ul>
         <ul class="side-menu">
@@ -63,7 +63,7 @@
             <input type="checkbox" id="theme-toggle" hidden> <!-- Botão de mudar o tema-->
             <label for="theme-toggle" class="theme-toggle"></label>
             <a href="#" class="profile"> <!-- rota da page de perfil, danilo vai fazer a rota depois -->
-                <img src="/Imagens/pug-fofo.jpg">
+                <img src="{{perfil.img_fotoPerfil}}">
                 <!-- puxar a imagem do perfil do usuário --> 
             </a>
         </nav>
@@ -76,18 +76,18 @@
             <div class="bloco">
                 <div class="esquerda">
                     <div class="cima-baixo-esquerda">
-                        <h3>{{perfil.nm_professor}}</h3>
+                        <h3>Nome: {{perfil.nm_professor}}</h3>
                     </div>
                     <div class="centro-esquerda">
-                        <h3>{{perfil.rm_professor}}</h3>
+                        <h3>RM: {{perfil.rm_professor}}</h3>
                     </div>
                     <div class="cima-baixo-esquerda">
-                        <h3>{{perfil.cpf_prof}}</h3>
+                        <h3>CPF: {{perfil.cpf_prof}}</h3>
                     </div>
                 </div>
                 <div class="centro">
                     <div class="imagem">
-                        <img src="/Imagens/pug-fofo.jpg" alt="">
+                        <img src="{{perfil.img_fotoPerfil}}" alt="">
                     </div> <!-- aqui vai a imagem do usuario, (aula do ivan) -->
                 </div>
                 <div class="direita">
@@ -110,5 +110,8 @@
 
         </main>
     </div>
+
+    <script src="/js/home.js"></script>
+
 </body>
         
