@@ -7,9 +7,9 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" type="image/x-icon" href="/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="../public/css/perfil.css"> <!-- arrumei o link, o ctrl click não levava pra lugar nenhum -->
+    <link rel="stylesheet" href="/css/perfil.css"> <!-- arrumei o link, o ctrl click não levava pra lugar nenhum -->
     <link rel="shortcut icon" href="/logo.png"> <!-- fodase a imagem tambem, fiquei uns 20 minutos e nao consegui colocar, FODASE  -->
-    <link rel="stylesheet" href="../public/css/home.css">
+    <link rel="stylesheet" href="/css/home.css">
     <title>Perfil | ConVes</title>
 </head>
 
@@ -23,7 +23,7 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <a href="#" class="logo">
-            <img src="../public/Imagens/barco-ConVes-preto.png" class="logo-conves" alt="logo ConVes" width="60px" id="conves">
+            <img src="/Imagens/barco-ConVes-preto.png" class="logo-conves" alt="logo ConVes" width="60px" id="conves">
             <div class="logo-name"><span>Con</span>Ves</div>
         </a>
         <ul class="side-menu">
@@ -85,9 +85,16 @@
                     </div>
                 </div>
                 <div class="centro">
-                    <div class="imagem">
-                        <img src="/Imagens/pug-fofo.jpg" alt="">
-                    </div> <!-- aqui vai a imagem do usuario, (aula do ivan) -->
+                    {{!-- TESTE DO UPLOAD DE IMAGEM  --}}
+                        <form action="">
+                            <input class="input" id="sg" type="file" accept="image/*" name="postImg" required onchange="previewImage(event)">
+                            <label class="select-img" for="sg">
+                                <img class="preview-img" id="preview" src="" alt="" style="max-width: 300px; max-height: 600px;">
+                            </label>
+                        </form>
+                    {{!-- FIM TESTE DO UPLOAD DE IMAGEM --}}
+                    
+                    
                 </div>
                 <div class="direita">
                     <div class="cima-baixo-direita">
@@ -102,7 +109,14 @@
                 </div>
             </div>
             <div class="bio">
-                <!-- CAIXA DE TEXTO ONDE VOCÊ COLOCA SUA BIO  -->
+                <form action="">
+                    <input type="text" placeholder="Nome">
+                    <input type="text" placeholder="RM">
+                    <input type="text" placeholder="CPF">
+                    <input type="text">
+                    <input type="text">
+                    <input type="text">
+                </form>
                 
             </div>
 

@@ -88,7 +88,6 @@
     width: 80%;
     height: 300px;
     border-radius: 30px;
-    background: linear-gradient(to right, #e2e2e2, #c9d6ff);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
     
 }
@@ -103,7 +102,27 @@
 nav {
     width: calc(100%);
     position: absolute;
-    transform: translateY(-25px);
-    /* NÃO ÉO ADEQUADO  */
     top: 0px;
 }
+
+input[type='file']{
+    display: none;
+}
+
+
+.select-img {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff4646;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    margin: 10px;
+    padding: 6px 20px;
+  }
+
+
