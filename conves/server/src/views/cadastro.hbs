@@ -29,9 +29,48 @@
                 <input type="text" id="cpf" placeholder="Cpf" name="profCpf"  maxlength="11"  required> 
                 <input type="email" placeholder="Email" name="profEmail" required>
                 <input type="password" placeholder="Senha" minlength="8" maxlength="12" name="profSenha" required>
-                <button type="submit" class="botao">Criar conta</button>
+                <button type="submit" onclick="validarCPF()" class="botao">Criar conta</button>
                 <!--TENTAR COLOCAR UM BOTÃO DE VOLTAR-->
             </form>
+            <script>
+    function validarCPF() {
+        var cpf = document.getElementById('cpf').value.replace(/[^\d]/g, ''); // Remove caracteres não numéricos
+        if (cpf.length !== 11) {
+            document.getElementById('resultado').innerText = 'CPF inválido.';
+            return;
+        }
+        if (cpf === '00000000000' || cpf === '11111111111' || cpf === '22222222222' || cpf === '33333333333' ||
+            cpf === '44444444444' || cpf === '55555555555' || cpf === '66666666666' || cpf === '77777777777' ||
+            cpf === '88888888888' || cpf === '99999999999') {
+            document.getElementById('resultado').innerText = 'CPF inválido.';
+            return;
+        }
+
+        // Calcula o primeiro dígito verificador
+        var soma = 0;
+        for (var i = 0; i < 9; i++) {
+            soma += parseInt(cpf.charAt(i)) * (10 - i);
+        }
+        var digito1 = 11 - (soma % 11);
+        if (digito1 > 9) digito1 = 0;
+
+        // Calcula o segundo dígito verificador
+        soma = 0;
+        for (var i = 0; i < 10; i++) {
+            soma += parseInt(cpf.charAt(i)) * (11 - i);
+        }
+        var digito2 = 11 - (soma % 11);
+        if (digito2 > 9) digito2 = 0;
+
+        // Verifica se os dígitos verificadores estão corretos
+        if (parseInt(cpf.charAt(9)) === digito1 && parseInt(cpf.charAt(10)) === digito2) {
+            document.getElementById('resultado').innerText = 'CPF válido.';
+        } else {
+            alert("deu ruim,");
+        }
+    }
+</script>
+    <p id="resultado"></p>
         </div>
         <div class="form-container sign-in">
             <form action="/auth/registrarAluno" method="POST"> 
@@ -81,7 +120,9 @@
     <script> // fazer a validação do input do cpf nesse script
         
     </script>
-    <img src="/Imagens/ConVes-preto.png" alt="Logo ConVes" class="logo">
+    <a href=""> <!-- fazer a rota para voltar para a lading page (DANILO EU TE AMO)-->
+        <img src="/Imagens/ConVes-preto.png" alt="Logo ConVes" class="logo">
+    </a>
 </body>
 
 </html>

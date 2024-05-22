@@ -71,7 +71,6 @@
             <!-- formulario para enviar a postagem, uso exclusivo do professor --> 
             
             <form class="postForm" id="postForm" action="/auth/criarPostagem" method="POST">
-                {{!-- <label for="postTitulo">Titulo da postagem: </label> --}}
                 <input type="text" class="title-post" name="postTitulo" id="postTitulo" placeholder="Titulo da postagem..." required>
                 <br><br>
                 <input class="input" id="sg" type="file" accept="image/*" name="postImg" required onchange="previewImage(event)">
@@ -79,8 +78,6 @@
                 <br><br>
                 <img class="preview-img" id="preview" src="" alt="Preview da imagem" style="max-width: 300px; max-height: 600px;">
                 <br><br>
-                {{!-- <label for="postText">Conteúdo da postagem: </label> --}}
-                {{!-- <input type="text" name="postText" id="postText" required> --}}
                 <textarea rows="2"  placeholder="Insira o conteúdo aqui..." name="postText" id="postText"></textarea>
                 <br><br>
                 <button type="button" onclick="submitForm()">Enviar</button>

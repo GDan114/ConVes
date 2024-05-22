@@ -16,7 +16,7 @@ async function CriarAluno(req, resp) {
         const AlunoProposto = await ModelAlunoRegistro.findOne({
             where: {ds_emailAluno: alunoEmail}
         })
-
+        
         if(AlunoProposto) {
             return resp.redirect('/registrar?erro=Erro no registro, email já registrado no sistema!')
         } else {

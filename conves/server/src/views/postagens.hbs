@@ -22,7 +22,7 @@
         <ul class="side-menu">
             <!-- Inicio do Menu-->
             <li><a href="/home"><i class='bx bx-home' ></i>Home</a></li>
-            <li class="active"><a href="#"><i class='bx bxs-dashboard'></i>Postagens</a></li> <!-- a class active é da pagina ativada, nesse caso a page de postagens-->
+            <li class="active"><a href="/home/postagens"><i class='bx bxs-dashboard'></i>Postagens</a></li> <!-- a class active é da pagina ativada, nesse caso a page de postagens-->
             <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> <!-- colocar os href das proximas pages quando estiverem feitas-->
             <li><a href="#"><i class='bx bx-info-circle'></i>Sobre</a></li> <!-- próximas páginas a serem feitas serão a de professor e sobre a ConVes -->
             <li><a href="/home/perfil"><i class='bx bx-user'></i>Perfil</a></li>
@@ -69,6 +69,7 @@
     <div class="carousel">
         <ul class="insights">
             {{#each postagens}}
+            <a href="/home/postagens/{{id_postagem}}">
                 <li class="posts">
                     <img src="{{img_capaPost}}" class="imagemPost" alt="Imagem da postagem"></img>
                     <span class="info">
@@ -78,6 +79,7 @@
                         <p>{{tb_professorPerfil.nm_professor}}</p>
                     </span>
                 </li>
+            </a>
                 
                 {{/each}}
         </ul>
@@ -86,7 +88,7 @@
             <!-- criar uma espécie de filtro para as postagens --> 
             {{#isProfessor tipoUsuario}}
              <a href="/home/postagens/criar"><button type="submit" class="adicionarPostagem" id="adicionarPostagem" name="adicionarPostagem">
-                <i class="fa-solid fa-plus"></i> <!-- simbolo de + que vai ficar dentro do botao de adicionar postagem -->
+                <i class="fa-solid fa-plus"></i> 
             </button></a> 
             {{/isProfessor}}
         </main>
