@@ -1,0 +1,86 @@
+/*Apenas um teste */
+
+main{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.cima {
+    height: calc(100%/3);
+}
+
+.linha-cima{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    gap: 30px;
+}
+
+.esquerda-cima {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-direction: row;
+    height: calc(60%);
+    width: calc(70%);
+    border-radius: 20px;
+    padding: 20px;
+    color: #ff4646;
+}
+
+.direita-cima {
+    width: calc(30%);
+    height: calc(60%);
+    border-radius: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.350);
+    padding: 20px;
+}
+
+.row {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagem-perfil img {
+    height: 130px;
+    width: 130px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.estrela {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 75px;
+    top: 290px;
+}
+
+

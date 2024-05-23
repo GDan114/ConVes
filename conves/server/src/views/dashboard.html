@@ -1,0 +1,147 @@
+<!-- APENAS UM CÓDIGO DE TESTE PARA A DASHBOARD DO PROFESSOR -->
+  <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" type="image/x-icon" href="/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../public/css/dashboard.css">
+    <link rel="stylesheet" href="../public/css/home.css"> <!-- arrumei o link, o ctrl click não levava pra lugar nenhum -->
+    <link rel="shortcut icon" href="/logo.png"> <!-- fodase a imagem tambem, fiquei uns 20 minutos e nao consegui colocar, FODASE  -->
+    <title>Dashboard | ConVes</title>
+</head>
+
+<body>
+    <!-- {{#if erro}}
+        <script>
+            window.alert("{{erro}}");
+        </script>
+    {{/if}} -->
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="#" class="logo">
+            <img src="Imagens/barco-ConVes-preto.png" class="logo-conves" alt="logo ConVes" width="60px" id="conves">
+            <!-- retirar o fundo da imagem, deixar apenas o barquinho -->
+            <div class="logo-name"><span>Con</span>Ves</div>
+        </a>
+        <ul class="side-menu">
+            <!-- Inicio do Menu-->
+            <li><a href="#"><i class='bx bx-home'></i>Home</a></li>
+            <!-- criar as proximas pages e colocar os href aqui-->
+            <li><a href="/home/postagens"><i class='bx bxs-dashboard'></i>Postagens</a></li>
+            <!-- a class active é da pagina ativada, nesse caso a home-->
+            <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> 
+            <li><a href="#"><i class='bx bx-info-circle'></i>Sobre</a></li>
+            <li><a href="/home/perfil"><i class='bx bx-user'></i>Perfil</a></li>
+            <li><a href="#"><i class="bx bx-slider-alt"></i>Configurações</a></li> <!-- criar a rota da page de configurações --> 
+        </ul> 
+        <ul class="side-menu">
+            <li>
+                <form action="/auth/logout" method="GET">
+                    <button type="submit" class="logout"> <!-- botao de logout-->
+                        <i class='bx bx-log-out'></i>Sair</button>
+                </form> 
+            </li>
+        </ul>
+        <!-- Fim do Menu-->
+    </div>
+    <!-- Fim da Sidebar -->
+
+    <!-- Main -->
+    <div class="content">
+        <!-- Navbar -->
+        <nav>
+            <i class='bx bx-menu'></i>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Pesquisar..."> <!-- Barra de pesquisa-->
+                    <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+                </div>
+            </form>
+            <input type="checkbox" id="theme-toggle" hidden> <!-- Botão de mudar o tema-->
+            <label for="theme-toggle" class="theme-toggle"></label>
+            <!-- <a href="#" class="notif"> COLOCAR HREF DA PAGE DE NOTIFICAÇÕES (É uma boa criar uma página pra isso, mas depois)
+                <i class='bx bx-bell'></i>
+                <span class="count">12</span>
+            </a> -->
+            <a href="/home/perfil" class="profile"> 
+                <img src="{{perfil.img_fotoPerfil}}">
+                <!-- aprender o metodo para puxar a imagem do usuario, por enquanto usamos essa mesmo para representar -->
+            </a>
+        </nav>
+
+        <!-- Fim da Navbar -->
+
+        <main>
+            <!-- cada page tem sua base e o conteúdo de cada page fica no main --> 
+
+            <!-- TESTE DA DASHBOARD --> 
+            <!-- SE DER CERTO, ESSE MAIN INTEIRO VAI PARA A HOME --> 
+            
+            <div class="cima">
+                <h2>Dashboard</h2>
+                <div class="linha-cima">
+                    <div class="esquerda-cima">
+                        <h4>views</h4>
+                        <h4>seguidores</h4>
+                        <h4>posts</h4>
+                    </div>
+                    <div class="direita-cima">
+                        <div class="row">
+                            <div class="left">
+                                <h2>Professor</h2>
+                                <h4>Nome do professor</h4>
+                            </div>
+                            <div class="right">
+                                <div class="imagem-perfil">
+                                    <img src="../public/Imagens/pug-fofo.jpg" alt=""> <!-- imagem do perfil do usuario -->
+                                    <span>
+                                        <div class="estrela">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <rect width="24" height="24" fill="url(#pattern0_651_3)"/>
+                                            <defs>
+                                            <pattern id="pattern0_651_3" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                            <use xlink:href="#image0_651_3" transform="scale(0.0416667)"/>
+                                            </pattern>
+                                            <image id="image0_651_3" width="24" height="24" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAHDSURBVEiJtdbNS1RRGMfxz3OdiVoERYusjWAERdgdyV246GXRKszct436L9wqBAnVH9AqKiGKgqIWtpRQI1xZtEpCyGqVk3NalDJj3rni6AN3c57z+37vC+fcE7ZQKQlzrmPk39BDp92LkLaSLxfMGk+z0oZrbCvZKIVPO6LqM6obWnV1PTHgS7t8VnoLewxvAoeqqitl8XJBMtym266HkleU5h2yYhGVgimr6rpjwFIRowLpk71+uqThmKwJtuJkGzh0qRpPc+bXRxp+yyzY53kc9yvSOz26vEZvu6fZRi2oOB9pxqQwtMPwvxUmI836gf27IuB7huVdgq8LJnZRMJFFbkwYRWMHwQ1hNHLj6+sgzTgn3MfRDuFfcS1yL2hayVHzRl0uPOsA/kpFvgZvEUAMWNLo4JskY3HKYvPQZntR6f5SWNn/2RZBSjLh8rYFyVB6oKtQ4L1BdG9bwGEnnC0WNFzsAL5WF4oFHCwJ38WdtjOSA8WCzMuC2DJGIncjcjclV/GtQNDCaBX0eYLbtJwW3mroj9yjtYGoeWxVP6Za0MmtqHnajNz0j5bm9OEMPuoz1e54kmYNolcyHTUfNvb/AF/tfJlZCvM0AAAAAElFTkSuQmCC"/>
+                                            </defs>
+                                            </svg>
+                                                
+                                             
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="meio">
+                <div class="linha-meio">
+                    <div class="esquerda-linha-meio">
+
+                    </div>
+                    <div class="direira-linha-meio">
+
+                    </div>
+                </div>
+            </div>
+            <div class="baixo">
+                
+            </div>
+                
+
+        </main>
+
+    </div>
+
+    <script src="/js/home.js"></script>
+    
+    <!-- Arrumar a rota do script, para o home.js-->
+</body>
+
+</html>
