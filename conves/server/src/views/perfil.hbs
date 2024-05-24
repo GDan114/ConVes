@@ -104,11 +104,73 @@
             </div>
             
             {{/isProfessor}}
+            {{#isAluno tipoUsuario}}
             <div class="bio">
-                 
-                
+                {{!-- FORM DE ALUNO, DEPOIS COLOCAR UM isAluno --}}
+                 <form class="postForm" id="postForm" action="/auth/editarAluno" method="POST">
+                    <input type="text" placeholder="Nome" pattern="^[a-zA-Z ]+$" id="alunoNome" name="alunoNome" required>
+                    <br><br>
+                    <input type="date" placeholder="Data de nascimento" id="alunoData" name="alunoData" required>
+                    <br><br>
+                    <input type="email" placeholder="Email" id="alunoEmail" name="alunoEmail" required>
+                    <br><br>
+                    <input type="password" placeholder="Senha" minlength="8" maxlength="12" id="alunoSenha" name="alunoSenha" required>
+                    <br><br>
+                    <input class="input" id="sg" type="file" accept="image/*" name="capaImg" required onchange="previewImage(event)">
+                    <label class="select-img" for="sg">Selecionar imagem</label>
+                    <br><br>
+                    <img class="preview-img" id="preview" src="" alt="Preview da imagem" style="max-width: 300px; max-height: 600px;">
+                    <br><br>
+                    <br><br>
+                    <button type="button" onclick="submitForm()">Enviar</button>
+                </form>
             </div>
+            {{/isAluno}}
+            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script>
+            function previewImage(event) {
+                const input = event.target;
+                const preview = document.getElementById('preview');
 
+                const file = input.files[0];
+                const reader = new FileReader();
+
+                reader.onload = function() {
+                    preview.src = reader.result;
+                }
+
+                reader.readAsDataURL(file);
+            }
+
+            async function submitForm() {
+                const alunoNome = document.getElementById('alunoNome').value;
+                const alunoData = document.getElementById('alunoData').value;
+                const alunoEmail = document.getElementById('alunoEmail').value;
+                const alunoSenha = document.getElementById('alunoSenha').value;
+
+                const input = document.getElementById('sg');
+                const file = input.files[0];
+
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = async function() {
+                    const imageData = reader.result;
+                    const postData = {
+                        alunoNome: alunoNome,
+                        alunoData: alunoData,
+                        alunoEmail: alunoEmail,
+                        alunoSenha: alunoSenha,
+                        capaImg: imageData
+                    };
+                    try {
+                        const response = await axios.post('/auth/editarAluno', postData);
+                        console.log(response.data); // Imprime a resposta do servidor no console
+                    } catch (error) {
+                        console.error(error);
+                    }
+                };
+            }
+        </script>
         </main>
     </div>
 
