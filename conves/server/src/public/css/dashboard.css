@@ -5,10 +5,13 @@ main{
     height: 100vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .cima {
     height: calc(100%/3);
+    width: 100%;
+    padding: 20px;
 }
 
 .linha-cima{
@@ -18,27 +21,43 @@ main{
     height: 100%;
     width: 100%;
     gap: 30px;
+    padding: 0;
 }
 
 .esquerda-cima {
+    background-color: white;
+    box-shadow: 0 0 10px #00000023;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    height: 70%;
     gap: 40px;
     flex-direction: row;
-    height: calc(60%);
-    width: calc(70%);
+    width: 70%;
     border-radius: 20px;
-    padding: 20px;
     color: #ff4646;
 }
 
+.views, .seguidores, .posts {
+    background: linear-gradient(to right, #ff4646e8, #a82d2de8);
+    width: calc(80%/3);
+    height: calc(80%);
+    display: flex;
+    justify-content: center;
+    color: white;
+    align-items: center;
+    border-radius: 15px;
+    /* box-shadow: 0 5px 10px #00000023; */
+    box-shadow: 0px 0px 20px -3px rgba(0, 0, 0, 0.411);
+}
+
 .direita-cima {
+    background: linear-gradient(to right, #ff4646, #a82d2d);
+    color: white;
     width: calc(30%);
-    height: calc(60%);
+    height: calc(70%);
     border-radius: 20px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.350);
-    padding: 20px;
+    box-shadow: 0px 0px 20px -3px rgba(0,0,0,0.13);
 }
 
 .row {
@@ -66,7 +85,6 @@ main{
     height: 130px;
     width: 130px;
     border-radius: 50%;
-    position: relative;
 }
 
 .estrela {
@@ -82,5 +100,23 @@ main{
     right: 75px;
     top: 290px;
 }
+/* FIM DA PARTE DE CIMA */
+/* ======================================================================================================================= */
+/* INICIO DA PARTE DO MEIO  */
+
+.meio {
+    height: calc(100%/3);
+    width: 98%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px -3px rgba(0,0,0,0.13);
+}
+/* FIM DA PARTE DO MEIO */
+/* ======================================================================================================================= */
+/* INICIO DA PARTE DE BAIXO  */
+/* FIM DA PARTE DE BAIXO */
 
 
