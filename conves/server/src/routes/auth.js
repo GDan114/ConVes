@@ -19,6 +19,8 @@ router.get('/puxarPostagem', controller_Auth.PuxarPostagem)//  /auth/puxarPostag
 router.get('/puxarPostagemUnica/:id', controller_Auth.PuxarPostagemUnica) //   /auth/puxarPostagemUnica
 router.get('/puxarNumPosts/:idProf', controller_Professor.PuxarNumPosts) //    /auth/puxarNumPosts
 
+router.post('/editarAluno', controller_Aluno.EditarAluno) //    /auth/editarAluno
+
 router.get('/logout', controller_Auth.Logout) //  /auth/logout
 
 module.exports = router

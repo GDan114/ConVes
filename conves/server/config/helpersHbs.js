@@ -9,4 +9,12 @@ hbs.registerHelper('isProfessor', function(tipoUsuario, options) {
     return '';
 })
 
+hbs.registerHelper('isAluno', function(tipoUsuario, options) {
+    if (tipoUsuario === 'Aluno') {
+        return options.fn(this);
+    }
+    // Se tipoUsuario não for igual a 'Aluno', retorna vazio
+    return '';
+})
+
 module.exports = hbs

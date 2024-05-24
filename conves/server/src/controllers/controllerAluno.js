@@ -116,6 +116,13 @@ async function PuxarPerfilAluno(req, resp) {
     try {
         idAluno = req.params.idAluno
         const Aluno = await ModelAlunoPerfil.findOne({
+            include: {
+                model: ModelAlunoRegistro,
+                required: true,
+                where: {
+                    id_alunoRegistro: idAluno
+                }
+            },
             where: {
                 id_aluno: idAluno
             }
@@ -128,9 +135,50 @@ async function PuxarPerfilAluno(req, resp) {
     }
 }
 
+async function EditarAluno(req, resp) {
+    try{
+        const {
+            alunoNome,
+            alunoEmail,
+            alunoSenha,
+            alunoData,
+            capaImg
+        } = req.body 
+
+        const idAluno = req.cookies.cookie_usuario
+
+        const AlunoPerfil = await ModelAlunoPerfil.findOne({
+            where: {
+                id_aluno: idAluno
+            }
+        })
+        
+        // AQUI QUE TEM O EDIT
+        AlunoPerfil.nm_aluno = alunoNome
+        AlunoPerfil.dt_nascimento_aluno = alunoData
+        AlunoPerfil.img_fotoPerfil = capaImg
+        
+        const AlunoRegistro = await ModelAlunoRegistro.findOne({
+            where: {
+                id_alunoRegistro: idAluno
+            }
+        })
+        const hashedPassword = await bcrypt.hash(alunoSenha, 10)
+
+        AlunoRegistro.ds_emailAluno = alunoEmail
+        AlunoRegistro.id_senhaAluno = hashedPassword
+
+        await AlunoPerfil.save()
+        await AlunoRegistro.save()
+    } catch (error) {
+        console.error(error)
+        return resp.status(500).json({ message: 'Erro ao editar perfil' })
+    }
+}
 
 module.exports = {
     CriarAluno,
     LogarAluno,
-    PuxarPerfilAluno
+    PuxarPerfilAluno,
+    EditarAluno
 }
