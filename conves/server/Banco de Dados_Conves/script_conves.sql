@@ -81,14 +81,16 @@ insert tb_alunoPerfil (nm_aluno, dt_nascimento_aluno, img_fotoPerfil)
 		   ('Danilo Dias Lobianco Soares', '2007-04-05', '/Imagens/perfil.png'),
 		   ('José Ricardo Uzal dos Anjos Felix', '2007-02-22', '/Imagens/perfil.png'),
 		   ('Matheus Eduardo Nascimento Santos', '2006-11-30', '/Imagens/perfil.png'),
-           ('Letycia Antunes Coelho de Almeida dos Santos', '2006-12-08', '/Imagens/perfil.png');
+           ('Letycia Antunes Coelho de Almeida dos Santos', '2006-12-08', '/Imagens/perfil.png'),
+           ('TesteAluno', '2024-05-27', '/Imagens/perfil.png');
 		
 insert tb_alunoRegistro(fk_aluno, ds_emailAluno, id_senhaAluno)
 	values (1, 'miguel@gmail.com', 'pacoca'),
 		   (2, 'danilo@gmail.com', 'jesus'),
            (3, 'jose@gmail.com', 'spfc'),
            (4, 'matheus@gmail.com', 'santos'),
-           (5, 'letycia@gmail.com', 'cesar');
+           (5, 'letycia@gmail.com', 'cesar'),
+           (6, 'testealuno@email', '');
            
 insert into tb_plano(nm_plano, vl_plano)
 	values ('Gratuito', 0),
@@ -105,17 +107,6 @@ insert into tb_professorRegistro(fk_professor, ds_emailProfessor, id_senhaProfes
 		   (2, 'valdirene@gmail.com', 'historia'),
            (3, 'charles@gmail.com', 'matematica'),
            (4, 'michel@gmail.com', 'biologia');
-                  
-/*insert into tb_materia(fk_curso, nm_materia)
-			values('1', 'Português'),
-				  ('1', 'Matemática'),
-				  ('1', 'História'),
-				  ('1', 'Sociologia'),
-				  ('1', 'Tecnologias da Informação e Comunicação'),
-				  ('2', 'Ciências da Natureza e suas tecnologias'),
-				  ('2', 'Ciências Humanas e Sociais Aplicadas'),
-				  ('1', 'Redação'),
-				  ('2', 'Redação'); */
 
 /*SELECT*/
 
