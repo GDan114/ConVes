@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" type="image/x-icon" href="/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/perfil.css"> <!-- arrumei o link, o ctrl click não levava pra lugar nenhum -->
+    <link rel="shortcut icon" href="/Imagens/logo.png"> <!-- fodase a imagem tambem, fiquei uns 20 minutos e nao consegui colocar, FODASE  -->
+    <link rel="stylesheet" href="/css/home.css">
+    <title>Perfil | ConVes</title>
+</head>
+
+<body>
+    {{#if erro}}
+        <script>
+            window.alert("{{erro}}");
+        </script>
+    {{/if}}
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="#" class="logo">
+            <img src="/Imagens/barco-ConVes-preto.png" class="logo-conves" alt="logo ConVes" width="60px" id="conves">
+            <div class="logo-name"><span>Con</span>Ves</div>
+        </a>
+        <ul class="side-menu">
+            <!-- Inicio do Menu-->
+            <li><a href="/home"><i class='bx bx-home'></i>Home</a></li>
+            <li><a href="/home/postagens"><i class='bx bxs-dashboard'></i>Postagens</a></li>
+            <!-- a class active é da pagina ativada, nesse caso a page de perfil -->
+            <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> <!--COLOCAR O LINK DO FONT AWESOME-->
+            <li><a href="#"><i class='bx bx-info-circle'></i>Sobre</a></li>
+            <li class="active"><a href="/home/perfil"><i class='bx bx-user'></i>Perfil</a></li>
+            <li><a href="#"><i class="bx bx-slider-alt"></i>Configurações</a></li>
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <form action="/auth/logout" method="GET">
+                    <button type="submit" class="logout"> <!-- botao de logout-->
+                        <i class='bx bx-log-out'></i>Sair</button>
+                </form>
+            </li>
+        </ul>
+        <!-- Fim do Menu-->
+    </div>
+    <!-- Fim da Sidebar -->
+
+    <!-- Main -->
+    <div class="content">
+
+        <!-- NAVBAR  -->
+        <nav>
+            <i class='bx bx-menu'></i>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Pesquisar..."> <!-- Barra de pesquisa-->
+                    <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+                </div>
+            </form>
+            <input type="checkbox" id="theme-toggle" hidden> <!-- Botão de mudar o tema-->
+            <label for="theme-toggle" class="theme-toggle"></label>
+            <a href="/home/perfil" class="profile"> <!-- rota da page de perfil, danilo vai fazer a rota depois -->
+                <img src="{{perfil.img_fotoPerfil}}">
+                <!-- puxar a imagem do perfil do usuário --> 
+            </a>
+        </nav>
+
+        <!-- Fim da Navbar -->
+
+        <main class="perfil">
+            <!-- Imagem do usuario e informações ao redor -->
+            <div class="bloco">
+                <div class="esquerda">
+                    <div class="cima-baixo-esquerda">
+                        <h3>Nome: {{perfil.nm_aluno}}</h3>
+                    </div>
+                    <div class="centro-esquerda">
+                        <h3>Data de nascimento: {{perfil.dt_nascimento_aluno}}</h3>
+                    </div>
+                    <div class="cima-baixo-esquerda">
+                        <h3>CPF: {{perfil.cpf_prof}}</h3>
+                    </div>
+                </div>
+                <div class="centro">
+                    <div class="imagem">
+                        <img src="{{perfil.img_fotoPerfil}}" alt=""> 
+                    </div> <!-- aqui vai a imagem do usuario, (aula do ivan) -->
+                </div>
+                <div class="direita">
+                    <div class="cima-baixo-direita">
+                        <h3>Professor</h3>
+                    </div>
+                    <div class="centro-direita">
+                        <h3>Postagens realizadas: {{numPosts}}</h3> <!-- danilo mandou esquecer -->
+                    </div>
+                    <div class="cima-baixo-direita">
+                        <h3>quantas postagens marcou com visto</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bio">
+                {{!-- FORM DE ALUNO, DEPOIS COLOCAR UM isAluno --}}
+                 <form class="postForm" id="postForm" action="/auth/editarAluno" method="POST">
+                    <input type="text" placeholder="Nome" pattern="^[a-zA-Z ]+$" id="alunoNome" name="alunoNome" required>
+                    <br><br>
+                    <input type="date" placeholder="Data de nascimento" id="alunoData" name="alunoData" required>
+                    <br><br>
+                    <input type="email" placeholder="Email" id="alunoEmail" name="alunoEmail" required>
+                    <br><br>
+                    <input type="password" placeholder="Senha" minlength="8" maxlength="12" id="alunoSenha" name="alunoSenha" required>
+                    <br><br>
+                    <input class="input" id="sg" type="file" accept="image/*" name="capaImg" required onchange="previewImage(event)">
+                    <label class="select-img" for="sg">Selecionar imagem</label>
+                    <br><br>
+                    <img class="preview-img" id="preview" src="" alt="Preview da imagem" style="max-width: 300px; max-height: 600px;">
+                    <br><br>
+                    <br><br>
+                    <button type="button" onclick="submitForm()">Enviar</button>
+                </form>
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script>
+            function previewImage(event) {
+                const input = event.target;
+                const preview = document.getElementById('preview');
+
+                const file = input.files[0];
+                const reader = new FileReader();
+
+                reader.onload = function() {
+                    preview.src = reader.result;
+                }
+
+                reader.readAsDataURL(file);
+            }
+
+            async function submitForm() {
+                const alunoNome = document.getElementById('alunoNome').value;
+                const alunoData = document.getElementById('alunoData').value;
+                const alunoEmail = document.getElementById('alunoEmail').value;
+                const alunoSenha = document.getElementById('alunoSenha').value;
+
+                const input = document.getElementById('sg');
+                const file = input.files[0];
+
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = async function() {
+                    const imageData = reader.result;
+                    const postData = {
+                        alunoNome: alunoNome,
+                        alunoData: alunoData,
+                        alunoEmail: alunoEmail,
+                        alunoSenha: alunoSenha,
+                        capaImg: imageData
+                    };
+                    try {
+                        const response = await axios.post('/auth/editarAluno', postData);
+                        console.log(response.data); // Imprime a resposta do servidor no console
+                    } catch (error) {
+                        console.error(error);
+                    }
+                };
+            }
+        </script>
+        </main>
+    </div>
+
+    <script src="/js/home.js"></script>
+
+</body>
+        

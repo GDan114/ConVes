@@ -51,15 +51,17 @@ router.get('/home/perfil', controller_Auth.AuthEstaLogado, async (req, res) => {
         if (tipoUsuario == 'Aluno') {
             const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilAluno/${idPerfil}`)
             perfil = responsePerfil.data
+            res.render('perfilAluno', { perfil, tipoUsuario, numPosts })
         } else {
             const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilProfessor/${idPerfil}`)
             perfil = responsePerfil.data
 
             const responseNumPosts = await axios.get(`http://localhost:5000/auth/puxarNumPosts/${idPerfil}`)
             numPosts = responseNumPosts.data
+            res.render('perfilProf', { perfil, tipoUsuario, numPosts })
         }
 
-        res.render('perfil', { perfil, tipoUsuario, numPosts })
+        // res.render('perfil', { perfil, tipoUsuario, numPosts })
     } catch (error) {
         console.error(error)
         res.status(500).send('Erro ao buscar perfil')
