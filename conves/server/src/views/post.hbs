@@ -69,7 +69,7 @@
                 <span class="count">12</span>
             </a> -->
             <a href="#" class="profile"> <!-- href da page de usuario -->
-                <img src="/Imagens/pug-fofo.jpg">
+                <img src="{{perfil.img_fotoPerfil}}">
                 <!-- aprender o metodo para puxar a imagem do usuario, por enquanto usamos essa mesmo para representar -->
             </a>
         </nav>
@@ -86,6 +86,9 @@
                         <h3>{{postagem.nm_tituloPostagem}}</h3>
                         <p>{{postagem.tb_professorPerfil.nm_professor}}</p>
                         <p>{{postagem.ds_conteudoPost}}</p>
+                        <form id="formViewPost" action="/auth/viewPostAluno/{{postagem.id_postagem}}" method="POST">
+                            <button type="submit"><i class="fa-regular fa-square-check"></i></button>
+                        </form>
                     </span>
                 </li>
             {{/if}}
@@ -95,6 +98,24 @@
     </div>
 
     <script src="/js/home.js"></script>
+    <script>
+        document.getElementById('formViewPost').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const response = await fetch('/auth/viewPostAluno/{{postagem.id_postagem}}', {
+                method: 'POST'
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert(data.message); // Exibe um alerta com a mensagem do servidor
+            } else {
+                alert('Erro ao marcar a view');
+            }
+        });
+    </script>
+
     
     <!-- Arrumar a rota do script, para o home.js-->
 </body>

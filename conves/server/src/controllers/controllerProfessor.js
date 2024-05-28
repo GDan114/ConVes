@@ -140,14 +140,13 @@ async function CriarPostagem (req, resp) {
             img_capaPost: postImg
         })
         //return resp.redirect('/home/postagens/criar?msg=Postagem criada com sucesso.')
-        return Post
+        return resp.status(200).json({ message: 'Postagem criada com sucesso' });
 
     } catch(erro) {
         console.error(erro)
         console.log(req.body)
-        return resp.status(500).json({
-            message: 'Erro no servidor ao criar a postagem'
-        })
+        return resp.status(500).json({ message: 'Erro ao criar postagem' });
+
     }
 }
 

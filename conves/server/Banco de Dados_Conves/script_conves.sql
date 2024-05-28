@@ -80,7 +80,7 @@ create table if not exists tb_viewPost(
     en_visto ENUM('S', 'N') not null default 'N',
     
     constraint pk_viewPost primary key(id_viewPost),
-    constraint fk_aluno foreign key(fk_aluno) references tb_alunoPerfil (id_aluno),
+    constraint fk_alunoView foreign key(fk_aluno) references tb_alunoPerfil (id_aluno),
     constraint fk_postagem foreign key(fk_postagem) references tb_postagem (id_postagem)
 );
 /*INSERT*/
@@ -127,6 +127,7 @@ select * from tb_professorPerfil;
 select * from tb_professorRegistro;
 select * from tb_plano;
 Select * from tb_postagem;
+select * from tb_viewPost;
 
 -- select * from tb_assunto; --
 desc tb_alunoPerfil;
@@ -135,7 +136,7 @@ desc tb_professorPerfil;
 desc tb_professorRegistro;
 desc tb_plano;
 desc tb_postagem;
--- desc tb_assunto; --
+desc tb_viewPost;
 
 /* ÁREA DE TESTE DO BACK 
 DELETE FROM tb_alunoPerfil WHERE id_aluno = 7;
@@ -144,4 +145,5 @@ DELETE FROM tb_alunoRegistro WHERE fk_aluno = 7;
 DELETE FROM tb_professorPerfil WHERE id_professor = 6;
 DELETE FROM tb_professorRegistro WHERE fk_professor = 6;
 
+DELETE FROM tb_viewPost WHERE fk_aluno = 1;
 TRUNCATE tb_postagem;

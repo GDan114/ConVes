@@ -1,7 +1,8 @@
 const { Sequelize } = require('sequelize')
 const { ModelAlunoPerfil } = require('../models/modelAlunoPerfil')
 const { ModelAlunoRegistro } = require('../models/modelAlunoRegistro')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const { ModelViewPostagem } = require('../models/modelViesPost');
 
 async function CriarAluno(req, resp) {
     try {
@@ -101,7 +102,7 @@ async function LogarAluno(req, resp) {
                 httpOnly: true,
                 expires: dtQuandoIraExpirar
         })
-        
+
         return resp.redirect('/home')
     } catch(erro) {
         console.error(erro)
@@ -176,9 +177,29 @@ async function EditarAluno(req, resp) {
     }
 }
 
+async function ViewPostAluno(req, resp) {
+    try {
+        const idPostagem = req.params.idPost;
+        const idAluno = req.cookies.cookie_usuario;
+
+        await ModelViewPostagem.create({
+            fk_aluno: idAluno,
+            fk_postagem: idPostagem,
+            en_visto: 'S'
+        })
+
+        return resp.status(200).json({ message: 'Postagem marcada como vista com sucesso' });
+    } catch (error) {
+        console.error(error);
+        return resp.status(500).json({ message: 'Erro ao marcar a view' });
+    }
+}
+
+
 module.exports = {
     CriarAluno,
     LogarAluno,
     PuxarPerfilAluno,
-    EditarAluno
+    EditarAluno,
+    ViewPostAluno
 }

@@ -22,6 +22,8 @@ router.get('/puxarNumPosts/:idProf', controller_Professor.PuxarNumPosts) //    /
 router.post('/editarAluno', controller_Aluno.EditarAluno) //    /auth/editarAluno
 router.post('/editarProfessor', controller_Professor.EditarProfessor) //   /auth/editarProfessor
 
+router.post('/viewPostAluno/:idPost', controller_Aluno.ViewPostAluno) //   /auth/viewPostAluno 
+
 router.get('/logout', controller_Auth.Logout) //  /auth/logout
 
 module.exports = router
