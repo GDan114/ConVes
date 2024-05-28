@@ -159,23 +159,23 @@ main{
 .esquerda-rank {
     height: 200px;
     width: calc(100%/3);
-    background-color: #ff4646;
+    background: linear-gradient(to right, #ff4646, #ff4646, #a82d2d);
     display: flex;
     justify-content: center;
-    border-radius: 20px 0 0 20px;
+    border-radius: 20px 20px 0 20px;
     margin-top: 50px;
 }
 
 .esquerda-rank svg {
     width: 110px;
     height: auto;
-    filter: drop-shadow(0 0 20px silver);
+    filter: drop-shadow(0 0 20px white);
 }
 
 .meio-rank {
     height: 250px;
     width: calc(100%/3);
-    background-color: #ff4646;
+    background: linear-gradient(to right, #a82d2d, #ff4646, #a82d2d);
     display: flex;
     justify-content: center;
     border-left: 2px solid #a72e2e;
@@ -193,10 +193,10 @@ main{
 .direita-rank {
     height: 150px;
     width: calc(100%/3);
-    background-color: #ff4646;
+    background: linear-gradient(to left, #ff4646, #ff4646, #a82d2d);
     display: flex;
     justify-content: center;
-    border-radius: 0 20px 20px 0;
+    border-radius: 20px 20px 20px 0;
     margin-top: 100px;
     
 }
@@ -204,7 +204,7 @@ main{
 .direita-rank svg {
     width: 90px;
     height: auto;
-    filter: drop-shadow(0 0 20px rgb(170, 117, 19));
+    filter: drop-shadow(0 0 20px rgb(245, 120, 4));
 }
 
 
