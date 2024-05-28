@@ -88,49 +88,72 @@
   textarea.style.height = textarea.scrollHeight + 'px'; // Define a altura conforme o conteúdo
 }
     </script>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script>
-            function previewImage(event) {
-                const input = event.target;
-                const preview = document.getElementById('preview');
+    <script>
+    document.getElementById('postForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
 
-                const file = input.files[0];
-                const reader = new FileReader();
+        const response = await fetch('/auth/criarPostagem', {
+            method: 'POST'
+        });
 
-                reader.onload = function() {
-                    preview.src = reader.result;
-                }
+        const data = await response.json();
 
-                reader.readAsDataURL(file);
+        if (response.ok) {
+            console.log(data.message); // Verificar se a mensagem está sendo recebida corretamente
+            alert('Postagem criada com sucesso'); // Exibe um alerta fixo
+        } else {
+            console.error('Erro ao criar Post.', data.error); // Verificar se há erros
+            alert('Erro ao criar Post.');
+        }
+    });
+</script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function previewImage(event) {
+            const input = event.target;
+            const preview = document.getElementById('preview');
+
+            const file = input.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function() {
+                preview.src = reader.result;
             }
 
-            async function submitForm() {
-                const postTitulo = document.getElementById('postTitulo').value;
-                const postText = document.getElementById('postText').value;
+            reader.readAsDataURL(file);
+        }
 
-                const input = document.getElementById('sg');
-                const file = input.files[0];
+        async function submitForm() {
+            const postTitulo = document.getElementById('postTitulo').value;
+            const postText = document.getElementById('postText').value;
 
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = async function() {
-                    const imageData = reader.result;
-                    const postData = {
-                        postTitulo: postTitulo,
-                        postText: postText,
-                        postImg: imageData
-                    };
-                    try {
-                        const response = await axios.post('/auth/criarPostagem', postData);
-                        console.log(response.data); // Imprime a resposta do servidor no console
-                    } catch (error) {
-                        console.error(error);
-                    }
+            const input = document.getElementById('sg');
+            const file = input.files[0];
+
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = async function() {
+                const imageData = reader.result;
+                const postData = {
+                    postTitulo: postTitulo,
+                    postText: postText,
+                    postImg: imageData
                 };
-            }
-        </script>
+                try {
+                    const response = await axios.post('/auth/criarPostagem', postData);
+                    console.log(response.data); // Imprime a resposta do servidor no console
+                } catch (error) {
+                    console.error(error);
+                }
+            };
+        }
+    </script>
         
-        <script src="/js/home.js"></script>
+    <script src="/js/home.js"></script>
+        
 
         </main>
     </div>

@@ -127,7 +127,7 @@ router.get('/home/postagens/:id', controller_Auth.AuthEstaLogado, async (req, re
             perfil = responsePerfil.data
         }
 
-        res.render('teste', { postagem, perfil });
+        res.render('post', { postagem, perfil });
     } catch (error) {
         console.error(error);
         res.status(500).send('Erro ao buscar a postagem');

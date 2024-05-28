@@ -140,24 +140,23 @@ async function CriarPostagem (req, resp) {
             img_capaPost: postImg
         })
         //return resp.redirect('/home/postagens/criar?msg=Postagem criada com sucesso.')
-        return Post
+        return resp.status(200).json({ message: 'Postagem criada com sucesso' });
 
     } catch(erro) {
         console.error(erro)
         console.log(req.body)
-        return resp.status(500).json({
-            message: 'Erro no servidor ao criar a postagem'
-        })
+        return resp.status(500).json({ message: 'Erro ao criar postagem' });
+
     }
 }
 
 async function PuxarPerfilProfessor(req, resp) {
     try {
-        console.log(`
-        ===================================================================
-                    ${req.params.idProf}
-        ===================================================================
-        `)
+        // console.log(`
+        // ===================================================================
+        //             ${req.params.idProf}
+        // ===================================================================
+        // `)
         idProf = req.params.idProf
         const Prof = await ModelProfessorPerfil.findOne({
             where: {
@@ -193,10 +192,57 @@ async function PuxarNumPosts(req, resp) {
     }
 }
 
+async function EditarProfessor(req, resp) {
+    try{
+        const {
+            profNome,
+            profMatricula,
+            profCpf,
+            profEmail,
+            profSenha, 
+            capaImg
+        } = req.body 
+
+        const idProf = req.cookies.cookie_usuario
+
+        const ProfPerfil = await ModelProfessorPerfil.findOne({
+            where: {
+                id_professor: idProf
+            }
+        })
+        
+        const profPlano = ProfPerfil.fk_plano
+
+        // AQUI QUE TEM O EDIT
+        ProfPerfil.nm_professor = profNome
+        ProfPerfil.rm_professor = profMatricula
+        ProfPerfil.cpf_prof = profCpf
+        ProfPerfil.fk_plano = profPlano
+        ProfPerfil.img_fotoPerfil = capaImg
+        
+        const ProfRegistro = await ModelProfessorRegistro.findOne({
+            where: {
+                id_professorRegistro: idProf
+            }
+        })
+        const hashedPassword = await bcrypt.hash(profSenha, 10)
+
+        ProfRegistro.ds_emailProfessor = profEmail
+        ProfRegistro.id_senhaProfessor = hashedPassword
+
+        await ProfPerfil.save()
+        await ProfRegistro.save()
+    } catch (error) {
+        console.error(error)
+        return resp.status(500).json({ message: 'Erro ao editar perfil' })
+    }
+}
+
 module.exports = {
     CriarProfessor,
     LogarProfessor,
     CriarPostagem,
     PuxarPerfilProfessor,
-    PuxarNumPosts
+    PuxarNumPosts,
+    EditarProfessor
 }

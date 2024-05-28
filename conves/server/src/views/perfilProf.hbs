@@ -97,7 +97,7 @@
                         <h3>Postagens realizadas: {{numPosts}}</h3> <!-- danilo mandou esquecer -->
                     </div>
                     <div class="cima-baixo-direita">
-                        <h3>quantas postagens marcou com visto</h3>
+                        <h3></h3>
                     </div>
                 </div>
             </div>
@@ -105,13 +105,15 @@
             <div class="bio">
                 {{!-- FORM DE ALUNO, DEPOIS COLOCAR UM isAluno --}}
                  <form class="postForm" id="postForm" action="/auth/editarAluno" method="POST">
-                    <input type="text" placeholder="Nome" pattern="^[a-zA-Z ]+$" id="alunoNome" name="alunoNome" required>
+                    <input type="text" placeholder="Nome" pattern="^[a-zA-Z ]+$" id="profNome" name="profNome" required>
                     <br><br>
-                    <input type="date" placeholder="Data de nascimento" id="alunoData" name="alunoData" required>
+                    <input type="text" placeholder="Matrícula" minlength="5" maxlength="5" name="profMatricula" id="profMatricula" required>
                     <br><br>
-                    <input type="email" placeholder="Email" id="alunoEmail" name="alunoEmail" required>
+                    <input type="text" placeholder="CPF" id="profCpf" placeholder="Cpf" name="profCpf"  maxlength="11"  required> 
                     <br><br>
-                    <input type="password" placeholder="Senha" minlength="8" maxlength="12" id="alunoSenha" name="alunoSenha" required>
+                    <input type="email" placeholder="Email" id="profEmail" name="profEmail" required>
+                    <br><br>
+                    <input type="password" placeholder="Senha" minlength="8" maxlength="12" id="profSenha" name="profSenha" required>
                     <br><br>
                     <input class="input" id="sg" type="file" accept="image/*" name="capaImg" required onchange="previewImage(event)">
                     <label class="select-img" for="sg">Selecionar imagem</label>
@@ -140,10 +142,11 @@
             }
 
             async function submitForm() {
-                const alunoNome = document.getElementById('alunoNome').value;
-                const alunoData = document.getElementById('alunoData').value;
-                const alunoEmail = document.getElementById('alunoEmail').value;
-                const alunoSenha = document.getElementById('alunoSenha').value;
+                const profNome = document.getElementById('profNome').value;
+                const profMatricula = document.getElementById('profMatricula').value;
+                const profCpf = document.getElementById('profCpf').value;
+                const profEmail = document.getElementById('profEmail').value;
+                const profSenha = document.getElementById('profSenha').value;
 
                 const input = document.getElementById('sg');
                 const file = input.files[0];
@@ -153,14 +156,15 @@
                 reader.onload = async function() {
                     const imageData = reader.result;
                     const postData = {
-                        alunoNome: alunoNome,
-                        alunoData: alunoData,
-                        alunoEmail: alunoEmail,
-                        alunoSenha: alunoSenha,
+                        profNome: profNome,
+                        profMatricula: profMatricula,
+                        profCpf: profCpf,
+                        profEmail: profEmail,
+                        profSenha: profSenha,
                         capaImg: imageData
                     };
                     try {
-                        const response = await axios.post('/auth/editarAluno', postData);
+                        const response = await axios.post('/auth/editarProfessor', postData);
                         console.log(response.data); // Imprime a resposta do servidor no console
                     } catch (error) {
                         console.error(error);

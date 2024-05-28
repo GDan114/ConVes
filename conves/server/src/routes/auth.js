@@ -20,6 +20,9 @@ router.get('/puxarPostagemUnica/:id', controller_Auth.PuxarPostagemUnica) //   /
 router.get('/puxarNumPosts/:idProf', controller_Professor.PuxarNumPosts) //    /auth/puxarNumPosts
 
 router.post('/editarAluno', controller_Aluno.EditarAluno) //    /auth/editarAluno
+router.post('/editarProfessor', controller_Professor.EditarProfessor) //   /auth/editarProfessor
+
+router.post('/viewPostAluno/:idPost', controller_Aluno.ViewPostAluno) //   /auth/viewPostAluno 
 
 router.get('/logout', controller_Auth.Logout) //  /auth/logout
 
