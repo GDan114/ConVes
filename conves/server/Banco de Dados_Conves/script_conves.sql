@@ -73,7 +73,16 @@ constraint fk_professorAutor foreign key (fk_professorAutor) references tb_profe
 -- constraint fk_assunto foreign key (fk_assunto) references tb_assunto (id_assunto) --
 );
 
-
+create table if not exists tb_viewPost(
+	id_viewPost int not null auto_increment,
+    fk_aluno int not null,
+    fk_postagem int not null,
+    en_visto ENUM('S', 'N') not null default 'N',
+    
+    constraint pk_viewPost primary key(id_viewPost),
+    constraint fk_aluno foreign key(fk_aluno) references tb_alunoPerfil (id_aluno),
+    constraint fk_postagem foreign key(fk_postagem) references tb_postagem (id_postagem)
+);
 /*INSERT*/
 
 insert tb_alunoPerfil (nm_aluno, dt_nascimento_aluno, img_fotoPerfil)
