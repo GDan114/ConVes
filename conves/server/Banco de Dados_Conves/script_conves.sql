@@ -77,36 +77,38 @@ constraint fk_professorAutor foreign key (fk_professorAutor) references tb_profe
 /*INSERT*/
 
 insert tb_alunoPerfil (nm_aluno, dt_nascimento_aluno, img_fotoPerfil)
-	values ('Miguel Carvalho dos Santos', '2005-05-16', '/Imagens/perfil.png'),
+	values ('TesteAluno', '2024-05-27', '/Imagens/perfil.png'),
+		   ('Miguel Carvalho dos Santos', '2005-05-16', '/Imagens/perfil.png'),
 		   ('Danilo Dias Lobianco Soares', '2007-04-05', '/Imagens/perfil.png'),
 		   ('José Ricardo Uzal dos Anjos Felix', '2007-02-22', '/Imagens/perfil.png'),
 		   ('Matheus Eduardo Nascimento Santos', '2006-11-30', '/Imagens/perfil.png'),
-           ('Letycia Antunes Coelho de Almeida dos Santos', '2006-12-08', '/Imagens/perfil.png'),
-           ('TesteAluno', '2024-05-27', '/Imagens/perfil.png');
+           ('Letycia Antunes Coelho de Almeida dos Santos', '2006-12-08', '/Imagens/perfil.png');
 		
 insert tb_alunoRegistro(fk_aluno, ds_emailAluno, id_senhaAluno)
-	values (1, 'miguel@gmail.com', 'pacoca'),
-		   (2, 'danilo@gmail.com', 'jesus'),
-           (3, 'jose@gmail.com', 'spfc'),
-           (4, 'matheus@gmail.com', 'santos'),
-           (5, 'letycia@gmail.com', 'cesar'),
-           (6, 'testealuno@email', '');
+	values (1, 'testealuno@email', '$2b$10$EfqXVezt4VWXpQO.ACrp4unL1LNLBn0Bxx8f0hf1JYEk23snkN4mi'), /* A SENHA É 12345678 */
+		   (2, 'miguel@gmail.com', 'pacoca'),
+		   (3, 'danilo@gmail.com', 'jesus'),
+           (4, 'jose@gmail.com', 'spfc'),
+           (5, 'matheus@gmail.com', 'santos'),
+           (6, 'letycia@gmail.com', 'cesar');
            
 insert into tb_plano(nm_plano, vl_plano)
 	values ('Gratuito', 0),
 		   ('Premium', 30);
            
 insert into tb_professorPerfil(nm_professor, rm_professor, cpf_prof, fk_plano, img_fotoPerfil)
-			values ('Denise', '07443', '47457908845', 2, '/Imagens/perfil.png'),
+			values ('Teste', '12345', '12345678901', 1, '/Imagens/perfil.png'),
+				   ('Denise', '07443', '47457908845', 2, '/Imagens/perfil.png'),
 				   ('Valdirene', '05129', '47457939877', 1, '/Imagens/perfil.png'),
 				   ('Charles', '05333', '47404739809', 2, '/Imagens/perfil.png'),
 				   ('Michel', '37390', '47457990342', 1, '/Imagens/perfil.png');
                    
 insert into tb_professorRegistro(fk_professor, ds_emailProfessor, id_senhaProfessor)
-	values (1, 'denise@gmail.com', 'portugues'),
-		   (2, 'valdirene@gmail.com', 'historia'),
-           (3, 'charles@gmail.com', 'matematica'),
-           (4, 'michel@gmail.com', 'biologia');
+	values (1, 'teste@email', '$2b$10$b9FOepDqzofS//MjQleREuqZH6rMi2F4UQ3HjEh3q1PoIUa3xcf6G'), /* A SENHA É 12345678 */
+		   (2, 'denise@gmail.com', 'portugues'),
+		   (3, 'valdirene@gmail.com', 'historia'),
+           (4, 'charles@gmail.com', 'matematica'),
+           (5, 'michel@gmail.com', 'biologia');
 
 /*SELECT*/
 

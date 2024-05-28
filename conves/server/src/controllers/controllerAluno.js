@@ -101,7 +101,7 @@ async function LogarAluno(req, resp) {
                 httpOnly: true,
                 expires: dtQuandoIraExpirar
         })
-
+        
         return resp.redirect('/home')
     } catch(erro) {
         console.error(erro)
