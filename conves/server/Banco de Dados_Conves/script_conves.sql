@@ -138,7 +138,7 @@ desc tb_plano;
 desc tb_postagem;
 desc tb_viewPost;
 
-/* ÁREA DE TESTE DO BACK 
+/*ÁREA DE TESTE DO BACK 
 DELETE FROM tb_alunoPerfil WHERE id_aluno = 7;
 DELETE FROM tb_alunoRegistro WHERE fk_aluno = 7;
 
@@ -147,3 +147,19 @@ DELETE FROM tb_professorRegistro WHERE fk_professor = 6;
 
 DELETE FROM tb_viewPost WHERE fk_aluno = 1;
 TRUNCATE tb_postagem;
+
+INSERT INTO tb_viewpost (fk_aluno, fk_postagem, en_visto)
+	values  (1, 1, 'S'),
+			(2, 2, 'S'),
+            (3, 1, 'N');
+
+Select count(id_viewPost) as Número_de_visualizações from tb_viewPost Where en_visto = 'N';
+
+Select count(id_viewPost) as Número_de_visualizações from tb_viewPost INNER JOIN tb_postagem on (fk_postagem = id_postagem) INNER JOIN tb_professorperfil on(fk_professorAutor = id_professor) WHERE en_visto = 'S' AND id_professor = 1;
+Select count(id_viewPost) as Número_de_visualizações from tb_viewPost INNER JOIN tb_postagem on (fk_postagem = id_postagem) INNER JOIN tb_professorperfil on(fk_professorAutor = id_professor) WHERE en_visto = 'S';
+
+SELECT id_professor, count(id_viewPost) as Total_views from  tb_viewPost 
+	INNER JOIN tb_postagem on (fk_postagem = id_postagem) 
+    INNER JOIN tb_professorperfil on (fk_professorAutor = id_professor)
+    WHERE en_visto = 'S'
+    GROUP BY id_professor;

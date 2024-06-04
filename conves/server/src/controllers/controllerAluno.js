@@ -2,7 +2,7 @@ const { Sequelize } = require('sequelize')
 const { ModelAlunoPerfil } = require('../models/modelAlunoPerfil')
 const { ModelAlunoRegistro } = require('../models/modelAlunoRegistro')
 const bcrypt = require('bcrypt');
-const { ModelViewPostagem } = require('../models/modelViesPost');
+const { ModelViewPostagem } = require('../models/modelViewPost');
 
 async function CriarAluno(req, resp) {
     try {
@@ -195,11 +195,33 @@ async function ViewPostAluno(req, resp) {
     }
 }
 
+async function DeletarAluno (req, resp) {
+    try {
+        const idAluno = req.cookies.cookie_usuario
+
+        await ModelAlunoRegistro.destroy({
+            where: {
+                id_alunoRegistro: idAluno
+            }
+        })
+
+        await ModelAlunoPerfil.destroy({
+            where: {
+                id_aluno: idAluno
+            }
+        })
+    } catch (error) {
+        console.error(error)
+        return resp.status(500).json({ message: 'Erro ao deletar conta'})
+    }
+}
+
 
 module.exports = {
     CriarAluno,
     LogarAluno,
     PuxarPerfilAluno,
     EditarAluno,
-    ViewPostAluno
+    ViewPostAluno,
+    DeletarAluno
 }

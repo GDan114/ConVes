@@ -88,27 +88,6 @@
   textarea.style.height = textarea.scrollHeight + 'px'; // Define a altura conforme o conteúdo
 }
     </script>
-    <script>
-    document.getElementById('postForm').addEventListener('submit', async function(event) {
-        event.preventDefault();
-
-        const response = await fetch('/auth/criarPostagem', {
-            method: 'POST'
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            console.log(data.message); // Verificar se a mensagem está sendo recebida corretamente
-            alert('Postagem criada com sucesso'); // Exibe um alerta fixo
-        } else {
-            console.error('Erro ao criar Post.', data.error); // Verificar se há erros
-            alert('Erro ao criar Post.');
-        }
-    });
-</script>
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
@@ -127,6 +106,7 @@
         }
 
         async function submitForm() {
+            
             const postTitulo = document.getElementById('postTitulo').value;
             const postText = document.getElementById('postText').value;
 

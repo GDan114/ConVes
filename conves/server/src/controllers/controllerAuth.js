@@ -1,8 +1,9 @@
 const { ModelPostagem } = require("../models/modelPostagem")
 const { ModelProfessorPerfil } = require('../models/modelProfessorPerfil')
 const { ModelAlunoPerfil } = require('../models/modelAlunoPerfil')
-
 const { connSequelize } = require('../../config/conexaoBD')
+const { ModelViewPostagem } = require("../models/modelViewPost")
+const sequelize = require('sequelize')
 
 async function Logout(req, resp) {
     resp.clearCookie('cookie_usuario')
@@ -68,10 +69,71 @@ async function AuthEstaLogado(req, resp, next) {
     }
 }
 
+async function SelectNumViewsProf (req, resp) { // FUNÇÃO PRA ACHAR O TOTAL DE VIEWS QUE CADA PROF TEM
+    try {
+        const Rank = await ModelViewPostagem.findAll({
+            attributes: [
+                'tb_professorPerfil.id_professor',
+                [sequelize.fn('COUNT', sequelize.col('tb_viewPost.id_viewPost')), 'Total_views']
+              ],
+              include: [
+                {
+                  model: Postagem,
+                  attributes: [],
+                  include: [
+                    {
+                      model: ProfessorPerfil,
+                      attributes: []
+                    }
+                  ]
+                }
+              ],
+              where: { en_visto: 'S' },
+              group: ['tb_professorPerfil.id_professor'],
+              order: [[sequelize.literal('Total_views'), 'DESC']]
+        })
+
+        return resp.status(200).json(Rank);
+    } catch (error) {
+        console.error(error)
+        return resp.status(500).json({ message: 'Erro interno.' })
+    }
+} 
+
+async function SelectNumViewsProfEspec (req, resp) { // TAMBÉM PEGA QTD DE VIEWS, MAS DE UM PROF ESPECÍFICO
+    try {
+        const idProf = req.params.idProf
+        const Views = await ModelViewPostagem.findOne({
+            attributes: [
+                'tb_professorPerfil.id_professor',
+                [sequelize.fn('COUNT', sequelize.col('tb_viewPost.id_viewPost')), 'Total_views']
+              ],
+              include: [
+                {
+                  model: Postagem,
+                  attributes: [],
+                  include: [
+                    {
+                      model: ProfessorPerfil,
+                      attributes: []
+                    }
+                  ]
+                }
+              ],
+              
+              where: {en_visto: 'S', fk_prof: idProf}
+        })
+    } catch (error) {
+        console.error(error)
+        return resp.status(500).json({ message: 'Erro interno.' })
+    }
+}
 
 module.exports= {
     Logout,
     PuxarPostagem,
     AuthEstaLogado,
-    PuxarPostagemUnica
+    PuxarPostagemUnica,
+    SelectNumViewsProf,
+    SelectNumViewsProfEspec
 }

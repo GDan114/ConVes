@@ -238,11 +238,33 @@ async function EditarProfessor(req, resp) {
     }
 }
 
+async function DeletarProfessor (req, resp) {
+    try {
+        const idProf = req.cookies.cookie_usuario
+
+        await ModelProfessorRegistro.destroy({
+            where: {
+                id_professorRegistro: idProf
+            }
+        })
+
+        await ModelProfessorPerfil.destroy({
+            where: {
+                id_professor: idProf
+            }
+        })
+    } catch (error) {
+        console.error(error)
+        return resp.status(500).json({ message: 'Erro ao deletar conta'})
+    }
+}
+
 module.exports = {
     CriarProfessor,
     LogarProfessor,
     CriarPostagem,
     PuxarPerfilProfessor,
     PuxarNumPosts,
-    EditarProfessor
+    EditarProfessor,
+    DeletarProfessor
 }
