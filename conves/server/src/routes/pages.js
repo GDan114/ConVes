@@ -26,15 +26,19 @@ router.get('/home', controller_Auth.AuthEstaLogado, async (req, res) => {
         const idPerfil = req.cookies.cookie_usuario
 
         let perfil = null
+        let qtdPosts = null
         if (tipoUsuario == 'Aluno') {
             const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilAluno/${idPerfil}`)
             perfil = responsePerfil.data
         } else {
             const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilProfessor/${idPerfil}`)
             perfil = responsePerfil.data
+
+            const responseQtdPosts = await axios.get(`http://localhost:5000/auth/selectNumViewsProfEspec/${idPerfil}`)
+            qtdPosts = responseQtdPosts.data
         }
 
-        res.render('home', { postagens, perfil }) // Renderiza sua página HBS com os dados das postagens como contexto
+        res.render('home', { postagens, perfil, tipoUsuario, qtdPosts }) // Renderiza sua página HBS com os dados das postagens como contexto
     } catch (error) {
         console.error(error)
         res.status(500).send('Erro ao buscar postagens')
