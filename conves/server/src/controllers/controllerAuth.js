@@ -93,7 +93,7 @@ async function SelectNumViewsProf (req, resp) { // FUNÇÃO PRA ACHAR O TOTAL DE
               order: [[sequelize.literal('Total_views'), 'DESC']]
         })
 
-        return resp.status(200).json(Rank);
+        return resp.status(200).json(Rank)
     } catch (error) {
         console.error(error)
         return resp.status(500).json({ message: 'Erro interno.' })
@@ -105,24 +105,27 @@ async function SelectNumViewsProfEspec (req, resp) { // TAMBÉM PEGA QTD DE VIEW
         const idProf = req.params.idProf
         const Views = await ModelViewPostagem.findOne({
             attributes: [
-                'tb_professorPerfil.id_professor',
-                [sequelize.fn('COUNT', sequelize.col('tb_viewPost.id_viewPost')), 'Total_views']
+                sequelize.fn('COUNT', sequelize.col('tb_viewPost.id_viewPost'))
               ],
               include: [
                 {
-                  model: Postagem,
+                  model: ModelPostagem,
                   attributes: [],
                   include: [
                     {
-                      model: ProfessorPerfil,
-                      attributes: []
+                      model: ModelProfessorPerfil,
+                      attributes: ['id_professor'],
+                      required: true
                     }
-                  ]
+                  ],
+                  required: true
                 }
               ],
               
-              where: {en_visto: 'S', fk_prof: idProf}
+              where: {en_visto: 'S', '$tb_postagem.fk_professorAutor$': idProf}
         })
+
+        return resp.status(200).json(Views)
     } catch (error) {
         console.error(error)
         return resp.status(500).json({ message: 'Erro interno.' })

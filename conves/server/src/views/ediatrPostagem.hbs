@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/adicionarPostagem.css"> <!-- criar css dessa page depois-->
+    <title>Editar postagem | ConVes</title>
+</head>
+<body>
+    {{#if msg}}
+        <script>
+            window.alert("{{msg}}");
+        </script>
+    {{/if}}
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="#" class="logo">  
+            <img src="/Imagens/barco-ConVes-preto.png" class="logo-conves" alt="logo ConVes" width="60px" id="conves">
+            <div class="logo-name"><span>Con</span>Ves</div>
+        </a>
+        <ul class="side-menu">
+            <!-- Inicio do Menu-->
+            <li><a href="/home"><i class='bx bx-home' ></i>Home</a></li>
+            <li class="active"><a href="/home/postagens"><i class='bx bxs-dashboard'></i>Postagens</a></li> <!-- a class active é da pagina ativada, nesse caso a page de postagens-->
+            <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> 
+            <li><a href="#"><i class='bx bx-info-circle'></i>Sobre</a></li> 
+            <li><a href="/home/perfil"><i class='bx bx-user'></i>Perfil</a></li> <!-- colocar os href depois --> 
+            <li><a href="#"><i class="bx bx-slider-alt"></i>Configurações</a></li> 
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <form action="/auth/logout" method="GET">
+                    <button type="submit" class="logout"> <!-- botao de logout-->
+                        <i class='bx bx-log-out'></i>Sair</button>
+                </form>
+            </li>
+        </ul>
+        <!-- Fim do Menu-->
+    </div>
+    <!-- Fim da Sidebar -->
+
+    <!-- Main -->
+    <div class="content">
+        <!-- Navbar -->
+        <nav>
+            <i class='bx bx-menu'></i>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Pesquisar..."> <!-- Barra de pesquisa-->
+                    <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+                </div>
+            </form>
+            <input type="checkbox" id="theme-toggle" hidden> <!-- Botão de mudar o tema-->
+            <label for="theme-toggle" class="theme-toggle"></label>
+            <a href="/home/perfil" class="profile"> <!-- href da page de usuario -->
+                <img src="{{perfil.img_fotoPerfil}}">
+            </a>
+        </nav>
+
+        <!-- Fim da Navbar -->
+
+        <main>
+
+            <div class="header">
+                <div class="left">
+                    <h1>Adicionar Postagens</h1>
+                </div>
+            </div>
+            <!-- formulario para enviar a postagem, uso exclusivo do professor --> 
+            
+            <form class="postForm" id="postForm" action="/auth/criarPostagem" method="POST">
+                <input type="text" class="title-post" name="postTitulo" id="postTitulo" placeholder="Titulo da postagem..." required>
+                <br><br>
+                <input class="input" id="sg" type="file" accept="image/*" name="postImg" required onchange="previewImage(event)">
+                <label class="select-img" for="sg">Selecionar imagem</label>
+                <br><br>
+                <img class="preview-img" id="preview" src="" alt="Preview da imagem" style="max-width: 300px; max-height: 600px;">
+                <br><br>
+                <textarea rows="2"  placeholder="Insira o conteúdo aqui..." name="postText" id="postText"></textarea>
+                <br><br>
+                <button type="button" onclick="submitForm()">Enviar</button>
+            </form>
+    <script> // esse código não funcionou 
+        function autoResize(textarea) {
+  textarea.style.height = 'auto'; // Redefine a altura para automática
+  textarea.style.height = textarea.scrollHeight + 'px'; // Define a altura conforme o conteúdo
+}
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function previewImage(event) {
+            const input = event.target;
+            const preview = document.getElementById('preview');
+
+            const file = input.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function() {
+                preview.src = reader.result;
+            }
+
+            reader.readAsDataURL(file);
+        }
+
+        async function submitForm() {
+            
+            const postTitulo = document.getElementById('postTitulo').value;
+            const postText = document.getElementById('postText').value;
+
+            const input = document.getElementById('sg');
+            const file = input.files[0];
+
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = async function() {
+                const imageData = reader.result;
+                const postData = {
+                    postTitulo: postTitulo,
+                    postText: postText,
+                    postImg: imageData
+                };
+                try {
+                    const response = await axios.post('/auth/criarPostagem', postData);
+                    console.log(response.data); // Imprime a resposta do servidor no console
+                } catch (error) {
+                    console.error(error);
+                }
+            };
+        }
+    </script>
+        
+    <script src="/js/home.js"></script>
+        
+
+        </main>
+    </div>
+</body>
+</html>

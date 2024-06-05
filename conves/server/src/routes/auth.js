@@ -19,6 +19,8 @@ router.get('/puxarPostagem', controller_Auth.PuxarPostagem)//  /auth/puxarPostag
 router.get('/puxarPostagemUnica/:id', controller_Auth.PuxarPostagemUnica) //   /auth/puxarPostagemUnica
 router.get('/puxarNumPosts/:idProf', controller_Professor.PuxarNumPosts) //    /auth/puxarNumPosts
 
+router.get('/selectNumViewsProfEspec/:idProf', controller_Auth.SelectNumViewsProfEspec)//   /auth/selectNumViewsProfEspec
+
 router.post('/editarAluno', controller_Aluno.EditarAluno) //    /auth/editarAluno
 router.post('/editarProfessor', controller_Professor.EditarProfessor) //   /auth/editarProfessor
 
