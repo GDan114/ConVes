@@ -70,26 +70,75 @@
     border: none;
     overflow: hidden;
     border-radius: 50%;
-    box-shadow: 0 0 10px #000;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
 }
 
 .imagem img{
     width: 100%;
     height: auto;
-    transition: .3s ;
+    transition: linear .3s ;
 }
 
 .imagem img:hover{
     transform: scale(105%);
-    transition: .3s ;
+    transition:linear .3s;
 }
 
 .bio {
-    width: 80%;
-    min-height: max-content;
+    width: 65%;
+    height: calc(96vh/2);
     border-radius: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
-    
+    padding: 20px;
+}
+
+.postForm {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.esquerda-form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.direita-form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.direita-form button {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    background-color: #ff4646;
+    color: white;
+    box-shadow: 0 5px 0 #a82d2d;
+    transition: all .3s ease;
+}
+
+.direita-form button:active {
+    box-shadow: none;
+    transform: translateY(5px);
+    transition: all .3s ease;
+}
+
+.input {
+    background-color: #eeffff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 13px;
+    border-radius: 8px;
+    width: 40%;
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
 }
 
 .perfil {
@@ -111,8 +160,8 @@ input[type='file']{
 
 
 .select-img {
-    width: 250px;
-    height: 250px;
+    width: 100px;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -122,7 +171,44 @@ input[type='file']{
     color: #fff;
     cursor: pointer;
     margin: 10px;
-    padding: 6px 20px;
+    text-align: center;
+  }
+
+  .content main {
+    width: 100%;
+    height: calc(100vh - 96px);
+    display: flex;
+    flex-direction: column;
   }
 
 
+
+
+
+
+#picture__input {
+  display: none;
+}
+
+.picture {
+  border-radius: 100%;
+  display: flex;
+  color: #000;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: .4s ease-in-out;
+  font-weight: 700;
+  position: relative;
+}
+
+.picture__img { 
+  width: 100%;
+}
+
+.picture__image img {
+  border-radius: 100%;
+  width: 300px;
+    height: 300px;
+}

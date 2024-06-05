@@ -85,9 +85,50 @@
                     </div>
                 </div>
                 <div class="centro">
+                    <form class="postForm" id="postForm" action="/auth/editarAluno" method="POST">
                     <div class="imagem">
-                        <img src="{{perfil.img_fotoPerfil}}" alt=""> 
+                    <input id="sg" type="file" accept="image/*" name="capaImg" required onchange="previewImage(event)">
+                        <label for="sg" class="picture" tabindex="0">
+                            <span class="picture__image">
+                                <div class="img-perfil-profile1">
+                                    <img src="{{perfil.img_fotoPerfil}}" alt=""> 
+                                </div>
+                            </span>
+                            {{!-- <div class="borderSvg">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                            <path fill-rule="" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                            </svg>
+                            </div> --}}
+                        </label>
+                        <script>
+                            const inputFile = document.querySelector('#sg');
+                            const pictureImage = document.querySelector('.picture__image');
+
+
+                            inputFile.addEventListener('change', function(e) {
+                                const inputTarget = e.target;
+                                console.log(inputTarget);
+                                const file = inputTarget.files[0];
+
+                                if(file) {
+                                    const reader = new FileReader();
+                                    reader.addEventListener('load', function(e) {
+                                        const readerTarget = e.target;
+                                        const img = document.createElement('img');
+                                        img.src = readerTarget.result;
+                                        img.classList.add('picture__img');
+                                        pictureImage.innerHTML = '';
+
+                                        pictureImage.appendChild(img);
+                                    });
+                                    reader.readAsDataURL(file);
+                                }
+                            });
+                        </script>
                     </div> <!-- aqui vai a imagem do usuario, (aula do ivan) -->
+                </form>
+                <button type="button" onclick="submitForm()">Editar perfil</button>
                 </div>
                 <div class="direita">
                     <div class="cima-baixo-direita">
@@ -105,21 +146,26 @@
             <div class="bio">
                 {{!-- FORM DE ALUNO, DEPOIS COLOCAR UM isAluno --}}
                  <form class="postForm" id="postForm" action="/auth/editarAluno" method="POST">
-                    <input type="text" placeholder="Nome" pattern="^[a-zA-Z ]+$" id="alunoNome" name="alunoNome" required>
-                    <br><br>
-                    <input type="date" placeholder="Data de nascimento" id="alunoData" name="alunoData" required>
-                    <br><br>
-                    <input type="email" placeholder="Email" id="alunoEmail" name="alunoEmail" required>
-                    <br><br>
-                    <input type="password" placeholder="Senha" minlength="8" maxlength="12" id="alunoSenha" name="alunoSenha" required>
-                    <br><br>
-                    <input class="input" id="sg" type="file" accept="image/*" name="capaImg" required onchange="previewImage(event)">
-                    <label class="select-img" for="sg">Selecionar imagem</label>
-                    <br><br>
-                    <img class="preview-img" id="preview" src="" alt="Preview da imagem" style="max-width: 300px; max-height: 600px;">
-                    <br><br>
-                    <br><br>
-                    <button type="button" onclick="submitForm()">Enviar</button>
+                    <div class="esquerda-form">
+                        <input class="input" type="text" placeholder="Nome" value="{{perfil.nm_aluno}}" pattern="^[a-zA-Z ]+$" id="alunoNome" name="alunoNome" required>
+                        <br>
+                        <input class="input" type="date" placeholder="Data de nascimento" value="{{perfil.dt_nascimento_aluno}}" id="alunoData" name="alunoData" required>
+                        <br>
+                        <input class="input" type="email" placeholder="Email" value="{{perfil.tb_alunoRegistro.ds_emailAluno}}" id="alunoEmail" name="alunoEmail" required>
+                        <br>
+                        <input class="input" type="password" placeholder="Senha" maxlength="12" id="alunoSenha" name="alunoSenha" required>
+                        <br>
+                    </div>
+                    <!-- fecha a div aqui -->
+                    {{!-- <div class="direita-form">
+                        <input class="input" id="sg" type="file" accept="image/*" name="capaImg" required onchange="previewImage(event)">
+                        <label class="select-img" for="sg">Selecionar imagem</label>
+                        <br>
+                        <img class="preview-img" id="preview" src="" alt="Preview da imagem" style="max-width: 300px; max-height: 600px;">
+                        <br>
+                        <br> --}}
+                        <button type="button" onclick="submitForm()">Editar perfil</button>
+                    </div>
                 </form>
             </div>
 
