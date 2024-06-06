@@ -8,8 +8,8 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" type="image/x-icon" href="/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="../public/css/dashboard.css">
-    <link rel="stylesheet" href="../public/css/home.css"> <!-- arrumei o link, o ctrl click não levava pra lugar nenhum -->
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/home.css"> <!-- arrumei o link, o ctrl click não levava pra lugar nenhum -->
     <link rel="shortcut icon" href="/logo.png"> <!-- fodase a imagem tambem, fiquei uns 20 minutos e nao consegui colocar, FODASE  -->
     <title>Dashboard | ConVes</title>
 </head>
@@ -24,7 +24,7 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <a href="#" class="logo">
-            <img src="Imagens/barco-ConVes-preto.png" class="logo-conves" alt="logo ConVes" width="60px" id="conves">
+            <img src="/Imagens/barco-ConVes-preto.png" class="logo-conves" alt="logo ConVes" width="60px" id="conves">
             <!-- retirar o fundo da imagem, deixar apenas o barquinho -->
             <div class="logo-name"><span>Con</span>Ves</div>
         </a>
@@ -81,12 +81,18 @@
             <!-- TESTE DA DASHBOARD --> 
             <!-- SE DER CERTO, ESSE MAIN INTEIRO VAI PARA A HOME --> 
             
+            {{#isProfessor tipoUsuario}}
+        <!-- cada page tem sua base e o conteúdo de cada page fica no main --> 
+
+            <!-- TESTE DA DASHBOARD --> 
+            <!-- SE DER CERTO, ESSE MAIN INTEIRO VAI PARA A HOME --> 
+            
             <div class="cima">
                 <h2>Dashboard</h2>
                 <div class="linha-cima">
                     <div class="esquerda-cima">
                         <div class="views">
-                            <h4>qtd views</h4>
+                            <h4>Qtd views: </h4>
                         </div>
                         <div class="seguidores">
                             <h4>nao sei oq colocar aqui </h4>
@@ -99,11 +105,11 @@
                         <div class="row">
                             <div class="left">
                                 <h2>Professor</h2>
-                                <h4>Nome do professor</h4>
+                                <h4>{{perfil.nm_professor}}</h4>
                             </div>
                             <div class="right">
                                 <div class="imagem-perfil">
-                                    <img src="../public/Imagens/pug-fofo.jpg" alt=""> <!-- imagem do perfil do usuario -->
+                                    <img src="{{perfil.img_fotoPerfil}}" alt=""> <!-- imagem do perfil do usuario -->
                                     <!-- <span>
                                         <div class="estrela">
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -126,11 +132,19 @@
             <div class="meio">
                     <div class="linha-cima-meio">
                         <!-- AQUI É O LOCAL ONDE VAI FICAR AS IMAGENS DO TRÊS ALUNOS-->
-                        <div class="imagem-do-perfil-esquerda"></div>
-                        <div class="imagem-do-perfil-meio"></div>
-                        <div class="imagem-do-perfil-direita"></div>
+                        <div class="imagem-do-perfil-esquerda">
+                            <img src="{{topTres.[0].img_fotoPerfil}}">
+                        </div>
+
+                        <div class="imagem-do-perfil-meio">
+                            {{!-- <img src="{{rank[1].img_fotoPerfil}}"> --}}
+                        </div>
+                        <div class="imagem-do-perfil-direita">
+                            {{!-- <img src="{{rank[2].img_fotoPerfil}}"> --}}
+
+                        </div>
                     </div>
-                <!-- Aqui vai ficar o ranking dos 3 alunos com mais interações com aquele professor -->
+                <!-- Aqui vai ficar o ranking dos 3 profs com mais posts -->
                 <div class="ranking-alunos">
                     <div class="esquerda-rank">
                         <!-- pegar o svg do troféu de prata -->
@@ -175,6 +189,9 @@
                     </div>
                 </div>
             </div>
+           
+                
+    {{/isProfessor}}
            
                 
 

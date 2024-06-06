@@ -69,74 +69,34 @@ async function AuthEstaLogado(req, resp, next) {
     }
 }
 
-async function SelectNumViewsProf (req, resp) { // FUNÇÃO PRA ACHAR O TOTAL DE VIEWS QUE CADA PROF TEM
+async function SelectRankQtdPostsProf (req, resp) { // FUNÇÃO PRA ACHAR O TOTAL DE VIEWS QUE CADA PROF TEM
     try {
-        const Rank = await ModelViewPostagem.findAll({
-            attributes: [
-                'tb_professorPerfil.id_professor',
-                [sequelize.fn('COUNT', sequelize.col('tb_viewPost.id_viewPost')), 'Total_views']
-              ],
-              include: [
-                {
-                  model: Postagem,
-                  attributes: [],
-                  include: [
-                    {
-                      model: ProfessorPerfil,
-                      attributes: []
-                    }
-                  ]
-                }
-              ],
-              where: { en_visto: 'S' },
-              group: ['tb_professorPerfil.id_professor'],
-              order: [[sequelize.literal('Total_views'), 'DESC']]
+        const rank = await ModelProfessorPerfil.findAll({
+            include: [{
+                model: ModelPostagem,
+                attributes: [],
+                required: true
+            }],
+            group:['tb_professorPerfil.id_professor'],
+            order: [[sequelize.fn('COUNT', sequelize.col('id_postagem')), 'DESC']]
         })
 
-        return resp.status(200).json(Rank)
+        const topTres = rank.slice(0, 3);
+
+        // return resp.status(200).json({topTres})
+        return resp.status(200).json({topTres})
     } catch (error) {
         console.error(error)
         return resp.status(500).json({ message: 'Erro interno.' })
     }
 } 
 
-async function SelectNumViewsProfEspec (req, resp) { // TAMBÉM PEGA QTD DE VIEWS, MAS DE UM PROF ESPECÍFICO
-    try {
-        const idProf = req.params.idProf
-        const Views = await ModelViewPostagem.findOne({
-            attributes: [
-                sequelize.fn('COUNT', sequelize.col('tb_viewPost.id_viewPost'))
-              ],
-              include: [
-                {
-                  model: ModelPostagem,
-                  attributes: [],
-                  include: [
-                    {
-                      model: ModelProfessorPerfil,
-                      attributes: ['id_professor'],
-                      required: true
-                    }
-                  ],
-                  required: true
-                }
-              ],
-              
-              where: {en_visto: 'S', '$tb_postagem.fk_professorAutor$': idProf}
-        })
 
-        return resp.status(200).json(Views)
-    } catch (error) {
-        console.error(error)
-        return resp.status(500).json({ message: 'Erro interno.' })
-    }
-}
 
 module.exports= {
     Logout,
     PuxarPostagem,
     AuthEstaLogado,
     PuxarPostagemUnica,
-    SelectNumViewsProf,
-    SelectNumViewsProfEspec
+    SelectRankQtdPostsProf,
 }

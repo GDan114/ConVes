@@ -157,8 +157,15 @@ async function PuxarPerfilProfessor(req, resp) {
         //             ${req.params.idProf}
         // ===================================================================
         // `)
-        idProf = req.params.idProf
+        const idProf = req.params.idProf
         const Prof = await ModelProfessorPerfil.findOne({
+            include: {
+                model: ModelProfessorRegistro,
+                required: true,
+                where: {
+                    id_professorRegistro: idProf
+                }
+            },
             where: {
                 id_professor: idProf
             }
@@ -218,7 +225,6 @@ async function EditarProfessor(req, resp) {
         ProfPerfil.rm_professor = profMatricula
         ProfPerfil.cpf_prof = profCpf
         ProfPerfil.fk_plano = profPlano
-        ProfPerfil.img_fotoPerfil = capaImg
         
         const ProfRegistro = await ModelProfessorRegistro.findOne({
             where: {
@@ -232,6 +238,32 @@ async function EditarProfessor(req, resp) {
 
         await ProfPerfil.save()
         await ProfRegistro.save()
+    } catch (error) {
+        console.error(error)
+        return resp.status(500).json({ message: 'Erro ao editar perfil' })
+    }
+}
+
+async function EditarProfessorImg(req, resp) {
+    try{
+        const {
+            capaImg
+        } = req.body 
+
+        const idProf = req.cookies.cookie_usuario
+
+        const ProfessorPerfil = await ModelProfessorPerfil.findOne({
+            where: {
+                id_professor: idProf
+            }
+        })
+        
+        // AQUI QUE TEM O EDIT
+        ProfessorPerfil.img_fotoPerfil = capaImg
+
+        await ProfessorPerfil.save()
+
+        return resp.status(200).json({ message: 'Foto trocada com sucesso' })
     } catch (error) {
         console.error(error)
         return resp.status(500).json({ message: 'Erro ao editar perfil' })
@@ -266,5 +298,6 @@ module.exports = {
     PuxarPerfilProfessor,
     PuxarNumPosts,
     EditarProfessor,
+    EditarProfessorImg,
     DeletarProfessor
 }

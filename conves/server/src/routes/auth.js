@@ -19,15 +19,16 @@ router.get('/puxarPostagem', controller_Auth.PuxarPostagem)//  /auth/puxarPostag
 router.get('/puxarPostagemUnica/:id', controller_Auth.PuxarPostagemUnica) //   /auth/puxarPostagemUnica
 router.get('/puxarNumPosts/:idProf', controller_Professor.PuxarNumPosts) //    /auth/puxarNumPosts
 
-router.get('/selectNumViewsProfEspec/:idProf', controller_Auth.SelectNumViewsProfEspec)//   /auth/selectNumViewsProfEspec
-
 router.post('/editarAluno', controller_Aluno.EditarAluno) //    /auth/editarAluno
 router.post('/editarAlunoImg', controller_Aluno.EditarAlunoImg) //    /auth/editarAluno
 
 router.post('/editarProfessor', controller_Professor.EditarProfessor) //   /auth/editarProfessor
+router.post('/editarProfessorImg', controller_Professor.EditarProfessorImg) //   /auth/editarProfessor
 
 router.post('/viewPostAluno/:idPost', controller_Aluno.ViewPostAluno) //   /auth/viewPostAluno 
 
 router.get('/logout', controller_Auth.Logout) //  /auth/logout
+
+router.get('/selectRankQtdPostProf', controller_Auth.SelectRankQtdPostsProf)
 
 module.exports = router
