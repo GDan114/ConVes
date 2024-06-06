@@ -115,7 +115,7 @@ async function LogarAluno(req, resp) {
 
 async function PuxarPerfilAluno(req, resp) {
     try {
-        idAluno = req.params.idAluno
+        const idAluno = req.params.idAluno
         const Aluno = await ModelAlunoPerfil.findOne({
             include: {
                 model: ModelAlunoRegistro,

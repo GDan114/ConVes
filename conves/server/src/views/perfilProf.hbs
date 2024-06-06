@@ -85,9 +85,44 @@
                     </div>
                 </div>
                 <div class="centro">
+                    <form class="postForm" id="postFormImg" method="POST">
                     <div class="imagem">
-                        <img src="{{perfil.img_fotoPerfil}}" alt=""> 
-                    </div> <!-- aqui vai a imagem do usuario, (aula do ivan) -->
+                    <input id="sg" type="file" accept="image/*" name="capaImg" required onchange="previewImage(event)">
+                        <label for="sg" class="picture" tabindex="0">
+                            <span class="picture__image">
+                                <div class="img-perfil-profile1">
+                                    <img src="{{perfil.img_fotoPerfil}}" alt=""> 
+                                </div>
+                            </span>
+                        </label>
+                        <script>
+                            const inputFile = document.querySelector('#sg');
+                            const pictureImage = document.querySelector('.picture__image');
+
+
+                            inputFile.addEventListener('change', function(e) {
+                                const inputTarget = e.target;
+                                console.log(inputTarget);
+                                const file = inputTarget.files[0];
+
+                                if(file) {
+                                    const reader = new FileReader();
+                                    reader.addEventListener('load', function(e) {
+                                        const readerTarget = e.target;
+                                        const img = document.createElement('img');
+                                        img.src = readerTarget.result;
+                                        img.classList.add('picture__img');
+                                        pictureImage.innerHTML = '';
+
+                                        pictureImage.appendChild(img);
+                                    });
+                                    reader.readAsDataURL(file);
+                                }
+                            });
+                        </script>
+                        </div> <!-- aqui vai a imagem do usuario, (aula do ivan) -->
+                    </form>
+                <button type="button" onclick="submitFormImg()">Editar perfil</button>
                 </div>
                 <div class="direita">
                     <div class="cima-baixo-direita">
@@ -104,24 +139,18 @@
             
             <div class="bio">
                 {{!-- FORM DE ALUNO, DEPOIS COLOCAR UM isAluno --}}
-                 <form class="postForm" id="postForm" action="/auth/editarAluno" method="POST">
-                    <input type="text" placeholder="Nome" pattern="^[a-zA-Z ]+$" id="profNome" name="profNome" required>
+                 <form class="postForm" id="postForm" action="/auth/editarProfessor" method="POST">
+                    <input type="text" placeholder="Nome" value="{{perfil.nm_professor}}" pattern="^[a-zA-Z ]+$" id="profNome" name="profNome" required>
                     <br><br>
-                    <input type="text" placeholder="Matrícula" minlength="5" maxlength="5" name="profMatricula" id="profMatricula" required>
+                    <input type="text" placeholder="Matrícula" value="{{perfil.rm_professor}}" minlength="5" maxlength="5" name="profMatricula" id="profMatricula" required>
                     <br><br>
-                    <input type="text" placeholder="CPF" id="profCpf" placeholder="Cpf" name="profCpf"  maxlength="11"  required> 
+                    <input type="text" placeholder="CPF" value="{{perfil.cpf_prof}}" id="profCpf" placeholder="Cpf" name="profCpf"  maxlength="11"  required> 
                     <br><br>
-                    <input type="email" placeholder="Email" id="profEmail" name="profEmail" required>
+                    <input type="email" placeholder="Email" value="{{perfil.tb_professorRegistro.ds_emailProfessor}}" id="profEmail" name="profEmail" required>
                     <br><br>
                     <input type="password" placeholder="Senha" minlength="8" maxlength="12" id="profSenha" name="profSenha" required>
-                    <br><br>
-                    <input class="input" id="sg" type="file" accept="image/*" name="capaImg" required onchange="previewImage(event)">
-                    <label class="select-img" for="sg">Selecionar imagem</label>
-                    <br><br>
-                    <img class="preview-img" id="preview" src="" alt="Preview da imagem" style="max-width: 300px; max-height: 600px;">
-                    <br><br>
-                    <br><br>
-                    <button type="button" onclick="submitForm()">Enviar</button>
+                    
+                    <button type="submit" onclick="submitForm()">Enviar</button>
                 </form>
             </div>
             
@@ -148,6 +177,27 @@
                 const profEmail = document.getElementById('profEmail').value;
                 const profSenha = document.getElementById('profSenha').value;
 
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = async function() {
+                    const postData = {
+                        profNome: profNome,
+                        profMatricula: profMatricula,
+                        profCpf: profCpf,
+                        profEmail: profEmail,
+                        profSenha: profSenha,
+                    };
+                    try {
+                        
+                        const response = await axios.post('/auth/editarProfessor', postData);
+                        console.log(response.data); // Imprime a resposta do servidor no console
+                    } catch (error) {
+                        console.error(error);
+                    }
+                };
+            }
+
+            async function submitFormImg() {
                 const input = document.getElementById('sg');
                 const file = input.files[0];
 
@@ -156,15 +206,10 @@
                 reader.onload = async function() {
                     const imageData = reader.result;
                     const postData = {
-                        profNome: profNome,
-                        profMatricula: profMatricula,
-                        profCpf: profCpf,
-                        profEmail: profEmail,
-                        profSenha: profSenha,
                         capaImg: imageData
                     };
                     try {
-                        const response = await axios.post('/auth/editarProfessor', postData);
+                        const response = await axios.post('/auth/editarProfessorImg', postData);
                         console.log(response.data); // Imprime a resposta do servidor no console
                     } catch (error) {
                         console.error(error);
