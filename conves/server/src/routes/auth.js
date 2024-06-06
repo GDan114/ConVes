@@ -22,6 +22,8 @@ router.get('/puxarNumPosts/:idProf', controller_Professor.PuxarNumPosts) //    /
 router.get('/selectNumViewsProfEspec/:idProf', controller_Auth.SelectNumViewsProfEspec)//   /auth/selectNumViewsProfEspec
 
 router.post('/editarAluno', controller_Aluno.EditarAluno) //    /auth/editarAluno
+router.post('/editarAlunoImg', controller_Aluno.EditarAlunoImg) //    /auth/editarAluno
+
 router.post('/editarProfessor', controller_Professor.EditarProfessor) //   /auth/editarProfessor
 
 router.post('/viewPostAluno/:idPost', controller_Aluno.ViewPostAluno) //   /auth/viewPostAluno 

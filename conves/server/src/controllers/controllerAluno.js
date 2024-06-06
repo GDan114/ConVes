@@ -157,7 +157,7 @@ async function EditarAluno(req, resp) {
         // AQUI QUE TEM O EDIT
         AlunoPerfil.nm_aluno = alunoNome
         AlunoPerfil.dt_nascimento_aluno = alunoData
-        AlunoPerfil.img_fotoPerfil = capaImg
+        //AlunoPerfil.img_fotoPerfil = capaImg
         
         const AlunoRegistro = await ModelAlunoRegistro.findOne({
             where: {
@@ -171,6 +171,33 @@ async function EditarAluno(req, resp) {
 
         await AlunoPerfil.save()
         await AlunoRegistro.save()
+
+    } catch (error) {
+        console.error(error)
+        return resp.status(500).json({ message: 'Erro ao editar perfil' })
+    }
+}
+
+async function EditarAlunoImg(req, resp) {
+    try{
+        const {
+            capaImg
+        } = req.body 
+
+        const idAluno = req.cookies.cookie_usuario
+
+        const AlunoPerfil = await ModelAlunoPerfil.findOne({
+            where: {
+                id_aluno: idAluno
+            }
+        })
+        
+        // AQUI QUE TEM O EDIT
+        AlunoPerfil.img_fotoPerfil = capaImg
+
+        await AlunoPerfil.save()
+
+        return resp.status(200).json({ message: 'Foto trocada com sucesso' })
     } catch (error) {
         console.error(error)
         return resp.status(500).json({ message: 'Erro ao editar perfil' })
@@ -222,6 +249,7 @@ module.exports = {
     LogarAluno,
     PuxarPerfilAluno,
     EditarAluno,
+    EditarAlunoImg,
     ViewPostAluno,
     DeletarAluno
 }
