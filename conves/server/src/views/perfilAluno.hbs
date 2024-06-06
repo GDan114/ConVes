@@ -85,7 +85,7 @@
                     </div>
                 </div>
                 <div class="centro">
-                    <form class="postForm" id="postForm" action="/auth/editarAluno" method="POST">
+                    <form class="postForm" id="postFormImg" action="/auth/editarAlunoImg" method="POST">
                     <div class="imagem">
                     <input id="sg" type="file" accept="image/*" name="capaImg" required onchange="previewImage(event)">
                         <label for="sg" class="picture" tabindex="0">
@@ -128,7 +128,7 @@
                         </script>
                     </div> <!-- aqui vai a imagem do usuario, (aula do ivan) -->
                 </form>
-                <button type="button" onclick="submitForm()">Editar perfil</button>
+                <button type="button" onclick="submitFormImg()">Editar perfil</button>
                 </div>
                 <div class="direita">
                     <div class="cima-baixo-direita">
@@ -145,6 +145,15 @@
             
             <div class="bio">
                 {{!-- FORM DE ALUNO, DEPOIS COLOCAR UM isAluno --}}
+
+                {{!-- 
+                
+                
+                            FORMULARIO DE EDIÇÃO TOTAL               
+                
+                
+                
+                 --}}
                  <form class="postForm" id="postForm" action="/auth/editarAluno" method="POST">
                     <div class="esquerda-form">
                         <input class="input" type="text" placeholder="Nome" value="{{perfil.nm_aluno}}" pattern="^[a-zA-Z ]+$" id="alunoNome" name="alunoNome" required>
@@ -164,13 +173,15 @@
                         <img class="preview-img" id="preview" src="" alt="Preview da imagem" style="max-width: 300px; max-height: 600px;">
                         <br>
                         <br> --}}
-                        <button type="button" onclick="submitForm()">Editar perfil</button>
+                        <button type="submit" onclick="submitForm()">Editar perfil</button>
                     </div>
                 </form>
             </div>
 
             <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script>
+            
+
             function previewImage(event) {
                 const input = event.target;
                 const preview = document.getElementById('preview');
@@ -191,9 +202,6 @@
                 const alunoEmail = document.getElementById('alunoEmail').value;
                 const alunoSenha = document.getElementById('alunoSenha').value;
 
-                const input = document.getElementById('sg');
-                const file = input.files[0];
-
                 const reader = new FileReader();
                 reader.readAsDataURL(file);
                 reader.onload = async function() {
@@ -203,10 +211,29 @@
                         alunoData: alunoData,
                         alunoEmail: alunoEmail,
                         alunoSenha: alunoSenha,
-                        capaImg: imageData
                     };
                     try {
                         const response = await axios.post('/auth/editarAluno', postData);
+                        console.log(response.data); // Imprime a resposta do servidor no console
+                    } catch (error) {
+                        console.error(error);
+                    }
+                };
+            }
+
+            async function submitFormImg() {
+                const input = document.getElementById('sg');
+                const file = input.files[0];
+
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = async function() {
+                    const imageData = reader.result;
+                    const postData = {
+                        capaImg: imageData
+                    };
+                    try {
+                        const response = await axios.post('/auth/editarAlunoImg', postData);
                         console.log(response.data); // Imprime a resposta do servidor no console
                     } catch (error) {
                         console.error(error);
