@@ -43,7 +43,7 @@
 
 /* INICIO DA PARTE DE BAIXO */
 .baixo {
-    width: 80%;
+    width: 70%;
     height: calc(100%/1.8);
     background-color: #f8f8ff;
     border-radius: 20px;
@@ -54,7 +54,7 @@
 }
 
 .quadrado-vermelho {
-    width: calc(100%/2);
+    width: calc(100%/1.8);
     height: calc(65%/1);
     background-color: #ff4646;
     border-radius: 20px 20px 0 0;
@@ -64,7 +64,7 @@
 .baixo svg {
     position: absolute;
     bottom: 50px;
-    transform: scale(75%);
+    transform: scale(80%);
     filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.100));
 }
 
@@ -74,4 +74,10 @@ main h2{
 }
 
 /* inserir as imagens dos participantes */
+
+.imagem-teste {
+    transform: scale(60%);
+    position: absolute;
+    bottom: 30px;
+}
 

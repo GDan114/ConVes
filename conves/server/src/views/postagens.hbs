@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/css/home.css"> <!-- arrumei o link, o ctrl click não levava pra lugar nenhum -->
     <link rel="stylesheet" href="/css/postagens.css"> <!-- css dessa page vai ser bem aproveitado da home, puxando as coisas do header, menu-->
     <title>Postagens | ConVes</title>
@@ -21,18 +22,18 @@
         </a>
         <ul class="side-menu">
             <!-- Inicio do Menu-->
-            <li><a href="/home"><i class='bx bx-home' ></i>Home</a></li>
-            <li><a href="#"><i class="bx bx-slider-alt"></i>Dashboard</a></li> <!-- procurar referencias e configurações para fazer parte da page de config  -->
-            <li class="active"><a href="/home/postagens"><i class='bx bxs-dashboard'></i>Postagens</a></li> <!-- a class active é da pagina ativada, nesse caso a page de postagens-->
-            <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> <!-- colocar os href das proximas pages quando estiverem feitas-->
-            <li><a href="#"><i class='bx bx-info-circle'></i>Sobre</a></li> <!-- próximas páginas a serem feitas serão a de professor e sobre a ConVes -->
+            <li><a href="#"><i class='bx bx-home'></i>Home</a></li>
+            <li><a href="#"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+            <li class="active"><a href="/home/postagens"><i class="bi bi-window-plus" id="icon-menu-postagens"></i>Postagens</a></li> <!-- PEGAR O LINK DO BOOTSTRAP --> 
+            <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> 
+            <li><a href="#"><i class='bx bx-info-circle'></i>Sobre</a></li>
             <li><a href="/home/perfil"><i class='bx bx-user'></i>Perfil</a></li>
         </ul>
         <ul class="side-menu">
             <li>
                 <form action="/auth/logout" method="GET">
                     <button type="submit" class="logout"> <!-- botao de logout-->
-                <i class='bx bx-log-out'></i>Sair</button>
+                    <i class='bx bx-log-out'></i>Sair</button>
                 </form> 
             </li>
         </ul>

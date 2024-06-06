@@ -8,9 +8,10 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" type="image/x-icon" href="/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../public/css/dashboard.css">
-    <link rel="stylesheet" href="../public/css/home.css"> <!-- arrumei o link, o ctrl click não levava pra lugar nenhum -->
-    <link rel="shortcut icon" href="/logo.png"> <!-- fodase a imagem tambem, fiquei uns 20 minutos e nao consegui colocar, FODASE  -->
+    <link rel="stylesheet" href="../public/css/home.css">
+    <link rel="shortcut icon" href="/logo.png">
     <title>Dashboard | ConVes</title>
 </head>
 
@@ -25,18 +26,17 @@
     <div class="sidebar">
         <a href="#" class="logo">
             <img src="Imagens/barco-ConVes-preto.png" class="logo-conves" alt="logo ConVes" width="60px" id="conves">
-            <!-- retirar o fundo da imagem, deixar apenas o barquinho -->
             <div class="logo-name"><span>Con</span>Ves</div>
         </a>
         <ul class="side-menu">
             <!-- Inicio do Menu-->
             <!-- a class active é da pagina ativada, nesse caso a home-->
-            <li class="active"><a href="#"><i class='bx bx-home'></i>Home</a></li>
-            <li><a href="/home/postagens"><i class='bx bxs-dashboard'></i>Postagens</a></li>
+            <li><a href="#"><i class='bx bx-home'></i>Home</a></li>
+            <li class="active"><a href="dashboard.html"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+            <li><a href="/home/postagens"><i class="bi bi-window-plus"></i>Postagens</a></li> <!-- PEGAR O LINK DO BOOTSTRAP --> 
             <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> 
             <li><a href="#"><i class='bx bx-info-circle'></i>Sobre</a></li>
             <li><a href="/home/perfil"><i class='bx bx-user'></i>Perfil</a></li>
-            <li><a href="#"><i class="bx bx-slider-alt"></i>Configurações</a></li> <!-- criar a rota da page de configurações --> 
         </ul> 
         <ul class="side-menu">
             <li>
