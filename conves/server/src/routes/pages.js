@@ -161,4 +161,21 @@ router.get('/home/dashboard', controller_Auth.AuthEstaLogado, async(req, res) =>
     }
 })
 
+router.get('/home/sobre', controller_Auth.AuthEstaLogado, async(req, res) => {
+    const tipoUsuario = req.cookies.cookie_tipoUsuario
+    const idPerfil = req.cookies.cookie_usuario
+
+    let perfil = null
+
+    if (tipoUsuario == "Aluno") {
+        const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilAluno/${idPerfil}`)
+        perfil = responsePerfil.data
+    } else {
+        const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilProfessor/${idPerfil}`)
+        perfil = responsePerfil.data
+    }
+
+    res.render('sobre', { perfil })
+})
+
 module.exports = router;

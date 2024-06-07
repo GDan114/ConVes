@@ -7,8 +7,9 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" type="image/x-icon" href="/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="../public/css/sobre.css">
-    <link rel="stylesheet" href="../public/css/home.css"> <!-- arrumei o link, o ctrl click não levava pra lugar nenhum -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/sobre.css">
+    <link rel="stylesheet" href="/css/home.css"> <!-- arrumei o link, o ctrl click não levava pra lugar nenhum -->
     <link rel="shortcut icon" href="/logo.png"> <!-- fodase a imagem tambem, fiquei uns 20 minutos e nao consegui colocar, FODASE  -->
     <title>Sobre | ConVes</title>
 </head>
@@ -23,20 +24,18 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <a href="#" class="logo">
-            <img src="Imagens/barco-ConVes-preto.png" class="logo-conves" alt="logo ConVes" width="60px" id="conves">
+            <img src="/Imagens/barco-ConVes-preto.png" class="logo-conves" alt="logo ConVes" width="60px" id="conves">
             <!-- retirar o fundo da imagem, deixar apenas o barquinho -->
             <div class="logo-name"><span>Con</span>Ves</div>
         </a>
         <ul class="side-menu">
             <!-- Inicio do Menu-->
             <li><a href="#"><i class='bx bx-home'></i>Home</a></li>
-            <!-- criar as proximas pages e colocar os href aqui-->
-            <li><a href="/home/postagens"><i class='bx bxs-dashboard'></i>Postagens</a></li>
-            <!-- a class active é da pagina ativada, nesse caso a home-->
+            <li><a href="/home/dashboard"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+            <li><a href="/home/postagens"><i class="bi bi-window-plus" id="icon-menu-postagens"></i>Postagens</a></li> <!-- PEGAR O LINK DO BOOTSTRAP --> 
             <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> 
-            <li class="active"><a href="#"><i class='bx bx-info-circle'></i>Sobre</a></li>
-            <li><a href="/home/perfil"><i class='bx bx-user'></i>Perfil</a></li>
-            <li><a href="#"><i class="bx bx-slider-alt"></i>Configurações</a></li> <!-- criar a rota da page de configurações --> 
+            <li class="active"><a href="/home/sobre"><i class='bx bx-info-circle'></i>Sobre</a></li>
+            <li><a href="/home/perfil"><i class='bx bx-user'></i>Perfil</a></li> 
         </ul> 
         <ul class="side-menu">
             <li>
@@ -84,7 +83,7 @@
         <h2>Grupo <span class="conves">ConVes</span></h2>
         <div class="baixo">
             <!-- svg  dos integrantes  -->
-            <img class="imagem-teste" src="../public/Imagens/double-biceps.png" alt="">
+            <img class="imagem-teste" src="/Imagens/double-biceps.png" alt="">
             <div class="quadrado-vermelho"></div>
             <svg width="991" height="165" viewBox="0 0 991 165" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0 47.5L215 0V100H0L0 47.5Z" fill="white"/>
@@ -98,9 +97,7 @@
                 <path d="M661.25 106H656.761V91.4545H661.449C662.86 91.4545 664.067 91.7457 665.071 92.3281C666.075 92.9058 666.844 93.7367 667.379 94.821C667.914 95.9006 668.182 97.1932 668.182 98.6989C668.182 100.214 667.912 101.518 667.372 102.612C666.832 103.701 666.046 104.539 665.014 105.126C663.982 105.709 662.727 106 661.25 106ZM658.523 104.438H661.136C662.339 104.438 663.336 104.205 664.126 103.741C664.917 103.277 665.507 102.617 665.895 101.76C666.283 100.903 666.477 99.8826 666.477 98.6989C666.477 97.5246 666.286 96.5137 665.902 95.6662C665.518 94.8139 664.946 94.1605 664.183 93.706C663.421 93.2467 662.472 93.017 661.335 93.017H658.523V104.438ZM671.049 106H669.203L674.544 91.4545H676.362L681.703 106H679.856L675.51 93.7557H675.396L671.049 106ZM671.731 100.318H679.174V101.881H671.731V100.318ZM695.502 91.4545V106H693.798L685.872 94.5795H685.73V106H683.968V91.4545H685.673L693.627 102.903H693.77V91.4545H695.502ZM700.788 91.4545V106H699.027V91.4545H700.788ZM704.32 106V91.4545H706.081V104.438H712.843V106H704.32ZM727.276 98.7273C727.276 100.261 726.999 101.587 726.445 102.705C725.891 103.822 725.131 104.684 724.165 105.29C723.2 105.896 722.096 106.199 720.856 106.199C719.615 106.199 718.512 105.896 717.546 105.29C716.58 104.684 715.82 103.822 715.266 102.705C714.712 101.587 714.435 100.261 714.435 98.7273C714.435 97.1932 714.712 95.8674 715.266 94.75C715.82 93.6326 716.58 92.7708 717.546 92.1648C718.512 91.5587 719.615 91.2557 720.856 91.2557C722.096 91.2557 723.2 91.5587 724.165 92.1648C725.131 92.7708 725.891 93.6326 726.445 94.75C726.999 95.8674 727.276 97.1932 727.276 98.7273ZM725.572 98.7273C725.572 97.4678 725.361 96.4048 724.94 95.5384C724.523 94.6719 723.957 94.0161 723.242 93.571C722.532 93.1259 721.737 92.9034 720.856 92.9034C719.975 92.9034 719.177 93.1259 718.462 93.571C717.752 94.0161 717.186 94.6719 716.765 95.5384C716.348 96.4048 716.14 97.4678 716.14 98.7273C716.14 99.9867 716.348 101.05 716.765 101.916C717.186 102.783 717.752 103.438 718.462 103.884C719.177 104.329 719.975 104.551 720.856 104.551C721.737 104.551 722.532 104.329 723.242 103.884C723.957 103.438 724.523 102.783 724.94 101.916C725.361 101.05 725.572 99.9867 725.572 98.7273Z" fill="black"/>
                 <path d="M843.761 75V60.4545H845.523V73.4375H852.284V75H843.761ZM855.011 75V60.4545H863.79V62.017H856.773V66.9318H863.335V68.4943H856.773V73.4375H863.903V75H855.011ZM866.169 62.017V60.4545H877.078V62.017H872.504V75H870.743V62.017H866.169ZM878.547 60.4545H880.564L884.598 67.2443H884.768L888.802 60.4545H890.819L885.564 69.0057V75H883.802V69.0057L878.547 60.4545ZM904.118 65H902.357C902.253 64.4934 902.07 64.0483 901.81 63.6648C901.554 63.2812 901.242 62.9593 900.873 62.6989C900.508 62.4337 900.103 62.2348 899.658 62.1023C899.213 61.9697 898.749 61.9034 898.266 61.9034C897.385 61.9034 896.587 62.1259 895.873 62.571C895.162 63.0161 894.596 63.6719 894.175 64.5384C893.758 65.4048 893.55 66.4678 893.55 67.7273C893.55 68.9867 893.758 70.0497 894.175 70.9162C894.596 71.7827 895.162 72.4384 895.873 72.8835C896.587 73.3286 897.385 73.5511 898.266 73.5511C898.749 73.5511 899.213 73.4848 899.658 73.3523C900.103 73.2197 900.508 73.0232 900.873 72.7628C901.242 72.4976 901.554 72.1733 901.81 71.7898C902.07 71.4015 902.253 70.9564 902.357 70.4545H904.118C903.986 71.1979 903.744 71.8632 903.394 72.4503C903.043 73.0374 902.608 73.5369 902.087 73.9489C901.566 74.3561 900.981 74.6662 900.333 74.8793C899.689 75.0923 899 75.1989 898.266 75.1989C897.025 75.1989 895.922 74.8958 894.956 74.2898C893.99 73.6837 893.23 72.822 892.676 71.7045C892.123 70.5871 891.846 69.2614 891.846 67.7273C891.846 66.1932 892.123 64.8674 892.676 63.75C893.23 62.6326 893.99 61.7708 894.956 61.1648C895.922 60.5587 897.025 60.2557 898.266 60.2557C899 60.2557 899.689 60.3622 900.333 60.5753C900.981 60.7884 901.566 61.1009 902.087 61.5128C902.608 61.92 903.043 62.4171 903.394 63.0043C903.744 63.5866 903.986 64.2519 904.118 65ZM908.726 60.4545V75H906.964V60.4545H908.726ZM912.854 75H911.007L916.348 60.4545H918.167L923.507 75H921.661L917.314 62.7557H917.201L912.854 75ZM913.536 69.3182H920.979V70.8807H913.536V69.3182Z" fill="black"/>
                 </svg>
-                
         </div>
-        
        </main>
 
     </div>

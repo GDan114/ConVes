@@ -727,4 +727,8 @@ body{
     border-radius: 5px;
 }
 
-
+#icon-menu-postagens{
+    font-size: 16pt;
+    margin-left: 12px;
+    margin-right: 7px;
+}

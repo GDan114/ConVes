@@ -7,8 +7,9 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="icon" type="image/x-icon" href="/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="/css/home.css"> <!-- arrumei o link, o ctrl click não levava pra lugar nenhum -->
-    <link rel="shortcut icon" href="/logo.png"> <!-- fodase a imagem tambem, fiquei uns 20 minutos e nao consegui colocar, FODASE  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/home.css"> 
+    <link rel="shortcut icon" href="/logo.png"> 
     <title>Professores | ConVes</title>
 </head>
 
@@ -29,13 +30,11 @@
         <ul class="side-menu">
             <!-- Inicio do Menu-->
             <li><a href="#"><i class='bx bx-home'></i>Home</a></li>
-            <!-- criar as proximas pages e colocar os href aqui-->
-            <li><a href="/home/postagens"><i class='bx bxs-dashboard'></i>Postagens</a></li>
-            <!-- a class active é da pagina ativada, nesse caso a home-->
-            <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> 
-            <li><a href="#"><i class='bx bx-info-circle'></i>Sobre</a></li>
+            <li><a href="/home/dashboard"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+            <li><a href="/home/postagens"><i class="bi bi-window-plus" id="icon-menu-postagens"></i>Postagens</a></li> <!-- PEGAR O LINK DO BOOTSTRAP --> 
+            <li class="active"><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> 
+            <li><a href="/home/sobre"><i class='bx bx-info-circle'></i>Sobre</a></li>
             <li><a href="/home/perfil"><i class='bx bx-user'></i>Perfil</a></li>
-            <li><a href="#"><i class="bx bx-slider-alt"></i>Configurações</a></li> <!-- criar a rota da page de configurações --> 
         </ul> 
         <ul class="side-menu">
             <li>
