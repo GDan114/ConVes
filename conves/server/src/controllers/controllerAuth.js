@@ -81,6 +81,22 @@ async function SelectRankQtdPostsProf (req, resp) { // FUNÇÃO PRA ACHAR O TOTA
             order: [[sequelize.fn('COUNT', sequelize.col('id_postagem')), 'DESC']]
         })
 
+        console.log(`
+        ================================================================
+        
+                                INICIO
+
+        ================================================================
+
+        ${rank}
+
+        ================================================================
+        
+                                FIM
+
+        ================================================================
+            `)
+
         const topTres = rank.slice(0, 3);
 
         // return resp.status(200).json({topTres})
