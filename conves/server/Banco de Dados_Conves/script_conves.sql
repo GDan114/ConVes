@@ -107,17 +107,25 @@ insert into tb_plano(nm_plano, vl_plano)
            
 insert into tb_professorPerfil(nm_professor, rm_professor, cpf_prof, fk_plano, img_fotoPerfil)
 			values ('Teste', '12345', '12345678901', 1, '/Imagens/perfil.png'),
-				   ('Denise', '07443', '47457908845', 2, '/Imagens/perfil.png'),
-				   ('Valdirene', '05129', '47457939877', 1, '/Imagens/perfil.png'),
+				   ('Cláudia', '07443', '47457908845', 2, '/Imagens/perfil.png'),
+				   ('Valéria', '05129', '47457939877', 1, '/Imagens/perfil.png'),
 				   ('Charles', '05333', '47404739809', 2, '/Imagens/perfil.png'),
 				   ('Michel', '37390', '47457990342', 1, '/Imagens/perfil.png');
                    
 insert into tb_professorRegistro(fk_professor, ds_emailProfessor, id_senhaProfessor)
 	values (1, 'teste@email', '$2b$10$b9FOepDqzofS//MjQleREuqZH6rMi2F4UQ3HjEh3q1PoIUa3xcf6G'), /* A SENHA É 12345678 */
-		   (2, 'denise@gmail.com', 'portugues'),
-		   (3, 'valdirene@gmail.com', 'historia'),
-           (4, 'charles@gmail.com', 'matematica'),
-           (5, 'michel@gmail.com', 'biologia');
+		   (2, 'claudia@gmail.com', '$2b$10$b9FOepDqzofS//MjQleREuqZH6rMi2F4UQ3HjEh3q1PoIUa3xcf6G'),
+		   (3, 'valeria@gmail.com', '$2b$10$b9FOepDqzofS//MjQleREuqZH6rMi2F4UQ3HjEh3q1PoIUa3xcf6G'),
+           (4, 'charles@gmail.com', '$2b$10$b9FOepDqzofS//MjQleREuqZH6rMi2F4UQ3HjEh3q1PoIUa3xcf6G'),
+           (5, 'michel@gmail.com', '$2b$10$b9FOepDqzofS//MjQleREuqZH6rMi2F4UQ3HjEh3q1PoIUa3xcf6G');
+           
+insert into tb_postagem(nm_tituloPostagem, fk_professorAutor, ds_conteudoPost, img_capaPost)
+	values ('Ortografia', 1, 'A ortografia é a arte de escrever corretamente. Ela é essencial para a comunicação eficaz, garantindo que as palavras sejam compreendidas da maneira pretendida. Através das regras ortográficas, aprendemos a grafar as palavras de forma padronizada, evitando erros que possam comprometer a clareza e a precisão do texto. Dominar a ortografia não apenas demonstra habilidade linguística, mas também respeito pelo idioma e por quem o utiliza. É uma ferramenta poderosa que permite transmitir nossas ideias de maneira clara e concisa.', '/Imagens/imgPosts/ortografia.jpg'),
+		   ('Verbos', 1, 'Os verbos são como os motores da linguagem, impulsionando a ação e dando vida às nossas expressões. Eles nos permitem descrever ações, estados, sentimentos e relações entre pessoas e coisas. São eles que conferem dinamismo e fluidez às nossas frases, transmitindo nuances e intenções. Desde os mais simples aos mais complexos, os verbos são essenciais em qualquer idioma, moldando o significado e a estrutura das nossas comunicações. Através deles, construímos narrativas, expressamos desejos, compartilhamos experiências e nos conectamos com o mundo ao nosso redor.', '/Imagens/imgPosts/verbos.jpg'),
+           ('Figuras de linguagem', 1, 'As figuras de linguagem são as tintas coloridas do nosso discurso, acrescentando profundidade, vivacidade e beleza às nossas palavras. Elas são ferramentas poderosas que transcendem o significado literal, permitindo-nos criar imagens vívidas, despertar emoções e transmitir mensagens de forma mais impactante. Das metáforas que nos levam a enxergar o mundo por novos ângulos às metonímias que substituem um termo por outro relacionado, as figuras de linguagem estão presentes em todos os cantos da nossa comunicação. Seja para embelezar um texto, torná-lo mais persuasivo ou simplesmente para despertar interesse, essas figuras são aliadas indispensáveis na arte de expressar pensamentos e sentimentos.', '/Imagens/imgPosts/figuras.jpeg'),
+           ('Concordância nominal', 2, 'A concordância nominal é a harmonia entre os elementos da frase, garantindo que os termos concordem em gênero e número. É como uma dança elegante onde os substantivos, adjetivos, artigos e pronomes se alinham perfeitamente para transmitir uma mensagem coesa e precisa. Quando dominamos a concordância nominal, evitamos descompassos que possam comprometer a clareza e a correção do texto. É importante observar as regras e entender as nuances do idioma para que as palavras estejam em sintonia, contribuindo para uma comunicação eficaz e harmoniosa.', '/Imagens/imgPosts/concordancia.jpeg'),
+           ('Advérbio', 2, 'Os advérbios são como os temperos sutis da nossa linguagem, acrescentando nuances e detalhes à maneira como expressamos ações, estados e qualidades. Eles modificam verbos, adjetivos e até mesmo outros advérbios, oferecendo informações sobre tempo, lugar, modo, intensidade, entre outros aspectos. Seja suavizando uma afirmação com "talvez", enfatizando uma ideia com "certamente" ou indicando o local de uma ação com "aqui", os advérbios são elementos essenciais para a precisão e a clareza da comunicação. Dominar o uso dos advérbios é como afinar um instrumento musical, dando o tom certo para cada frase e transmitindo as nuances exatas do que queremos expressar.', '/Imagens/imgPosts/adverbio.jpeg'),
+           ('Adjetivo', 3, 'Os adjetivos são os artistas que pintam o cenário das nossas frases, acrescentando cor, textura e profundidade à nossa comunicação. Eles descrevem características, qualidades e estados dos substantivos, permitindo-nos criar imagens vívidas e transmitir sentimentos e impressões de forma precisa. Seja para expressar a beleza de uma paisagem com "verdejante", a bondade de uma pessoa com "generoso", ou a intensidade de uma emoção com "ardente", os adjetivos são ferramentas poderosas que enriquecem nossa expressão linguística. Dominar o uso dos adjetivos é como ter um pincel fino nas mãos, capaz de dar vida e profundidade a cada palavra que escolhemos usar.', '/Imagens/imgPosts/adjetivo.jpeg');
 
 /*SELECT*/
 
