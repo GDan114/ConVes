@@ -22,6 +22,9 @@ router.get('/home', controller_Auth.AuthEstaLogado, async (req, res) => {
         const response = await axios.get('http://localhost:5000/auth/puxarPostagem')
         const postagens = response.data
 
+        const responseProfessores = await axios.get('http://localhost:5000/auth/puxarProfessores')
+        const professores = responseProfessores.data
+
         const tipoUsuario = req.cookies.cookie_tipoUsuario
         const idPerfil = req.cookies.cookie_usuario
 
@@ -35,7 +38,7 @@ router.get('/home', controller_Auth.AuthEstaLogado, async (req, res) => {
 
         }
 
-        res.render('home', { postagens, perfil, tipoUsuario }) // Renderiza sua página HBS com os dados das postagens como contexto
+        res.render('home', { postagens, perfil, tipoUsuario, professores }) // Renderiza sua página HBS com os dados das postagens como contexto
     } catch (error) {
         console.error(error)
         res.status(500).send('Erro ao buscar postagens')
@@ -95,6 +98,34 @@ router.get('/home/postagens', controller_Auth.AuthEstaLogado, async (req, res) =
     
 })
 
+router.get('/home/postagensProfessor/:idProf', controller_Auth.AuthEstaLogado, async (req, res) => {
+    try {
+        const tipoUsuario = req.cookies.cookie_tipoUsuario
+
+        const idPerfil = req.cookies.cookie_usuario
+
+        const idProf = req.params.idProf
+
+        const response = await axios.get(`http://localhost:5000/auth/puxarPostagensProf/${idProf}`)
+        const postagens = response.data
+
+        let perfil = null
+        if (tipoUsuario == 'Aluno') {
+            const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilAluno/${idPerfil}`)
+            perfil = responsePerfil.data
+        } else {
+            const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilProfessor/${idPerfil}`)
+            perfil = responsePerfil.data
+        }
+
+        res.render('postagens', { tipoUsuario, postagens, perfil })
+    } catch(error) {
+        console.error(error)
+        res.status(500).send('Erro ao buscar postagens')
+    }
+    
+})
+
 router.get('/home/postagens/criar', controller_Auth.AuthEstaLogado, async (req, res) => {
         const tipoUsuario = req.cookies.cookie_tipoUsuario
         const idPerfil = req.cookies.cookie_usuario
@@ -119,6 +150,9 @@ router.get('/home/postagens/:id', controller_Auth.AuthEstaLogado, async (req, re
         const tipoUsuario = req.cookies.cookie_tipoUsuario
         const idPerfil = req.cookies.cookie_usuario
 
+        const responseQtdViews = await axios.get('http://localhost:5000/auth/puxarNumViewsPost/${idPost}')
+        const qtdViews = responseQtdViews.data
+
         let perfil = null
         if (tipoUsuario == 'Aluno') {
             const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilAluno/${idPerfil}`)
@@ -128,7 +162,7 @@ router.get('/home/postagens/:id', controller_Auth.AuthEstaLogado, async (req, re
             perfil = responsePerfil.data
         }
 
-        res.render('post', { postagem, perfil });
+        res.render('post', { postagem, perfil, qtdViews });
     } catch (error) {
         console.error(error);
         res.status(500).send('Erro ao buscar a postagem');
@@ -142,6 +176,8 @@ router.get('/home/dashboard', controller_Auth.AuthEstaLogado, async(req, res) =>
 
         let perfil = null
         let TopTres = null
+        let qtdPosts = null
+        let qtdViews = null
         if (tipoUsuario == "Aluno") {
             const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilAluno/${idPerfil}`)
             perfil = responsePerfil.data
@@ -149,12 +185,17 @@ router.get('/home/dashboard', controller_Auth.AuthEstaLogado, async(req, res) =>
             const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilProfessor/${idPerfil}`)
             perfil = responsePerfil.data
 
+            const responseQtdPosts = await axios.get(`http://localhost:5000/auth/puxarNumPosts/${idPerfil}`)
+            qtdPosts = responseQtdPosts.data
+
+            const responseQtdViews = await axios.get(`http://localhost:5000/auth/puxarNumViews/${idPerfil}`)
+            qtdViews = responseQtdViews.data
+
             const responseRank = await axios.get(`http://localhost:5000/auth/selectRankQtdPostProf`)
             TopTres = responseRank.data.topTres
-            //topTres = await controller_Auth.SelectRankQtdPostsProf();
         }
 
-        res.render('dashboard', {perfil, TopTres, tipoUsuario})
+        res.render('dashboard', {perfil, TopTres, tipoUsuario, qtdPosts, qtdViews})
     } catch(error) {
         console.error(error)
         res.status(500).send('Erro ao carregar página')

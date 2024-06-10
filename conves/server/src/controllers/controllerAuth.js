@@ -107,7 +107,47 @@ async function SelectRankQtdPostsProf (req, resp) { // FUNÇÃO PRA ACHAR O TOTA
     }
 } 
 
+async function PuxarPostagensProf(req, resp) { // Puxa todas as postagens
+    try {
+        const idProf = req.params.idProf;
 
+        const AllPostagens = await ModelPostagem.findAll({
+            include: {
+                model: ModelProfessorPerfil,
+                required: true
+            },
+            where: {
+                fk_professorAutor: idProf
+            }
+        })
+        console.log(AllPostagens);
+        return resp.status(200).json(AllPostagens)
+    } catch (error) {
+        console.error(error);
+        return resp.status(500).json({ message: 'Erro ao buscar postagens' });
+    }
+}
+
+async function PuxarNumViewsPost(req, resp) {
+    try {
+        idPost = req.params.idPost
+
+        const { count, rows } = await ModelViewPostagem.findAndCountAll({
+            include: {
+                model: ModelPostagem,
+                required: true,
+                where: {
+                    id_postagem: idPost
+                }
+            }
+        })
+
+        return resp.status(200).json(count)
+    } catch (error) {
+        console.error(error)
+        return resp.status(500).json({ message: 'Erro na busca' })
+    }
+}
 
 module.exports= {
     Logout,
@@ -115,4 +155,6 @@ module.exports= {
     AuthEstaLogado,
     PuxarPostagemUnica,
     SelectRankQtdPostsProf,
+    PuxarPostagensProf,
+    PuxarNumViewsPost
 }

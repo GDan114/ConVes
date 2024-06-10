@@ -130,41 +130,27 @@
                 </div>
             </div>
             <!-- Professores -->
-
             <ul class="insights-prof">
-                <li>
-                    <i class='bx bx-user'></i>
-                    <span class="info">
-                        <h3>
-                            Prof 1
-                        </h3>
-                        <p>Danilo</p>
-                    </span>
-                </li>
-                <li><i class='bx bx-user'></i>
+                {{#each professores}}
+                <a href="/home/postagensProfessor/{{id_professor}}">
+                    <li>
+                        <img src="{{img_fotoPerfil}}" class="imagemPost" alt="FotoProfessor"></img>
+                        <span class="info">
+                            <h3>
+                                {{nm_professor}}
+                            </h3>
+                        </span>
+                    </li>
+                </a>
+                {{/each}}
+                {{!-- <li><i class='bx bx-user'></i>
                     <span class="info">
                         <h3>
                             Prof 2
                         </h3>
                         <p>José</p>
                     </span>
-                </li>
-                <li><i class='bx bx-user'></i>
-                    <span class="info">
-                        <h3>
-                            Prof 3
-                        </h3>
-                        <p>Miguel</p>
-                    </span>
-                </li>
-                <li><i class='bx bx-user'></i>
-                    <span class="info">
-                        <h3>
-                            Prof 4
-                        </h3>
-                        <p>Letycia</p>
-                    </span>
-                </li> 
+                </li> --}}
             </ul>
             <!-- Fim de Professores -->
         </main>
