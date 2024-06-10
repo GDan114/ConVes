@@ -130,7 +130,7 @@ async function PuxarPostagensProf(req, resp) { // Puxa todas as postagens
 
 async function PuxarNumViewsPost(req, resp) {
     try {
-        idPost = req.params.idPost
+        const idPost = req.params.idPost
 
         const { count, rows } = await ModelViewPostagem.findAndCountAll({
             include: {
@@ -141,6 +141,13 @@ async function PuxarNumViewsPost(req, resp) {
                 }
             }
         })
+        console.log(`
+         ====================================
+                    ID PARAM ${idPost}
+                   QTD: ${count}   
+                   a: ${rows}
+        ====================================
+            `)
 
         return resp.status(200).json(count)
     } catch (error) {

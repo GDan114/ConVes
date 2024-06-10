@@ -150,7 +150,7 @@ router.get('/home/postagens/:id', controller_Auth.AuthEstaLogado, async (req, re
         const tipoUsuario = req.cookies.cookie_tipoUsuario
         const idPerfil = req.cookies.cookie_usuario
 
-        const responseQtdViews = await axios.get('http://localhost:5000/auth/puxarNumViewsPost/${idPost}')
+        const responseQtdViews = await axios.get(`http://localhost:5000/auth/puxarNumViewsPost/${idPost}`)
         const qtdViews = responseQtdViews.data
 
         let perfil = null
