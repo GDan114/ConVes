@@ -2,6 +2,7 @@ const { ModelPostagem } = require('../models/modelPostagem')
 const { ModelProfessorPerfil } = require('../models/modelProfessorPerfil')
 const { ModelProfessorRegistro } = require('../models/modelProfessorRegistro')
 const bcrypt = require('bcrypt')
+const { ModelViewPostagem } = require('../models/modelViewPost')
 
 async function CriarProfessor (req, res) {
     // console.log('Tá rodando')
@@ -199,6 +200,38 @@ async function PuxarNumPosts(req, resp) {
     }
 }
 
+async function PuxarNumViews(req, resp) {
+    try {
+        idProf = req.params.idProf
+
+        const { count, rows } = await ModelViewPostagem.findAndCountAll({
+            // include: {
+            //     model: ModelProfessorPerfil,
+            //     required: true,
+            //     where: {
+            //         id_professor: idProf
+            //     }
+            // }
+            include: {
+                model: ModelPostagem,
+                required: true,
+                include: {
+                    model: ModelProfessorPerfil,
+                    required: true,
+                    where: {
+                        id_professor: idProf
+                    }
+                }
+            }
+        })
+
+        return resp.status(200).json(count)
+    } catch (error) {
+        console.error(error)
+        return resp.status(500).json({ message: 'Erro na busca' })
+    }
+}
+
 async function EditarProfessor(req, resp) {
     try{
         const {
@@ -291,6 +324,16 @@ async function DeletarProfessor (req, resp) {
     }
 }
 
+async function PuxarProfessores(req, resp) {
+    try {
+        const AllProfessores = await ModelProfessorPerfil.findAll()
+        return resp.status(200).json(AllProfessores)
+    } catch (error) {
+        console.error(error);
+        return resp.status(500).json({ message: 'Erro ao buscar professores' });
+    }
+}
+
 module.exports = {
     CriarProfessor,
     LogarProfessor,
@@ -299,5 +342,7 @@ module.exports = {
     PuxarNumPosts,
     EditarProfessor,
     EditarProfessorImg,
-    DeletarProfessor
+    DeletarProfessor,
+    PuxarProfessores,
+    PuxarNumViews
 }
