@@ -8,8 +8,10 @@
     <link rel="icon" type="image/x-icon" href="/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="/css/home.css"> <!-- arrumei o link, o ctrl click não levava pra lugar nenhum -->
-    <link rel="shortcut icon" href="/logo.png"> <!-- fodase a imagem tambem, fiquei uns 20 minutos e nao consegui colocar, FODASE  -->
+    <link rel="stylesheet" href="/css/home.css"> 
+    <link rel="stylesheet" href="/css/post.css">
+    <link rel="shortcut icon" href="/logo.png">
+
     <title>Post | ConVes</title>
 </head>
 
@@ -68,18 +70,18 @@
 
         <!-- Fim da Navbar -->
 
-        <main>
+        <main class="corpo-postagem">
             {{!-- MATHEUS, o box do post deve estar dentro desse if, essas coisas dentro de chaves são os conteúdos literalmente, tu coloca eles onde tu quiser que apareçam, o img ali deve estar com o src da forma que tá ali, tá tudo pronto aqui, titulo, professor, imagem e conteúdo, divirta-se --}}
             {{#if postagem}}
-            <ul class="insights">
-                <li class="post-home">
+            <ul class="insights-post-aberto">
+                <li class="post-home-aberto">
                     <img src="{{postagem.img_capaPost}}" class="imagemPost" alt="Imagem da postagem"></img>
                     <span class="info">
                         <h3>{{postagem.nm_tituloPostagem}}</h3>
                         <p>{{postagem.tb_professorPerfil.nm_professor}}</p>
                         <p>{{postagem.ds_conteudoPost}}</p>
                         <form id="formViewPost" action="/auth/viewPostAluno/{{postagem.id_postagem}}" method="POST">
-                            <button type="submit"><i class="fa-regular fa-square-check"></i></button>
+                            <button class="botao" type="submit"><i class="fa-regular fa-square-check"></i></button>
                         </form>
                     </span>
                 </li>
