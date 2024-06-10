@@ -43,7 +43,7 @@ html{
 body.dark{
     --light: #181a1e;
     --grey: #25252c;
-    --dark: #fbfbfb
+    --dark: #fbfbfb;
 }
 
 body{
@@ -461,7 +461,7 @@ body{
      */
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(4, minmax(240px, 1fr));
     grid-gap: 24px;
     margin-top: 36px;
 }
