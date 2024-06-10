@@ -80,6 +80,8 @@
                         <h3>{{postagem.nm_tituloPostagem}}</h3>
                         <p>{{postagem.tb_professorPerfil.nm_professor}}</p>
                         <p>{{postagem.ds_conteudoPost}}</p>
+                        <br><br>
+                        Qtd Views: {{qtdViews}}
                         <form id="formViewPost" action="/auth/viewPostAluno/{{postagem.id_postagem}}" method="POST">
                             <button class="botao" type="submit"><i class="fa-regular fa-square-check"></i></button>
                         </form>
