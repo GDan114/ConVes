@@ -136,7 +136,29 @@
                     </div>
                 </div>
             </div>
-            
+            <br><br>
+            <ul class="insights-prof">
+                {{#each postagens}}
+                <a href="/home/postagens/{{id_postagem}}">
+                    <li class="posts">
+                        <img src="{{img_capaPost}}" class="imagemPost" alt="Imagem da postagem"></img>
+                        <span class="info">
+                            <h3>
+                                {{nm_tituloPostagem}}
+                            </h3>
+                            <p>{{tb_professorPerfil.nm_professor}}</p>
+                        </span>
+                        <a href="/home/postagens/editarPost/{{id_postagem}}">
+                            <i class="bx bxs-edit"></i>
+                        </a>
+                        
+                        <i class="bx bxs-trash-alt"></i>
+                        
+                    </li>
+                </a>
+                {{/each}}
+            <ul>
+            <br><br>
             <div class="bio">
                 {{!-- FORM DE ALUNO, DEPOIS COLOCAR UM isAluno --}}
                  <form class="postForm" id="postForm" action="/auth/editarProfessor" method="POST">

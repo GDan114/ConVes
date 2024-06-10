@@ -205,13 +205,6 @@ async function PuxarNumViews(req, resp) {
         idProf = req.params.idProf
 
         const { count, rows } = await ModelViewPostagem.findAndCountAll({
-            // include: {
-            //     model: ModelProfessorPerfil,
-            //     required: true,
-            //     where: {
-            //         id_professor: idProf
-            //     }
-            // }
             include: {
                 model: ModelPostagem,
                 required: true,
@@ -274,6 +267,35 @@ async function EditarProfessor(req, resp) {
     } catch (error) {
         console.error(error)
         return resp.status(500).json({ message: 'Erro ao editar perfil' })
+    }
+}
+
+async function EditarPostagem (req, resp) {
+    const {
+        postTitulo,
+        postImg,
+        postText
+    } = req.body
+
+    const idProf = req.cookies.cookie_usuario
+
+    try {
+        const Post = await ModelPostagem.findOne({
+            where: {
+                fk_professorAutor: idProf
+            }
+        })
+
+        Post.nm_tituloPostagem = postTitulo
+        Post.img_capaPost = postImg
+        Post.ds_conteudoPost = postText
+
+        Post.save()
+    } catch(erro) {
+        console.error(erro)
+        console.log(req.body)
+        return resp.status(500).json({ message: 'Erro ao criar postagem' });
+
     }
 }
 
@@ -344,5 +366,6 @@ module.exports = {
     EditarProfessorImg,
     DeletarProfessor,
     PuxarProfessores,
-    PuxarNumViews
+    PuxarNumViews,
+    EditarPostagem
 }

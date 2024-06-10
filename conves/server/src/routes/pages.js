@@ -52,6 +52,7 @@ router.get('/home/perfil', controller_Auth.AuthEstaLogado, async (req, res) => {
 
         let perfil = null
         let numPosts = null
+        let postagens = null
         if (tipoUsuario == 'Aluno') {
             const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilAluno/${idPerfil}`)
             perfil = responsePerfil.data
@@ -62,7 +63,11 @@ router.get('/home/perfil', controller_Auth.AuthEstaLogado, async (req, res) => {
 
             const responseNumPosts = await axios.get(`http://localhost:5000/auth/puxarNumPosts/${idPerfil}`)
             numPosts = responseNumPosts.data
-            res.render('perfilProf', { perfil, tipoUsuario, numPosts })
+
+            const response = await axios.get(`http://localhost:5000/auth/puxarPostagensProf/${idProf}`)
+            postagens = response.data
+
+            res.render('perfilProf', { perfil, tipoUsuario, numPosts, postagens })
         }
 
         // res.render('perfil', { perfil, tipoUsuario, numPosts })
@@ -139,6 +144,25 @@ router.get('/home/postagens/criar', controller_Auth.AuthEstaLogado, async (req, 
             res.render('adicionarPostagem', {perfil})
         }
     
+})
+
+router.get('/home/postagens/editarPost/:idPost', controller_Auth.AuthEstaLogado, async (req, res) => {
+    const tipoUsuario = req.cookies.cookie_tipoUsuario
+    const idPerfil = req.cookies.cookie_usuario
+    const idPost = req.params.idPost
+    
+    let perfil = null
+    let postagem = null
+    if (tipoUsuario == 'Aluno') {
+        res.render('home')
+    } else {
+        const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilProfessor/${idPerfil}`)
+        perfil = responsePerfil.data
+
+        const responsePostagem = await axios.get(`http://localhost:5000/auth/puxarPostagemUnica/${idPost}`)
+        postagem = responsePostagem.data
+        res.render('editarPostagem', {perfil, postagem})
+    }
 })
 
 router.get('/home/postagens/:id', controller_Auth.AuthEstaLogado, async (req, res) => {

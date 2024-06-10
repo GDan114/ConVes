@@ -66,20 +66,20 @@
 
             <div class="header">
                 <div class="left">
-                    <h1>Adicionar Postagens</h1>
+                    <h1>Editar Postagem</h1>
                 </div>
             </div>
             <!-- formulario para enviar a postagem, uso exclusivo do professor --> 
             
             <form class="postForm" id="postForm" action="/auth/criarPostagem" method="POST">
-                <input type="text" class="title-post" name="postTitulo" id="postTitulo" placeholder="Titulo da postagem..." required>
+                <input type="text" class="title-post" name="postTitulo" id="postTitulo" value="{{postagem.nm_tituloPostagem}}" placeholder="Titulo da postagem..." required>
                 <br><br>
                 <input class="input" id="sg" type="file" accept="image/*" name="postImg" required onchange="previewImage(event)">
                 <label class="select-img" for="sg">Selecionar imagem</label>
                 <br><br>
-                <img class="preview-img" id="preview" src="" alt="Preview da imagem" style="max-width: 300px; max-height: 600px;">
+                <img class="preview-img" id="preview" src="{{postagem.img_capaPost}}" alt="Preview da imagem" style="max-width: 300px; max-height: 600px;">
                 <br><br>
-                <textarea rows="2"  placeholder="Insira o conteúdo aqui..." name="postText" id="postText"></textarea>
+                <textarea rows="2"  placeholder="Insira o conteúdo aqui..." name="postText" id="postText">{{postagem.ds_conteudoPost}}</textarea>
                 <br><br>
                 <button type="button" onclick="submitForm()">Enviar</button>
             </form>
@@ -124,7 +124,7 @@
                     postImg: imageData
                 };
                 try {
-                    const response = await axios.post('/auth/criarPostagem', postData);
+                    const response = await axios.post('/auth/editarPostagem', postData);
                     console.log(response.data); // Imprime a resposta do servidor no console
                 } catch (error) {
                     console.error(error);
