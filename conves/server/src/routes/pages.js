@@ -103,6 +103,32 @@ router.get('/home/postagens', controller_Auth.AuthEstaLogado, async (req, res) =
     
 })
 
+router.get('/home/professores', controller_Auth.AuthEstaLogado, async (req, res) => {
+    try {
+        const tipoUsuario = req.cookies.cookie_tipoUsuario
+
+        const responseProfessores = await axios.get('http://localhost:5000/auth/puxarProfessores')
+        const professores = responseProfessores.data
+
+        const idPerfil = req.cookies.cookie_usuario
+
+        let perfil = null
+        if (tipoUsuario == 'Aluno') {
+            const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilAluno/${idPerfil}`)
+            perfil = responsePerfil.data
+        } else {
+            const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilProfessor/${idPerfil}`)
+            perfil = responsePerfil.data
+        }
+
+        res.render('professores', { tipoUsuario, professores, perfil })
+    } catch(error) {
+        console.error(error)
+        res.status(500).send('Erro ao buscar postagens')
+    }
+    
+})
+
 router.get('/home/postagensProfessor/:idProf', controller_Auth.AuthEstaLogado, async (req, res) => {
     try {
         const tipoUsuario = req.cookies.cookie_tipoUsuario

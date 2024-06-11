@@ -31,7 +31,7 @@
         <ul class="side-menu">
             <!-- Inicio do Menu-->
             <li><a href="#"><i class='bx bx-home'></i>Home</a></li>
-            <li><a href="/home/dashboard"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+            {{#isProfessor tipoUsuario}} <li><a href="/home/dashboard"><i class='bx bxs-dashboard'></i>Dashboard</a></li> {{/isProfessor}}
             <li><a href="/home/postagens"><i class="bi bi-window-plus" id="icon-menu-postagens"></i>Postagens</a></li> <!-- PEGAR O LINK DO BOOTSTRAP --> 
             <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> 
             <li class="active"><a href="/home/sobre"><i class='bx bx-info-circle'></i>Sobre</a></li>
@@ -83,7 +83,6 @@
         <h2>Grupo <span class="conves">ConVes</span></h2>
         <div class="baixo">
             <!-- svg  dos integrantes  -->
-            <img class="imagem-teste" src="/Imagens/double-biceps.png" alt="">
             <div class="quadrado-vermelho"></div>
             <svg width="991" height="165" viewBox="0 0 991 165" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0 47.5L215 0V100H0L0 47.5Z" fill="white"/>
