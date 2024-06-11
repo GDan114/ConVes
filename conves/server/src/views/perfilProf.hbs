@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="/css/perfil.css"> <!-- arrumei o link, o ctrl click não levava pra lugar nenhum -->
     <link rel="shortcut icon" href="/Imagens/logo.png"> <!-- fodase a imagem tambem, fiquei uns 20 minutos e nao consegui colocar, FODASE  -->
     <link rel="stylesheet" href="/css/home.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <title>Perfil | ConVes</title>
 </head>
 
@@ -151,13 +156,16 @@
                         <a href="/home/postagens/editarPost/{{id_postagem}}">
                             <i class="bx bxs-edit"></i>
                         </a>
-                        
-                        <i class="bx bxs-trash-alt"></i>
+                        <form action="/auth/excluirPostagem/{{id_postagem}}" id="formDelete" method="POST">
+                            <button type="submit" onclick="alertDelete()" class="excluirPost"> <!-- botao de logout-->
+                                <i class="bx bxs-trash-alt" id="deleteButton"></i>
+                            </button>
+                        </form>
                         
                     </li>
                 </a>
                 {{/each}}
-            <ul>
+            </ul>
             <br><br>
             <div class="bio">
                 {{!-- FORM DE ALUNO, DEPOIS COLOCAR UM isAluno --}}
@@ -239,6 +247,14 @@
                 };
             }
         </script>
+
+        <script>
+            function alertDelete() {
+                window.alert('Postagem excluída com sucesso!')
+
+            }
+        </script>
+        
         </main>
     </div>
 

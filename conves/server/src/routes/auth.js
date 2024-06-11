@@ -16,6 +16,8 @@ router.get('/puxarPerfilProfessor/:idProf', controller_Professor.PuxarPerfilProf
 
 router.post('/criarPostagem', controller_Professor.CriarPostagem)//  /auth/criarPostagem 
 router.post('/editarPostagem', controller_Professor.EditarPostagem)//  /auth/criarPostagem 
+router.post('/excluirPostagem/:idPost', controller_Professor.ExcluirPostagem)//  /auth/excluirPostagem 
+
 
 router.get('/puxarPostagem', controller_Auth.PuxarPostagem)//  /auth/puxarPostagem
 router.get('/puxarPostagemUnica/:id', controller_Auth.PuxarPostagemUnica) //   /auth/puxarPostagemUnica

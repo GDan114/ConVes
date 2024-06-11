@@ -346,6 +346,22 @@ async function DeletarProfessor (req, resp) {
     }
 }
 
+async function ExcluirPostagem(req, resp) {
+    try {
+        const idPost = req.params.idPost
+
+        await ModelPostagem.destroy({
+            where: {
+                id_postagem: idPost
+            }
+        })
+        return resp.status(200)
+    } catch (error) {
+        console.error(error)
+        return resp.status(500).json({ message: 'Erro ao deletar post'});
+    }
+}
+
 async function PuxarProfessores(req, resp) {
     try {
         const AllProfessores = await ModelProfessorPerfil.findAll()
@@ -367,5 +383,6 @@ module.exports = {
     DeletarProfessor,
     PuxarProfessores,
     PuxarNumViews,
-    EditarPostagem
+    EditarPostagem,
+    ExcluirPostagem
 }
