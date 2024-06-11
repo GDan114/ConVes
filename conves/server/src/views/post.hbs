@@ -83,12 +83,12 @@
                         <br><br>
                         <h5>Qtd Views: {{qtdViews}}</h5>
                         <form id="formViewPost" action="/auth/viewPostAluno/{{postagem.id_postagem}}" method="POST">
+                        {{#isAluno tipoUsuario}}
                         <div class="linha">
-                            {{#isAluno tipoUsuario}}
                             <label for="btn-check">Marcar como visto: </label>
                             <button class="botao" type="submit" id="btn-check"><i class="fa-regular fa-square-check"></i></button>
-                            {{/isAluno}}
                         </div>
+                        {{/isAluno}}
                         </form>
                     </span>
                 </li>

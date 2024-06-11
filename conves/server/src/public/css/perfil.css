@@ -1,10 +1,17 @@
+main {
+    display: flex;
+    height: auto;
+
+}
+
 .bloco {
     width: 100%;
-    height: 800px;
+    height: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
+    margin-top: 350px;
 }
 
 .esquerda {
@@ -76,6 +83,12 @@
     transition: all .3s ease;
 }
 
+.centro button:active{
+    transform: translateY(5px);
+    box-shadow: none;
+    transition: all .3s ease;
+}
+
 .imagem {
     width: 300px;
     height: 300px;
@@ -111,12 +124,20 @@
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 .postForm input {
+    background-color: #fff;
+    border: none;
+    margin: 8px 0;
+    padding: 10px 15px;
+    font-size: 13px;
+    border-radius: 8px;
     width: 100%;
+    outline: none;
 }
 
 .esquerda-form {
@@ -140,6 +161,12 @@
     background-color: #ff4646;
     color: white;
     box-shadow: 0 5px 0 #a82d2d;
+    transition: all .3s ease;
+}
+
+.postForm button:active {
+    transform: translateY(5px);
+    box-shadow: none;
     transition: all .3s ease;
 }
 
@@ -231,3 +258,73 @@ input[type='file']{
   width: 300px;
     height: 300px;
 }
+
+/* POSTAGENS */
+
+.content main {
+    height: auto;
+}
+
+.content main .insights-prof{
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4, minmax(240px, 1fr));
+    grid-gap: 24px;
+    margin-top: 36px;
+}
+
+.content main .insights-prof li{
+    padding: 24px;
+    background: var(--light);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    grid-gap: 24px;
+    cursor: pointer;
+}
+
+.content main .insights-prof li .bx{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    font-size: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content main .insights-prof li:nth-child(1) .bx{
+    background: var(--light-primary);
+    color: var(--primary);
+}
+
+.content main .insights-prof li:nth-child(2) .bx{
+    background: var(--light-warning);
+    color: var(--warning);
+}
+
+.content main .insights-prof li:nth-child(3) .bx{
+    background: var(--light-success);
+    color: var(--success);
+}
+
+.content main .insights-prof li:nth-child(4) .bx{
+    background: var(--light-danger);
+    color: var(--danger);
+}
+
+.content main .insights-prof li .info h3{
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.content main .insights-prof li .info p{
+    color: var(--dark);
+}
+
+.excluirPost {
+    border: none;
+    background-color: transparent;
+}
+

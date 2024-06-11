@@ -801,3 +801,9 @@ input[type='file']{
     box-shadow: none;
 }
 
+#icon-menu-postagens{
+    font-size: 16pt;
+    margin-left: 12px;
+    margin-right: 7px;
+}
+

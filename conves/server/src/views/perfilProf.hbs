@@ -80,13 +80,16 @@
             <div class="bloco">
                 <div class="esquerda">
                     <div class="cima-baixo-esquerda">
-                        <h3>Nome: {{perfil.nm_professor}}</h3>
+                        <h3>Nome: </h3>
+                        <h3>{{perfil.nm_professor}}</h3>
                     </div>
                     <div class="centro-esquerda">
-                        <h3>RM: {{perfil.rm_professor}}</h3>
+                        <h3>RM: </h3>
+                        <h3>{{perfil.rm_professor}}</h3>
                     </div>
                     <div class="cima-baixo-esquerda">
-                        <h3>CPF: {{perfil.cpf_prof}}</h3>
+                        <h3>CPF: </h3>
+                        <h3>{{perfil.cpf_prof}}</h3>
                     </div>
                 </div>
                 <div class="centro">
@@ -144,6 +147,7 @@
             <br><br>
             <ul class="insights-prof">
                 {{#each postagens}}
+                <div>
                 <a href="/home/postagens/{{id_postagem}}">
                     <li class="posts">
                         <img src="{{img_capaPost}}" class="imagemPost" alt="Imagem da postagem"></img>
@@ -161,26 +165,28 @@
                                 <i class="bx bxs-trash-alt" id="deleteButton"></i>
                             </button>
                         </form>
-                        
                     </li>
                 </a>
+                </div>
                 {{/each}}
             </ul>
             <br><br>
             <div class="bio">
                 {{!-- FORM DE ALUNO, DEPOIS COLOCAR UM isAluno --}}
                  <form class="postForm" id="postForm" action="/auth/editarProfessor" method="POST">
-                    <input type="text" placeholder="Nome" value="{{perfil.nm_professor}}" pattern="^[a-zA-Z ]+$" id="profNome" name="profNome" required>
-                    <br><br>
-                    <input type="text" placeholder="Matrícula" value="{{perfil.rm_professor}}" minlength="5" maxlength="5" name="profMatricula" id="profMatricula" required>
-                    <br><br>
-                    <input type="text" placeholder="CPF" value="{{perfil.cpf_prof}}" id="profCpf" placeholder="Cpf" name="profCpf"  maxlength="11"  required> 
-                    <br><br>
-                    <input type="email" placeholder="Email" value="{{perfil.tb_professorRegistro.ds_emailProfessor}}" id="profEmail" name="profEmail" required>
-                    <br><br>
-                    <input type="password" placeholder="Senha" minlength="8" maxlength="12" id="profSenha" name="profSenha" required>
+                   <div class="esquerda-form">
+                    <input class="input" type="text" placeholder="Nome" value="{{perfil.nm_professor}}" pattern="^[a-zA-Z ]+$" id="profNome" name="profNome" required>
+                    <br>
+                    <input class="input" type="text" placeholder="Matrícula" value="{{perfil.rm_professor}}" minlength="5" maxlength="5" name="profMatricula" id="profMatricula" required>
+                    <br>
+                    <input class="input" type="text" placeholder="CPF" value="{{perfil.cpf_prof}}" id="profCpf" placeholder="Cpf" name="profCpf"  maxlength="11"  required> 
+                    <br>
+                    <input class="input" type="email" placeholder="Email" value="{{perfil.tb_professorRegistro.ds_emailProfessor}}" id="profEmail" name="profEmail" required>
+                    <br>
+                    <input class="input" type="password" placeholder="Senha" minlength="8" maxlength="12" id="profSenha" name="profSenha" required>
                     
                     <button type="submit" onclick="submitForm()">Enviar</button>
+                    </div>
                 </form>
             </div>
             
