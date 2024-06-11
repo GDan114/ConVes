@@ -31,8 +31,8 @@
         </a>
         <ul class="side-menu">
             <!-- Inicio do Menu-->
-            <li><a href="#"><i class='bx bx-home'></i>Home</a></li>
-            <li><a href="/home/dashboard"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+            <li><a href="/home"><i class='bx bx-home'></i>Home</a></li>
+            {{#isProfessor tipoUsuario}} <li><a href="/home/dashboard"><i class='bx bxs-dashboard'></i>Dashboard</a></li> {{/isProfessor}}
             <li class="active"><a href="/home/postagens"><i class="bi bi-window-plus" id="icon-menu-postagens"></i>Postagens</a></li> <!-- PEGAR O LINK DO BOOTSTRAP --> 
             <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> 
             <li><a href="/home/sobre"><i class='bx bx-info-circle'></i>Sobre</a></li>
@@ -78,12 +78,15 @@
                     <img src="{{postagem.img_capaPost}}" class="imagemPost" alt="Imagem da postagem"></img>
                     <span class="info">
                         <h3>{{postagem.nm_tituloPostagem}}</h3>
-                        <p>{{postagem.tb_professorPerfil.nm_professor}}</p>
+                        <p>Profº {{postagem.tb_professorPerfil.nm_professor}}</p>
                         <p>{{postagem.ds_conteudoPost}}</p>
                         <br><br>
-                        Qtd Views: {{qtdViews}}
+                        <h5>Qtd Views: {{qtdViews}}</h5>
                         <form id="formViewPost" action="/auth/viewPostAluno/{{postagem.id_postagem}}" method="POST">
-                            <button class="botao" type="submit"><i class="fa-regular fa-square-check"></i></button>
+                        <div class="linha">
+                            <label for="btn-check">Marcar como visto: </label>
+                            <button class="botao" type="submit" id="btn-check"><i class="fa-regular fa-square-check"></i></button>
+                        </div>
                         </form>
                     </span>
                 </li>

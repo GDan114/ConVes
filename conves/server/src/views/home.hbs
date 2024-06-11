@@ -31,9 +31,9 @@
         <ul class="side-menu">
             <!-- Inicio do Menu-->
             <li class="active"><a href="#"><i class='bx bx-home'></i>Home</a></li>
-            <li><a href="/home/dashboard"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+           {{#isProfessor tipoUsuario}} <li><a href="/home/dashboard"><i class='bx bxs-dashboard'></i>Dashboard</a></li> {{/isProfessor}}
             <li><a href="/home/postagens"><i class="bi bi-window-plus" id="icon-menu-postagens"></i>Postagens</a></li> <!-- PEGAR O LINK DO BOOTSTRAP --> 
-            <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> 
+            <li><a href="/home/professores"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> 
             <li><a href="/home/sobre"><i class='bx bx-info-circle'></i>Sobre</a></li>
             <li><a href="/home/perfil"><i class='bx bx-user'></i>Perfil</a></li>
         </ul>
@@ -143,14 +143,7 @@
                     </li>
                 </a>
                 {{/each}}
-                {{!-- <li><i class='bx bx-user'></i>
-                    <span class="info">
-                        <h3>
-                            Prof 2
-                        </h3>
-                        <p>José</p>
-                    </span>
-                </li> --}}
+                
             </ul>
             <!-- Fim de Professores -->
         </main>

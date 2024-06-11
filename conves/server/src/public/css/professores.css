@@ -1,0 +1,12 @@
+.content main .insights-prof{
+    /* display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-gap: 24px;
+    margin-top: 36px;
+     */
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4, minmax(240px, 1fr));
+    grid-gap: 24px;
+    margin-top: 36px;
+}
