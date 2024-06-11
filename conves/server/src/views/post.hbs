@@ -34,7 +34,7 @@
             <li><a href="/home"><i class='bx bx-home'></i>Home</a></li>
             {{#isProfessor tipoUsuario}} <li><a href="/home/dashboard"><i class='bx bxs-dashboard'></i>Dashboard</a></li> {{/isProfessor}}
             <li class="active"><a href="/home/postagens"><i class="bi bi-window-plus" id="icon-menu-postagens"></i>Postagens</a></li> <!-- PEGAR O LINK DO BOOTSTRAP --> 
-            <li><a href="#"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> 
+            <li><a href="/home/professores"><i class="fa-solid fa-chalkboard-user" id="professores"></i><p class="professores">Professores</p></a></li> 
             <li><a href="/home/sobre"><i class='bx bx-info-circle'></i>Sobre</a></li>
             <li><a href="/home/perfil"><i class='bx bx-user'></i>Perfil</a></li>
         </ul>
@@ -63,7 +63,7 @@
             </form>
             <input type="checkbox" id="theme-toggle" hidden> <!-- Botão de mudar o tema-->
             <label for="theme-toggle" class="theme-toggle"></label>
-            <a href="#" class="profile"> <!-- href da page de usuario -->
+            <a href="/home/perfil" class="profile"> <!-- href da page de usuario -->
                 <img src="{{perfil.img_fotoPerfil}}">
             </a>
         </nav>
@@ -84,8 +84,10 @@
                         <h5>Qtd Views: {{qtdViews}}</h5>
                         <form id="formViewPost" action="/auth/viewPostAluno/{{postagem.id_postagem}}" method="POST">
                         <div class="linha">
+                            {{#isAluno tipoUsuario}}
                             <label for="btn-check">Marcar como visto: </label>
                             <button class="botao" type="submit" id="btn-check"><i class="fa-regular fa-square-check"></i></button>
+                            {{/isAluno}}
                         </div>
                         </form>
                     </span>

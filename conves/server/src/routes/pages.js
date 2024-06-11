@@ -163,11 +163,11 @@ router.get('/home/postagens/criar', controller_Auth.AuthEstaLogado, async (req, 
 
         let perfil = null
         if (tipoUsuario == 'Aluno') {
-            res.render('home')
+            res.redirect('/home')
         } else {
             const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilProfessor/${idPerfil}`)
             perfil = responsePerfil.data
-            res.render('adicionarPostagem', {perfil})
+            res.render('adicionarPostagem', {perfil, tipoUsuario})
         }
     
 })
@@ -180,14 +180,14 @@ router.get('/home/postagens/editarPost/:idPost', controller_Auth.AuthEstaLogado,
     let perfil = null
     let postagem = null
     if (tipoUsuario == 'Aluno') {
-        res.render('home')
+        res.redirect('/home')
     } else {
         const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilProfessor/${idPerfil}`)
         perfil = responsePerfil.data
 
         const responsePostagem = await axios.get(`http://localhost:5000/auth/puxarPostagemUnica/${idPost}`)
         postagem = responsePostagem.data
-        res.render('editarPostagem', {perfil, postagem})
+        res.render('editarPostagem', {perfil, postagem, tipoUsuario})
     }
 })
 
@@ -212,7 +212,7 @@ router.get('/home/postagens/:id', controller_Auth.AuthEstaLogado, async (req, re
             perfil = responsePerfil.data
         }
 
-        res.render('post', { postagem, perfil, qtdViews });
+        res.render('post', { postagem, perfil, qtdViews, tipoUsuario });
     } catch (error) {
         console.error(error);
         res.status(500).send('Erro ao buscar a postagem');
@@ -266,7 +266,7 @@ router.get('/home/sobre', controller_Auth.AuthEstaLogado, async(req, res) => {
         perfil = responsePerfil.data
     }
 
-    res.render('sobre', { perfil })
+    res.render('sobre', { perfil, tipoUsuario })
 })
 
 module.exports = router;
