@@ -37,6 +37,7 @@ router.post('/viewPostAluno/:idPost', controller_Aluno.ViewPostAluno) //   /auth
 
 router.get('/logout', controller_Auth.Logout) //  /auth/logout
 
-router.get('/selectRankQtdPostProf', controller_Auth.SelectRankQtdPostsProf)
+// router.get('/selectRankQtdPostProf', controller_Auth.SelectRankQtdPostsProf)
+router.get('/selectRankViews', controller_Auth.SelectRankViews)
 
 module.exports = router

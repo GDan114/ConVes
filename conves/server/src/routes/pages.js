@@ -225,7 +225,7 @@ router.get('/home/dashboard', controller_Auth.AuthEstaLogado, async(req, res) =>
         const idPerfil = req.cookies.cookie_usuario
 
         let perfil = null
-        let TopTres = null
+        let Rank = null
         let qtdPosts = null
         let qtdViews = null
         if (tipoUsuario == "Aluno") {
@@ -241,11 +241,11 @@ router.get('/home/dashboard', controller_Auth.AuthEstaLogado, async(req, res) =>
             const responseQtdViews = await axios.get(`http://localhost:5000/auth/puxarNumViews/${idPerfil}`)
             qtdViews = responseQtdViews.data
 
-            const responseRank = await axios.get(`http://localhost:5000/auth/selectRankQtdPostProf`)
-            TopTres = responseRank.data.topTres
+            const responseRank = await axios.get(`http://localhost:5000/auth/selectRankViews`)
+            Rank = responseRank.data
         }
 
-        res.render('dashboard', {perfil, TopTres, tipoUsuario, qtdPosts, qtdViews})
+        res.render('dashboard', {perfil, Rank, tipoUsuario, qtdPosts, qtdViews})
     } catch(error) {
         console.error(error)
         res.status(500).send('Erro ao carregar página')

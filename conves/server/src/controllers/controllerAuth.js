@@ -69,43 +69,87 @@ async function AuthEstaLogado(req, resp, next) {
     }
 }
 
-async function SelectRankQtdPostsProf (req, resp) { // FUNÇÃO PRA ACHAR O TOTAL DE VIEWS QUE CADA PROF TEM
+// async function SelectRankQtdPostsProf (req, resp) { // FUNÇÃO PRA ACHAR O TOTAL DE VIEWS QUE CADA PROF TEM
+//     try {
+//         const rank = await ModelProfessorPerfil.findAll({
+//             include: [{
+//                 model: ModelPostagem,
+//                 attributes: [],
+//                 required: true
+//             }],
+//             group:['tb_professorPerfil.id_professor'],
+//             order: [[sequelize.fn('COUNT', sequelize.col('id_postagem')), 'DESC']]
+//         })
+
+//         console.log(`
+//         ================================================================
+        
+//                                 INICIO
+
+//         ================================================================
+
+//         ${rank}
+
+//         ================================================================
+        
+//                                 FIM
+
+//         ================================================================
+//             `)
+
+//         const topTres = rank.slice(0, 3);
+
+//         // return resp.status(200).json({topTres})
+//         return resp.status(200).json({topTres})
+//     } catch (error) {
+//         console.error(error)
+//         return resp.status(500).json({ message: 'Erro interno.' })
+//     }
+// } 
+
+async function SelectRankViews(req, resp) {
     try {
-        const rank = await ModelProfessorPerfil.findAll({
+        const Rank = ModelViewPostagem.findAll({
+            attributes: [ 
+                [sequelize.fn('count', sequelize.col('tb_viewPost.id_viewPost')), 'Total']
+            ],
             include: [{
                 model: ModelPostagem,
                 attributes: [],
-                required: true
+                required: true,
+                include: [{
+                    model: ModelProfessorPerfil,
+                    required: true,
+                    attributes: ['id_professor']
+                }]
             }],
-            group:['tb_professorPerfil.id_professor'],
-            order: [[sequelize.fn('COUNT', sequelize.col('id_postagem')), 'DESC']]
+            where: {
+                en_visto: 'S'
+            },
+            group: 'id_professor'
+        }). then(async results => {
+        
+            for (let i = 0; i < results.length; i++) {
+                const result = results[i];
+                const idProfessor = result.get('id_professor')
+                const totalViews = result.get('Total')
+
+                console.log(`
+                    ============================================================
+                    ID Professor: ${idProfessor}
+                    Total Views: ${totalViews}
+                    ============================================================
+                  `);
+            }
+            
         })
 
-        console.log(`
-        ================================================================
-        
-                                INICIO
-
-        ================================================================
-
-        ${rank}
-
-        ================================================================
-        
-                                FIM
-
-        ================================================================
-            `)
-
-        const topTres = rank.slice(0, 3);
-
-        // return resp.status(200).json({topTres})
-        return resp.status(200).json({topTres})
-    } catch (error) {
+            return resp.status(200).json(Rank)
+    } catch(error) {
         console.error(error)
-        return resp.status(500).json({ message: 'Erro interno.' })
+        return resp.status(500).json({ message: 'Erro ao buscar postagens' })
     }
-} 
+}
 
 async function PuxarPostagensProf(req, resp) { // Puxa todas as postagens
     try {
@@ -161,7 +205,8 @@ module.exports= {
     PuxarPostagem,
     AuthEstaLogado,
     PuxarPostagemUnica,
-    SelectRankQtdPostsProf,
+    SelectRankViews,
+    // SelectRankQtdPostsProf,
     PuxarPostagensProf,
     PuxarNumViewsPost
 }

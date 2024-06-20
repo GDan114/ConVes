@@ -127,6 +127,18 @@ insert into tb_postagem(nm_tituloPostagem, fk_professorAutor, ds_conteudoPost, i
            ('Advérbio', 2, 'Os advérbios são como os temperos sutis da nossa linguagem, acrescentando nuances e detalhes à maneira como expressamos ações, estados e qualidades. Eles modificam verbos, adjetivos e até mesmo outros advérbios, oferecendo informações sobre tempo, lugar, modo, intensidade, entre outros aspectos. Seja suavizando uma afirmação com "talvez", enfatizando uma ideia com "certamente" ou indicando o local de uma ação com "aqui", os advérbios são elementos essenciais para a precisão e a clareza da comunicação. Dominar o uso dos advérbios é como afinar um instrumento musical, dando o tom certo para cada frase e transmitindo as nuances exatas do que queremos expressar.', '/Imagens/imgPosts/adverbio.jpeg'),
            ('Adjetivo', 3, 'Os adjetivos são os artistas que pintam o cenário das nossas frases, acrescentando cor, textura e profundidade à nossa comunicação. Eles descrevem características, qualidades e estados dos substantivos, permitindo-nos criar imagens vívidas e transmitir sentimentos e impressões de forma precisa. Seja para expressar a beleza de uma paisagem com "verdejante", a bondade de uma pessoa com "generoso", ou a intensidade de uma emoção com "ardente", os adjetivos são ferramentas poderosas que enriquecem nossa expressão linguística. Dominar o uso dos adjetivos é como ter um pincel fino nas mãos, capaz de dar vida e profundidade a cada palavra que escolhemos usar.', '/Imagens/imgPosts/adjetivo.jpeg');
 
+insert into tb_viewpost(fk_aluno, fk_postagem, en_visto)
+	values (1, 1, 'S'), -- PROF 1: 6 views, PROF 2: 3 views, PROF 3: 1 view --
+		   (1, 2, 'S'),
+           (1, 3, 'S'),
+           (1, 4, 'S'),
+           (2, 2, 'S'),
+           (2, 3, 'S'),
+           (2, 4, 'S'),
+           (2, 1, 'S'),
+           (3, 4, 'S'),
+           (3, 6, 'S');
+		
 /*SELECT*/
 
 select * from tb_alunoPerfil;
@@ -146,7 +158,7 @@ desc tb_plano;
 desc tb_postagem;
 desc tb_viewPost;
 
-/*ÁREA DE TESTE DO BACK 
+/*ÁREA DE TESTE DO BACK */
 DELETE FROM tb_alunoPerfil WHERE id_aluno = 7;
 DELETE FROM tb_alunoRegistro WHERE fk_aluno = 7;
 
@@ -166,7 +178,7 @@ Select count(id_viewPost) as Número_de_visualizações from tb_viewPost Where e
 Select count(id_viewPost) as Número_de_visualizações from tb_viewPost INNER JOIN tb_postagem on (fk_postagem = id_postagem) INNER JOIN tb_professorperfil on(fk_professorAutor = id_professor) WHERE en_visto = 'S' AND id_professor = 1;
 Select count(id_viewPost) as Número_de_visualizações from tb_viewPost INNER JOIN tb_postagem on (fk_postagem = id_postagem) INNER JOIN tb_professorperfil on(fk_professorAutor = id_professor) WHERE en_visto = 'S';
 
-SELECT id_professor, count(id_viewPost) as Total_views from  tb_viewPost 
+SELECT id_professor, count(id_viewPost) as Total_views from  tb_viewPost  -- SELECT DO RANK --
 	INNER JOIN tb_postagem on (fk_postagem = id_postagem) 
     INNER JOIN tb_professorperfil on (fk_professorAutor = id_professor)
     WHERE en_visto = 'S'
