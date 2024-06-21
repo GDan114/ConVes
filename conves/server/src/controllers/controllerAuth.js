@@ -111,7 +111,9 @@ async function SelectRankViews(req, resp) {
     try {
         const Rank = ModelViewPostagem.findAll({
             attributes: [ 
-                [sequelize.fn('count', sequelize.col('tb_viewPost.id_viewPost')), 'Total']
+                [sequelize.fn('count', sequelize.col('tb_viewPost.id_viewPost')), 'Total'],
+                [sequelize.col('tb_postagem.tb_professorPerfil.id_professor'), 'id_professor']
+                // 'tb_postagem.tb_professorPerfil.id_professor'
             ],
             include: [{
                 model: ModelPostagem,
@@ -120,18 +122,19 @@ async function SelectRankViews(req, resp) {
                 include: [{
                     model: ModelProfessorPerfil,
                     required: true,
-                    attributes: ['id_professor']
+                    attributes: []
                 }]
             }],
             where: {
                 en_visto: 'S'
             },
-            group: 'id_professor'
+            group: ['id_professor']
         }). then(async results => {
         
             for (let i = 0; i < results.length; i++) {
+                console.log(results[i])
                 const result = results[i];
-                const idProfessor = result.get('id_professor')
+                const idProfessor = result.dataValues['id_professor']
                 const totalViews = result.get('Total')
 
                 console.log(`
