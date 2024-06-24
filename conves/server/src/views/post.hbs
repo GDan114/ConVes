@@ -78,10 +78,10 @@
                     <img src="{{postagem.img_capaPost}}" class="imagemPost" alt="Imagem da postagem"></img>
                     <span class="info">
                         <h3>{{postagem.nm_tituloPostagem}}</h3>
-                        <p>Profº {{postagem.tb_professorPerfil.nm_professor}}</p>
+                        <p class="nome-professor">Profº {{postagem.tb_professorPerfil.nm_professor}}</p>
                         <p>{{postagem.ds_conteudoPost}}</p>
                         <br><br>
-                        <h5>Qtd Views: {{qtdViews}}</h5>
+                        <i class="fa-solid fa-eye"> {{qtdViews}}</i>
                         <form id="formViewPost" action="/auth/viewPostAluno/{{postagem.id_postagem}}" method="POST">
                         {{#isAluno tipoUsuario}}
                         <div class="linha">
