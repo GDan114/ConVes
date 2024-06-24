@@ -158,7 +158,7 @@ desc tb_plano;
 desc tb_postagem;
 desc tb_viewPost;
 
-/*ÁREA DE TESTE DO BACK */
+/*ÁREA DE TESTE DO BACK 
 DELETE FROM tb_alunoPerfil WHERE id_aluno = 7;
 DELETE FROM tb_alunoRegistro WHERE fk_aluno = 7;
 
@@ -166,7 +166,6 @@ DELETE FROM tb_professorPerfil WHERE id_professor = 6;
 DELETE FROM tb_professorRegistro WHERE fk_professor = 6;
 
 DELETE FROM tb_viewPost WHERE fk_aluno = 1;
-TRUNCATE tb_postagem;
 
 INSERT INTO tb_viewpost (fk_aluno, fk_postagem, en_visto)
 	values  (1, 1, 'S'),

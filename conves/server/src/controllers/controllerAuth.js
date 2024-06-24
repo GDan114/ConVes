@@ -128,11 +128,14 @@ async function SelectRankViews(req, resp) {
             where: {
                 en_visto: 'S'
             },
-            group: ['id_professor']
+            group: ['id_professor'],
+            order: [[sequelize.literal('Total'), 'DESC']]
         }). then(async results => {
         
-            let idTopUm = null, idTopDois = null, idTopTres = null, qtdViewsTopUm = null, qtdViewsTopDois = null, qtdViewsTopTres = null
+            let idTopUm = null, idTopDois = null, idTopTres = null;
+            let qtdViewsTopUm = null, qtdViewsTopDois = null, qtdViewsTopTres = null;
             for (let i = 0; i < results.length; i++) {
+                const result = results[i];
                 if (i == 0) {
                     idTopUm = result.dataValues['id_professor']
                     qtdViewsTopUm = result.get('Total')
@@ -147,7 +150,7 @@ async function SelectRankViews(req, resp) {
                 }
 
                 console.log(results[i])
-                const result = results[i];
+                
                 const idProfessor = result.dataValues['id_professor']
                 const totalViews = result.get('Total')
 
@@ -158,18 +161,18 @@ async function SelectRankViews(req, resp) {
                     ============================================================
                   `);
             }
+            const RankData = {
+                idTopUm,
+                idTopDois,
+                idTopTres,
+                qtdViewsTopUm,
+                qtdViewsTopDois,
+                qtdViewsTopTres
+            }
             
-        })
-
-        const RankData = {
-            idTopUm,
-            idTopDois,
-            idTopTres,
-            qtdViewsTopUm,
-            qtdViewsTopDois,
-            qtdViewsTopTres
-        }
             return resp.status(200).json(RankData)
+        })
+        
     } catch(error) {
         console.error(error)
         return resp.status(500).json({ message: 'Erro ao buscar postagens' })

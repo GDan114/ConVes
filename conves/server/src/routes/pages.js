@@ -233,6 +233,10 @@ router.get('/home/dashboard', controller_Auth.AuthEstaLogado, async(req, res) =>
         let TopDois = null
         let TopTres = null
 
+        let qtdViewsTopUm = null
+        let qtdViewsTopDois = null
+        let qtdViewsTopTres = null
+
         if (tipoUsuario == "Aluno") {
             const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilAluno/${idPerfil}`)
             perfil = responsePerfil.data
@@ -254,15 +258,21 @@ router.get('/home/dashboard', controller_Auth.AuthEstaLogado, async(req, res) =>
             const idTopUm = Rank.idTopUm;
             const idTopDois = Rank.idTopDois;
             const idTopTres = Rank.idTopTres;
-            const qtdViewsTopUm = Rank.qtdViewsTopUm;
-            const qtdViewsTopDois = Rank.qtdViewsTopDois;
-            const qtdViewsTopTres = Rank.qtdViewsTopTres;
+            qtdViewsTopUm = Rank.qtdViewsTopUm;
+            qtdViewsTopDois = Rank.qtdViewsTopDois;
+            qtdViewsTopTres = Rank.qtdViewsTopTres;
 
             const responseTopUm = await axios.get(`http://localhost:5000/auth/puxarPerfilProfessor/${idTopUm}`)
             TopUm = responseTopUm.data
+
+            const responseTopDois = await axios.get(`http://localhost:5000/auth/puxarPerfilProfessor/${idTopDois}`)
+            TopDois = responseTopDois.data
+
+            const responseTopTres = await axios.get(`http://localhost:5000/auth/puxarPerfilProfessor/${idTopTres}`)
+            TopTres = responseTopTres.data
         }
 
-        res.render('dashboard', {perfil, Rank, tipoUsuario, qtdPosts, qtdViews})
+        res.render('dashboard', {perfil, Rank, tipoUsuario, qtdPosts, qtdViews, TopUm, TopDois, TopTres, qtdViewsTopUm, qtdViewsTopDois, qtdViewsTopTres})
     } catch(error) {
         console.error(error)
         res.status(500).send('Erro ao carregar página')
