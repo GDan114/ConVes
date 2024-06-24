@@ -228,6 +228,11 @@ router.get('/home/dashboard', controller_Auth.AuthEstaLogado, async(req, res) =>
         let Rank = null
         let qtdPosts = null
         let qtdViews = null
+
+        let TopUm = null
+        let TopDois = null
+        let TopTres = null
+
         if (tipoUsuario == "Aluno") {
             const responsePerfil = await axios.get(`http://localhost:5000/auth/puxarPerfilAluno/${idPerfil}`)
             perfil = responsePerfil.data
@@ -241,8 +246,20 @@ router.get('/home/dashboard', controller_Auth.AuthEstaLogado, async(req, res) =>
             const responseQtdViews = await axios.get(`http://localhost:5000/auth/puxarNumViews/${idPerfil}`)
             qtdViews = responseQtdViews.data
 
+            /*RESPONSE DO RANK*/
             const responseRank = await axios.get(`http://localhost:5000/auth/selectRankViews`)
             Rank = responseRank.data
+
+            /* DADOS DO RANK*/
+            const idTopUm = Rank.idTopUm;
+            const idTopDois = Rank.idTopDois;
+            const idTopTres = Rank.idTopTres;
+            const qtdViewsTopUm = Rank.qtdViewsTopUm;
+            const qtdViewsTopDois = Rank.qtdViewsTopDois;
+            const qtdViewsTopTres = Rank.qtdViewsTopTres;
+
+            const responseTopUm = await axios.get(`http://localhost:5000/auth/puxarPerfilProfessor/${idTopUm}`)
+            TopUm = responseTopUm.data
         }
 
         res.render('dashboard', {perfil, Rank, tipoUsuario, qtdPosts, qtdViews})

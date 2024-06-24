@@ -131,7 +131,21 @@ async function SelectRankViews(req, resp) {
             group: ['id_professor']
         }). then(async results => {
         
+            let idTopUm = null, idTopDois = null, idTopTres = null, qtdViewsTopUm = null, qtdViewsTopDois = null, qtdViewsTopTres = null
             for (let i = 0; i < results.length; i++) {
+                if (i == 0) {
+                    idTopUm = result.dataValues['id_professor']
+                    qtdViewsTopUm = result.get('Total')
+                }
+                if (i == 1) {
+                    idTopDois = result.dataValues['id_professor']
+                    qtdViewsTopDois = result.get('Total')
+                }
+                if (i == 2) {
+                    idTopTres = result.dataValues['id_professor']
+                    qtdViewsTopTres = result.get('Total')
+                }
+
                 console.log(results[i])
                 const result = results[i];
                 const idProfessor = result.dataValues['id_professor']
@@ -147,7 +161,15 @@ async function SelectRankViews(req, resp) {
             
         })
 
-            return resp.status(200).json(Rank)
+        const RankData = {
+            idTopUm,
+            idTopDois,
+            idTopTres,
+            qtdViewsTopUm,
+            qtdViewsTopDois,
+            qtdViewsTopTres
+        }
+            return resp.status(200).json(RankData)
     } catch(error) {
         console.error(error)
         return resp.status(500).json({ message: 'Erro ao buscar postagens' })
