@@ -48,13 +48,14 @@
     background-color: #f8f8ff;
     border-radius: 20px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     box-shadow: 0 20px 20px rgba(0, 0, 0, 0.100);
 }
 
 .quadrado-vermelho {
-    width: calc(100%/1.8);
+    width: 80%;
     height: calc(65%/1);
     background-color: #ff4646;
     border-radius: 20px 20px 0 0;
@@ -62,9 +63,9 @@
 }
 
 .baixo svg {
+    width: 60%;
     position: absolute;
-    bottom: 50px;
-    transform: scale(80%);
+    bottom: 30px;
     filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.100));
 }
 
