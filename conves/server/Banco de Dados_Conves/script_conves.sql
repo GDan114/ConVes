@@ -107,8 +107,8 @@ insert into tb_plano(nm_plano, vl_plano)
            
 insert into tb_professorPerfil(nm_professor, rm_professor, cpf_prof, fk_plano, img_fotoPerfil)
 			values ('Teste', '12345', '12345678901', 1, '/Imagens/perfil.png'),
-				   ('Cláudia', '07443', '47457908845', 2, '/Imagens/perfil.png'),
-				   ('Valéria', '05129', '47457939877', 1, '/Imagens/perfil.png'),
+				   ('Cláudia', '07443', '47457908845', 2, '/Imagens/perfilClaudia.png'),
+				   ('Valéria', '05129', '47457939877', 1, '/Imagens/perfilValeria.png'),
 				   ('Charles', '05333', '47404739809', 2, '/Imagens/perfil.png'),
 				   ('Michel', '37390', '47457990342', 1, '/Imagens/perfil.png');
                    
@@ -128,10 +128,12 @@ insert into tb_postagem(nm_tituloPostagem, fk_professorAutor, ds_conteudoPost, i
            ('Adjetivo', 3, 'Os adjetivos são os artistas que pintam o cenário das nossas frases, acrescentando cor, textura e profundidade à nossa comunicação. Eles descrevem características, qualidades e estados dos substantivos, permitindo-nos criar imagens vívidas e transmitir sentimentos e impressões de forma precisa. Seja para expressar a beleza de uma paisagem com "verdejante", a bondade de uma pessoa com "generoso", ou a intensidade de uma emoção com "ardente", os adjetivos são ferramentas poderosas que enriquecem nossa expressão linguística. Dominar o uso dos adjetivos é como ter um pincel fino nas mãos, capaz de dar vida e profundidade a cada palavra que escolhemos usar.', '/Imagens/imgPosts/adjetivo.jpeg');
 
 insert into tb_viewpost(fk_aluno, fk_postagem, en_visto)
-	values (1, 1, 'S'), -- PROF 1: 6 views, PROF 2: 3 views, PROF 3: 1 view --
+	values (1, 1, 'S'), -- PROF 1: 6 views, PROF 2: 5 views, PROF 3: 1 view --
 		   (1, 2, 'S'),
            (1, 3, 'S'),
            (1, 4, 'S'),
+           (1, 5, 'S'),
+           (2, 5, 'S'),
            (2, 2, 'S'),
            (2, 3, 'S'),
            (2, 4, 'S'),
